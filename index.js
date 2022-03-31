@@ -28,5 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Config Router
 const indexRouter = require('./routes/index')
+const loginRouter = require('./routes/login')
 
-app.use('/', indexRouter)
+app.use(indexRouter)
+app.use(loginRouter)
