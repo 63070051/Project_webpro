@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 
 
@@ -26,6 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Setup static path
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(bodyParser.urlencoded({ extended: false}));
 // Config Router
 const indexRouter = require('./routes/index')
 const loginRouter = require('./routes/login')
