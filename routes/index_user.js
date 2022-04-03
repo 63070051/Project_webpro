@@ -4,10 +4,8 @@ const path = require("path")
 const multer = require('multer')
 const router = express.Router()
 
-router.get('/', function(req, res, next) {
-    res.render('index')
 
-})
+//INDEX LOGIN
 router.post('/connected',async function(req, res, next) {
     let username = req.body.username;
     let password = req.body.password
@@ -25,13 +23,13 @@ router.post('/connected',async function(req, res, next) {
     let dataname = ''
     let datapassword = ''
     if(data.length != 0){
-        console.log(1)
         dataname = data[0].login_username;
         datapassword = data[0].login_password;
     }
+    console.log(data[0])
     if((dataname == username) && (datapassword == password)){
-        res.render('index',{
-            user : user[0]
+        res.render('index_user',{
+            user : JSON.stringify(user[0])
         })
     }
     else{
@@ -39,8 +37,24 @@ router.post('/connected',async function(req, res, next) {
     }
 
 })
-// router.get('/blogapi/:id', function(req, res, next) {
+
+//INDEX
+
+router.get('/connected/:userId',async function(req, res, next) {
+    const [user, field1] = await pool.query(
+        'SELECT * FROM Users WHERE user_id = ?',[
+            req.params.userId
+        ]
+    )
+    res.render('index_user',{
+        user : JSON.stringify(user[0])
+    })
+})
+
+//ABOUT
+router.get('/connected/about/:userId', function(req, res, next) {
+    res.render('about_user')
+})
 
 
-// })
 module.exports = router

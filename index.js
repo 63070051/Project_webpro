@@ -29,8 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.urlencoded({ extended: false}));
 // Config Router
-const indexRouter = require('./routes/index')
+const indexuserRouter = require('./routes/index_user')
+const indexguestRouter = require('./routes/index_guest')
 const loginRouter = require('./routes/login')
 
-app.use(indexRouter)
+app.use(indexuserRouter)
+app.use(indexguestRouter)
 app.use(loginRouter)

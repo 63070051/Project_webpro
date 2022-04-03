@@ -1,0 +1,18 @@
+<body>
+  <%- include('header') -%>
+  <%- include('navbar_user') -%>
+  <%- include('search') -%>
+  </div>
+  <script>
+    if(localStorage.getItem('user') == null){
+      localStorage.setItem('user', (`<%- user %>`))
+    }
+    var app = new Vue({
+      el : '#app',
+      data: {
+        user : JSON.parse(localStorage.getItem('user'))
+      }
+    })
+  </script>
+</body>
+</html>
