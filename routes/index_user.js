@@ -56,5 +56,8 @@ router.get('/connected/about/:userId', function(req, res, next) {
     res.render('about_user')
 })
 
+router.get('/connected/question/:userId', function(req, res, next) {
+    res.render('question_user')
+})
 
 module.exports = router

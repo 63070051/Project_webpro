@@ -1,8 +1,8 @@
-
 -- -----------------------------------------------------
 -- Table `User`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Users`;
+
 CREATE TABLE `Users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(255) NOT NULL,
@@ -24,6 +24,7 @@ CREATE TABLE `Users` (
 -- Table `Customer`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Customer`;
+
 CREATE TABLE `Customer` (
   `cus_vertified` BOOLEAN NULL,
   `User_user_id` INT NOT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE `Customer` (
 -- Table `Seller`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Seller`;
+
 CREATE TABLE `Seller` (
   `s_vertified` ENUM('Vertified', 'Not-Vertified') NULL,
   `User_user_id` INT NOT NULL,
@@ -44,6 +46,7 @@ CREATE TABLE `Seller` (
 -- Table `Employee`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Employee`;
+
 CREATE TABLE `Employee` (
   `salary` INT NULL,
   `User_user_id` INT NOT NULL,
@@ -54,6 +57,7 @@ CREATE TABLE `Employee` (
 -- Table `Contact`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Contact`;
+
 CREATE TABLE `Contact` (
   `con_id` INT NOT NULL AUTO_INCREMENT,
   `con_name` VARCHAR(255) NULL,
@@ -65,8 +69,10 @@ CREATE TABLE `Contact` (
 -- Table `Car`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Car`;
+
 CREATE TABLE `Car` (
   `car_id` INT NOT NULL AUTO_INCREMENT,
+  `seller_id` INT NOT NULL,
   `car_year` INT(4) NULL,
   `car_color` VARCHAR(255) NULL,
   `car_desc` TEXT(10000) NULL,
@@ -89,6 +95,7 @@ CREATE TABLE `Car` (
 -- Table `Sales_data`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Sales_data`;
+
 CREATE TABLE `Sales_data` (
   `sal_id` INT NOT NULL AUTO_INCREMENT,
   `sal_price` INT NULL,
@@ -104,6 +111,7 @@ CREATE TABLE `Sales_data` (
 -- Table `Car_images`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Car_images`;
+
 CREATE TABLE `Car_images` (
   `inage_no` INT NOT NULL AUTO_INCREMENT,
   `car_img` VARCHAR(255) NULL,
@@ -115,6 +123,7 @@ CREATE TABLE `Car_images` (
 -- Table `Car_type`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Car_type`;
+
 CREATE TABLE `Car_type` (
   `type_no` INT NOT NULL AUTO_INCREMENT,
   `car_type` VARCHAR(255) NULL,
@@ -126,13 +135,13 @@ CREATE TABLE `Car_type` (
 -- Table `Login`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Login`;
+
 CREATE TABLE `Login` (
   `login_id` INT NOT NULL AUTO_INCREMENT,
   `login_username` VARCHAR(255) NOT NULL,
   `login_password` VARCHAR(255) NOT NULL,
   `User_user_id` INT NOT NULL,
   PRIMARY KEY (`login_id`),
-
   UNIQUE KEY `login_username` (`login_username`),
   UNIQUE KEY `login_password` (`login_password`)
 ) ENGINE = InnoDB;
