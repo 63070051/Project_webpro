@@ -1,4 +1,13 @@
 <body>
     <%- include('header') -%>
-    <%- include('navbar') -%>
+    <%- include('navbar_user') -%>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                user: JSON.parse(localStorage.getItem('user'))
+            }
+        })
+    </script>
 </body>
