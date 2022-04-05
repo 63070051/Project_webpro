@@ -1,13 +1,16 @@
 <body>
     <%- include('header') -%>
-    <%- include('navbar_user') -%>
-    </div>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                user: JSON.parse(localStorage.getItem('user'))
-            }
-        })
-    </script>
+        <%- include('navbar_user') -%>
+        <div class="container mx-auto max-w-4xl">
+            
+        </div>
+            </section>
+            <script>
+                var app = new Vue({
+                    el: '#app',
+                    data: {
+                        user: JSON.parse(localStorage.getItem('user'))
+                    }
+                })
+            </script>
 </body>
