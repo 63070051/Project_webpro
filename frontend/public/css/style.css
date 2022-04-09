@@ -1,3 +1,7 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+*{
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Prompt', sans-serif;
+}
