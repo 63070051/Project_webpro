@@ -27,7 +27,7 @@
             </div>
             <div class="flex flex-col space-y-6 mt-8 text-gray-600">
                 <div class="flex space-x-4">
-                    <img width="25px" src="https://cdn-icons.flaticon.com/png/512/4213/premium/4213179.png?token=exp=1649504649~hmac=0298b87f03964798bae3fce63026f6fd" alt="">
+                    <img width="25px" src="https://cdn.discordapp.com/attachments/958256273592307722/962345035599339582/phone.png" alt="">
                     <p>+66 2508 8646</p>
                 </div>
                 <div class="flex space-x-4">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex space-x-4">
                     <div class="w-6 h-6 ">
-                        <img width="100px" src="https://cdn-icons.flaticon.com/png/512/5836/premium/5836608.png?token=exp=1649502079~hmac=fd3cb77e3eb554237d60ff25d7fffec0" alt="">
+                        <img width="100px" src="https://cdn.discordapp.com/attachments/958256273592307722/962345035850985542/location.png" alt="">
                     </div>
                     <p>188 WeWork อาคารสปริงทาวเวอร์ ชั้นที่ 12 ถนน พญาไท แขวง ทุ่งพญาไท เขตราชเทวี กรุงเทพมหานคร 10400</p>
                 </div>
@@ -47,7 +47,7 @@
               <div class="mt-9 space-y-6">
                   <div class="flex space-x-5">
                     <div class="w-16 h-16 bg-white rounded-xl flex justify-center items-center">
-                        <img width="50px" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504922.png?token=exp=1649503495~hmac=7167bc51df06be944c749507fe860e55" alt="">
+                        <img width="50px" src="https://cdn.discordapp.com/attachments/958256273592307722/962345035267997726/line.png" alt="">
                     </div>
                     <div>
                         <p class="text-gray-600">แชทกับเราผ่าน LINE!</p>
@@ -56,7 +56,7 @@
                   </div>
                   <div class="flex space-x-5">
                     <div class="w-16 h-16 bg-white rounded-xl flex justify-center items-center">
-                        <img width="30px" src="https://cdn-icons.flaticon.com/png/512/2530/premium/2530206.png?token=exp=1649504191~hmac=2c3d01d1d2ff50ecd969f07f72364ef5" alt="">
+                        <img width="30px" src="https://cdn.discordapp.com/attachments/958256273592307722/962345035599339582/phone.png" alt="">
                     </div>
                     <div>
                         <p class="text-gray-600">ให้เราโทรกลับ</p>
@@ -65,7 +65,7 @@
                   </div>
                   <div class="flex space-x-5">
                     <div class="w-16 h-16 bg-white rounded-xl flex justify-center items-center">
-                        <img width="30px" src="https://cdn-icons.flaticon.com/png/512/4213/premium/4213179.png?token=exp=1649504649~hmac=0298b87f03964798bae3fce63026f6fd" alt="">
+                        <img width="30px" src="https://cdn.discordapp.com/attachments/958256273592307722/962345034945003580/headphone.png" alt="">
                     </div>
                     <div>
                         <p class="text-gray-600">โทรหาเราตอนนี้</p>
@@ -84,7 +84,7 @@
               </div>
           </div>
         </div>
-        <div class="h-24 border-t-4 border-gray-300 mx-96 mt-10 flex justify-between items-center">
+        <div class="h-24 border-t-4 border-gray-300 max-w-6xl mx-auto mt-10 flex justify-between items-center">
             <div>
                 <p>© CARS24 2021</p>
             </div>
