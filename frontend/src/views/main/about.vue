@@ -13,7 +13,7 @@
             />
             <div class="py-4">
               <p class="text-center text-xl font-bold">
-                <span class="py-1 border-b-4 border-gray-600">About</span>
+                <span class="py-1 border-b-4 border-amber-600">About</span>
               </p>
             </div>
             <div class="flex justify-center pb-12">

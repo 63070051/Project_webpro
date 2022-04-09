@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="flex justify-center items-center h-screen ">
-            <div class="w-full  space-y-6  max-w-xl bg-green-300 round rounded-lg p-6">
+            <div class="w-full  space-y-6  max-w-xl bg-gray-300 round rounded-lg p-6">
                 <p class="text-3xl font-bold">เข้าสู่ระบบ</p>
                 <div method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
                     <div class="mb-4">
