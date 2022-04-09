@@ -16,10 +16,12 @@ app.use(bodyParser.urlencoded({ extended: false}));
 // routers
 const indexRouter = require('./routes/index')
 const loginRouter = require('./routes/login')
+const sellRouter = require('./routes/seller')
 
 
 app.use(indexRouter.router)
 app.use(loginRouter)
+app.use(sellRouter)
 
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`)

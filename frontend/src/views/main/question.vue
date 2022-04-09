@@ -2,7 +2,7 @@
   <div id="app">
       <Navbar />
     <div class="container mx-auto max-w-6xl pb-12">
-      <p class="text-2xl mt-4">คำถามที่พบบ่อย</p>
+      <p class="text-2xl mt-8">คำถามที่พบบ่อย</p>
       <div class="w-10 h-1 bg-blue-600 mt-2 rounded-lg"></div>
       <p class="text-2xl font-bold mt-6">การซื้อรถยนต์จาก CAR USED</p>
       <div class="w-24 h-1 bg-blue-600 mt-2 rounded-lg"></div>
