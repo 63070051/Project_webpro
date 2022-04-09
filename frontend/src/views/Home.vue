@@ -14,7 +14,7 @@
       <div class="lg:flex items-center space-x-6 hidden">
         <div class="flex items-center space-x-2">
           <img width="40px" src="" alt="" />
-          <span>099xxxxxxx</span>
+          <span>0990000000</span>
         </div>
         <div class="flex items-center space-x-2">
           <img width="40px" src="" alt="" />
