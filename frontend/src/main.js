@@ -7,6 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import '../public/css/tailwind.css'
+import '../public/css/style.css'
 
 library.add(fas)
 
