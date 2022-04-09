@@ -57,7 +57,7 @@
           <p class="text-center text-xl font-bold ">
             <span class="py-1 border-b-4 border-gray-600 ">ค่านิยม</span>
           </p>
-          <div class="text-gray-400">
+          <div class="text-gray-400 max-w-lg mx-auto">
             ค่านิยมและจริยธรรมของ CARS24 เป็นสิ่งที่ช่วยกำหนดแนวทางการจัดระเบียบ
             และวางโครงสร้างขององค์กรให้สมบูรณ์ยั่งยืนมากขึ้น ในฐานะขององค์กร
             องค์กรหนึ่งเรามีค่านิยมของเราเองที่เราเชื่อมั่นและปฏิบัติตาม
@@ -72,7 +72,7 @@
           />
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-4 px-24">
+      <div class="grid grid-cols-3 gap-12 px-24">
         <div class=" text-center space-y-12">
           <p class="font-bold text-xl">ความรู้สึกถึงการเป็นเจ้าของ</p>
           <p class="text-gray-400">

@@ -2,7 +2,7 @@
   <div id="app">
       <Navbar />
     <div class="container mx-auto max-w-6xl pb-12">
-      <p class="text-2xl mt-4">คำถามที่พบบ่อย</p>
+      <p class="text-2xl mt-8">คำถามที่พบบ่อย</p>
       <div class="w-10 h-1 bg-blue-600 mt-2 rounded-lg"></div>
       <p class="text-2xl font-bold mt-6">การซื้อรถยนต์จาก CAR USED</p>
       <div class="w-24 h-1 bg-blue-600 mt-2 rounded-lg"></div>
@@ -168,9 +168,9 @@
       </p>
       <p class="mt-5 text-gray-400">
         ส่งคำร้องมาหาเราที่
-        <span class="text-yellow-600">TH.support@cars24.com</span>
+        <span class="text-amber-500">TH.support@cars24.com</span>
         หรือโทรหาเราที่
-        <span class="text-yellow-600">02-057-1224</span> เพื่อดำเนินการคืนรถ
+        <span class="text-amber-500">02-057-1224</span> เพื่อดำเนินการคืนรถ
         เงินที่คุณจะได้คืนจะรวมไปถึงค่าใช้จ่ายทั้งหมดเช่น ประกันภัย
         การรับประกันหลังการขาย ค่าขึ้นทะเบียนและค่าขนส่ง
       </p>
@@ -319,8 +319,8 @@
       <p class="text-xl mt-8 font-bold">จะเคลมประกันหลังการขายได้อย่างไร?</p>
       <p class="mt-2 text-gray-400">
         หากคุณต้องการเคลมประกันหลังการขาย สามารถติดต่อศูนย์บริการเราได้ที่
-        <span class="text-yellow-600">TH.support@cars24.com</span> หรือโทร
-        <span class="text-yellow-600">02-057-1224</span>
+        <span class="text-amber-500">TH.support@cars24.com</span> หรือโทร
+        <span class="text-amber-500">02-057-1224</span>
         เราจะช่วยเหลือคุณในการติดต่อกับศูนย์บริการที่เรากำหนด
       </p>
       <p class="text-2xl font-bold mt-6">

@@ -18,7 +18,7 @@
           <span>099-xxx-xxxx</span>
         </div>
         <div class="flex items-center space-x-2">
-          <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
+          <img width="40px" src="" alt="" />
           <router-link class="card-footer-item" to="/login"
             >เข้าสู่ระบบ/สมัครสมาชิก</router-link
           >
@@ -31,7 +31,7 @@
       v-else
     >
       <div class="space-x-6 flex items-center">
-        <router-link class="" to="/">CAR USED</router-link>
+        <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
         <router-link class="" to="/question">ค้นหารถ</router-link>
         <router-link class="" to="/question">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
@@ -43,13 +43,13 @@
           <span>099-xxx-xxxx</span>
         </div>
         <div class="flex items-center space-x-2">
-          <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
           <div class="">
             <div class="dropdown inline-block relative">
               <button
                 class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
               >
-                <span class="mr-1">{{ loginuser.user_name }}</span>
+                <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
+                <span class="mx-3">{{ loginuser.user_name }}</span>
                 <svg
                   class="fill-current h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@
                   />
                 </svg>
               </button>
-              <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+              <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
                 <li class="">
                   <p
                     class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
