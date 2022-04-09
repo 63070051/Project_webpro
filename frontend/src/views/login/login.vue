@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <div class="flex justify-center items-center h-screen">
-            <div class="w-full max-w-xs space-y-6">
+        <div class="flex justify-center items-center h-screen " style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%">
+            <div class="w-full  space-y-6  max-w-xl bg-gray-300 round rounded-lg p-6">
                 <p class="text-3xl font-bold">เข้าสู่ระบบ</p>
                 <div method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
                     <div class="mb-4">
@@ -9,7 +9,8 @@
                             ชื่อผู้ใช้
                         </label>
                         <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            class="shadow
+                             appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="username" name="username" type="text" placeholder="Username" v-model="username">
                     </div>
                     <div class="mb-6">
