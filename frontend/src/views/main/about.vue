@@ -154,7 +154,6 @@
         </div>
       </div>
     </section>
-<<<<<<< HEAD
     <footer>
       <div class="pt-10 mt-10" style="background-color: #EDEDED">
         <div class="grid grid-cols-3 gap-4 px-96">
@@ -254,9 +253,8 @@
         </div>
       </div>
     </footer>
-=======
+
     <Footer />
->>>>>>> 2f90fcff2662dc76e9988ccae30049ad17fc27ec
   </div>
 </template>
 
