@@ -4,6 +4,7 @@ const path = require("path")
 const multer = require('multer')
 const { json } = require("express");
 const router = express.Router()
+let alert = require('alert');
 
 
 router.post('/register/account',async function(req, res, next) {
@@ -25,7 +26,7 @@ router.post('/register/account',async function(req, res, next) {
     }
     console.log(username, password1, password2, firstname, lastname, age, idcard, tel, email, address, birth, gender)
     if(password1 != password2){
-        alert("Password do not match")
+        alert('Password do not match')
     }
     else{
         const conn = await pool.getConnection()
@@ -44,7 +45,7 @@ router.post('/register/account',async function(req, res, next) {
                 ]
             )
             await conn.commit()
-            res.json('sucess')
+            res.json('success')
         } catch (err) {
             await conn.rollback();
             next(err);
@@ -81,7 +82,7 @@ router.post('/connected',async function(req, res, next) {
         res.json(user[0])
     }
     else{
-        res.send('Username or password not correct')
+        res.json('error')
     }
 
 })
