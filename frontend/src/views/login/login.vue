@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="flex justify-center items-center h-screen " style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%">
-            <div class="w-full  space-y-6  max-w-xl bg-gray-300 round rounded-lg p-6">
+            <div class="w-full  space-y-6  max-w-xl bg-gray-100 round rounded-xl p-6 shadow-xl">
                 <p class="text-3xl font-bold">เข้าสู่ระบบ</p>
                 <div method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
                     <div class="mb-4">
@@ -20,6 +20,7 @@
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                             id="password" name="password" type="password" placeholder="******************" v-model="password">
+                        <p v-show="error" class="text-red-600">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <button
@@ -47,7 +48,8 @@ export default {
             return {
                 username : '',
                 password : '',
-                user : []
+                user : [],
+                error : false
             };
         },
         methods :{
@@ -58,8 +60,12 @@ export default {
                     })
                     .then((response) => {
                         this.user = response.data
-                        localStorage.setItem('user', JSON.stringify(this.user))
-                        this.$router.push('/')
+                        if (this.user != 'error'){
+                            localStorage.setItem('user', JSON.stringify(this.user))
+                            this.$router.push('/')
+                        }else{
+                            this.error = true
+                        }
                     })
                     .catch((error) => {
                         this.error = error.response.data.message;
