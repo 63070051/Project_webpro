@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <Navbar />
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import navbar from "./component/navbar.vue";
+import navbar from "../component/navbar.vue";
+import footer from "../component/footer.vue";
 // @ is an alias to /src
 export default {
   name: "Home",
@@ -17,7 +19,8 @@ export default {
     };
   },
   components :{
-    Navbar : navbar
+    Navbar : navbar,
+    Footer : footer
   },
   mounted() {
     this.getdata();
@@ -30,19 +33,20 @@ export default {
       }
       else{
         axios
-        .get(`http://localhost:3000/seller/:id`)
+        .post(`http://localhost:3000/seller/${this.loginuser.user_id}`)
         .then((response) => {
           this.users = response.data;
+          console.log(this.users)
+          if(this.users.seller_type == null){
+              this.$router.push('/vertified_seller')
+          }
+          else{
+              this.$router.push('/seller')
+          }
         })
         .catch((error) => {
           this.error = error.response.data.message;
         });
-        if(this.users.seller_type == null){
-            this.$router.push('/vertified_seller')
-        }
-        else{
-            this.$router.push('/seller')
-        }
       }
     },
   },

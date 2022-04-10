@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="flex justify-center items-center h-screen">
+        <div class="flex justify-center items-center py-16" style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto">
             <div class="w-full max-w-xl space-y-6">
                 <p class="text-3xl font-bold">ลงทะเบียน</p>
                 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
@@ -27,6 +27,38 @@
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                             id="password2" name="password2" type="password" placeholder="******************" v-model="password2">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            ชื่อจริง
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                            id="firstname" name="firstname" type="text" placeholder="Address" v-model="firstname">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            นามสกุล
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                            id="lastname" name="lastname" type="text" placeholder="Address" v-model="lastname">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            อายุ
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                            id="age" name="age" type="number" placeholder="Address" v-model="age">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                            รหัสบัตรประชาชน
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                            id="idcard" name="idcard" type="text" placeholder="Address" v-model="idcard">
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -98,6 +130,10 @@ export default {
                 username : '',
                 password1 : '',
                 password2 : '',
+                firstname : '',
+                lastname : '',
+                age : 0,
+                idcard : '',
                 tel : '',
                 email : '',
                 address : '',
@@ -109,7 +145,7 @@ export default {
             register(){
                 axios
                     .post(`http://localhost:3000/register/account`, {
-                        username : this.username, password1 : this.password1, password2 : this.password2, tel : this.tel, email : this.email, birth : this.birth, address : this.address, gender : this.gender
+                        username : this.username, password1 : this.password1, password2 : this.password2, tel : this.tel, email : this.email, birth : this.birth, address : this.address, gender : this.gender, firstname : this.firstname, lastname : this.lastname, idcard : this.idcard, age : this.age
                     })
                     .then((response) => {
                         this.$router.push('/login')

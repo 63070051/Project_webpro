@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <Navbar />
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import navbar from "./component/navbar.vue";
+import footer from "./component/footer.vue";
 // @ is an alias to /src
 export default {
   name: "Home",
@@ -16,7 +18,8 @@ export default {
     };
   },
   components :{
-    Navbar : navbar
+    Navbar : navbar,
+    Footer : footer
   },
   mounted() {
     this.getdata();
