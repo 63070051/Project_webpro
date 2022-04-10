@@ -65,25 +65,29 @@ router.post('/connected',async function(req, res, next) {
             username
         ]
     )
-    let fklogin = data[0].User_user_id
-    const [user, field1] = await pool.query(
-        'SELECT * FROM Users WHERE user_id = ?',[
-            fklogin
-        ]
-    )
-    let dataname = ''
-    let datapassword = ''
-    if(data.length != 0){
-        dataname = data[0].login_username;
-        datapassword = data[0].login_password;
-    }
-    console.log(data[0])
-    if((dataname == username) && (datapassword == password)){
-        res.json(user[0])
-    }
-    else{
+    if(data[0] == undefined){
         res.json('error')
     }
-
+    else{
+        let fklogin = data[0].User_user_id
+        const [user, field1] = await pool.query(
+            'SELECT * FROM Users WHERE user_id = ?',[
+                fklogin
+            ]
+        )
+        let dataname = ''
+        let datapassword = ''
+        if(data.length != 0){
+            dataname = data[0].login_username;
+            datapassword = data[0].login_password;
+        }
+        console.log(data[0])
+        if((dataname == username) && (datapassword == password)){
+            res.json(user[0])
+        }
+        else{
+            res.json('error')
+        }
+    }
 })
 module.exports = router

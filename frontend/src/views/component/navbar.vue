@@ -36,6 +36,7 @@
         <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
+        <router-link class="" to="/manageseller" v-show="loginuser.employee_type == 'employee'">Manage Seller</router-link>
       </div>
       <div class="lg:flex items-center space-x-6 hidden">
         <div class="flex items-center space-x-2">

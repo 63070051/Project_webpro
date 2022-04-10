@@ -39,6 +39,11 @@ const routes = [
     name: 'vertified_seller',
     component: () => import('../views/seller/vertified_seller.vue')
   },
+  {
+    path: '/manageseller',
+    name: 'manageseller',
+    component: () => import('../views/admin/manageseller.vue')
+  },
 ]
 
 
