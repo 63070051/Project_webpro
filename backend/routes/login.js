@@ -10,12 +10,20 @@ router.post('/register/account',async function(req, res, next) {
     let username = req.body.username;
     let password1 = req.body.password1;
     let password2 = req.body.password2;
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let age = req.body.age;
+    let idcard = req.body.idcard;
     let tel = req.body.tel;
     let email = req.body.email;
     let address = req.body.address;
     let birth = req.body.birth;
     let gender = req.body.gender;
-    console.log(username, password1, password2, tel, email, address, birth, gender)
+    let customer = null;
+    if(age >= 20){
+        customer = true
+    }
+    console.log(username, password1, password2, firstname, lastname, age, idcard, tel, email, address, birth, gender)
     if(password1 != password2){
         alert("Password do not match")
     }
@@ -24,8 +32,8 @@ router.post('/register/account',async function(req, res, next) {
         await conn.beginTransaction();
         try {
             const user = await conn.query(
-                'INSERT INTO Users(user_name, user_password, user_phone, user_address, user_email, user_gender, user_birth) VALUES(?, ?, ?, ?, ?, ?, ?)', [
-                    username, password1, tel, address, email, gender, birth
+                'INSERT INTO Users(user_name, user_password, user_firstname, user_lastname, user_idcard, user_age, user_phone, user_address, user_email, user_gender, user_birth, customer_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    username, password1, firstname, lastname, idcard, age, tel, address, email, gender, birth, customer
                 ]
             )
             user_id = user[0].insertId

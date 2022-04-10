@@ -103,7 +103,7 @@
 <script>
 // @ is an alias to /src
 export default {
-    name: "footer",
+    name: "Footer",
     data() {
         return {
         loginuser: []

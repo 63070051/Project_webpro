@@ -8,7 +8,7 @@
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
         <router-link class="" to="/question">ค้นหารถ</router-link>
-        <router-link class="" to="/question">ขายรถยนต์</router-link>
+        <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
       </div>
@@ -18,7 +18,7 @@
           <span>099-xxx-xxxx</span>
         </div>
         <div class="flex items-center space-x-2">
-          <img width="40px" src="" alt="" />
+          <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
           <router-link class="card-footer-item" to="/login"
             >เข้าสู่ระบบ/สมัครสมาชิก</router-link
           >
@@ -33,7 +33,7 @@
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
         <router-link class="" to="/question">ค้นหารถ</router-link>
-        <router-link class="" to="/question">ขายรถยนต์</router-link>
+        <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
       </div>
@@ -86,7 +86,7 @@
 import axios from "axios";
 // @ is an alias to /src
 export default {
-  name: "navbar",
+  name: "Navbar",
   data() {
     return {
       loginuser: []
