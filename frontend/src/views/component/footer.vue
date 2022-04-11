@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer >
       <div class="pt-10 mt-10" style="background-color: #EDEDED">
         <div class="grid grid-cols-3 gap-4 max-w-6xl mx-auto">
           <div>
