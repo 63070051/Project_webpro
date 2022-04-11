@@ -26,14 +26,14 @@
       </div>
     </nav>
     <nav
-      class="flex items-center px-12 py-3 justify-between"
+      class="flex items-center px-12 py-3 justify-between shadow-xl"
       style="background: rgb(238, 237, 237)"
       v-else
     >
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
         <router-link class="" to="/question">ค้นหารถ</router-link>
-        <router-link class="" to="/seller">ขายรถยนต์</router-link>
+        <router-link class="" to="/seller" v-show="loginuser.employee_type != 'employee'">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
         <router-link class="" to="/manageseller" v-show="loginuser.employee_type == 'employee'">Manage Seller</router-link>
@@ -63,10 +63,12 @@
               </button>
               <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full">
                 <li class="">
-                  <p
-                    class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                    >Profile</p
-                  >
+                    <router-link class="" to="/profile">
+                    <p class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                    Profile
+                    </p>
+                  </router-link>
+                  
                 </li>
                 <li class="">
                   <p
