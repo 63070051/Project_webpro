@@ -55,7 +55,7 @@
               id="firstname"
               name="firstname"
               type="text"
-              placeholder="Address"
+              placeholder="Firstname"
               v-model="firstname"
             />
           </div>
@@ -68,7 +68,7 @@
               id="lastname"
               name="lastname"
               type="text"
-              placeholder="Address"
+              placeholder="Lastname"
               v-model="lastname"
             />
           </div>

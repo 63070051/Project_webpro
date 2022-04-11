@@ -90,4 +90,27 @@ router.post('/connected',async function(req, res, next) {
         }
     }
 })
+router.post('/update/account/:id',async function(req, res, next) {
+    let id = req.params.id
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let tel = req.body.tel;
+    let email = req.body.email;
+    let address = req.body.address;
+    try {
+        const [data, field] = await pool.query(
+            'UPDATE Users SET user_firstname = ?, user_lastname = ?, user_phone = ?, user_address = ?, user_email = ? WHERE user_id = ?',[
+                firstname, lastname, tel, address, email, id
+            ]
+        )
+        const [user, field1] = await pool.query(
+            'SELECT * FROM Users WHERE user_id = ?',[
+                id
+            ]
+        )
+        res.json(user[0])
+    } catch (error) {
+        res.json(error)
+    }
+})
 module.exports = router

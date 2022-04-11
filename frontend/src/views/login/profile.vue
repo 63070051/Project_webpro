@@ -117,48 +117,17 @@
               v-model="email"
             />
           </div>
-          <div class="flex grid grid-cols-3 gap-4">
-            <div class="mb-6 col-span-2">
-              <label class="block text-gray-700 text-sm font-bold mb-2">
-                วันเกิด
-              </label>
-              <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="date"
-                name="date"
-                type="date"
-                v-model="birth"
-              />
-            </div>
-            <div>
-              <label class="block text-gray-700 text-sm font-bold mb-2">
-                เพศ
-              </label>
-              <div class="flex justify-center">
-                <div class="mb-3 xl:w-96">
-                  <select
-                    name="gender"
-                    class="form-select shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3"
-                    v-model="gender"
-                  >
-                    <option selected>Selected</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="flex items-center justify-between">
             <button
               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
-              @click="register()"
+              @click="back()"
             >
               ย้อนกลับ
             </button>
             <router-link to='/login'>
               <button
                 class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+                @click="commit()"
               >
                 ยืนยัน
               </button>
@@ -181,6 +150,11 @@ export default {
   data() {
     return {
       loginuser: [],
+      firstname: "",
+      lastname: "",
+      tel: "",
+      email: "",
+      address: "",
     };
   },
   components :{
@@ -193,7 +167,33 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+      this.firstname = this.loginuser.user_firstname
+      this.lastname = this.loginuser.user_lastname
+      this.tel = this.loginuser.user_phone
+      this.email = this.loginuser.user_email
+      this.address = this.loginuser.user_address
     },
+    back(){
+      this.$router.push('/')
+    },
+    commit(){
+      axios
+        .post(`http://localhost:3000/update/account/${this.loginuser.user_id}`, {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          tel: this.tel,
+          email: this.email,
+          address: this.address,
+        })
+        .then(response => {
+          localStorage.setItem('user', JSON.stringify(response.data))
+          this.$router.push('/');
+        })
+        .catch(error => {
+          console.log('error')
+          this.error = error.response.data.message;
+        });
+    }
   },
 };
 </script>
