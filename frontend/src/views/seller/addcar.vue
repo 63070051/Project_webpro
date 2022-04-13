@@ -3,7 +3,6 @@
     <Navbar />
     <div
       class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200 bg-gra-01"
-      
     >
       <div class="w-full max-w-3xl space-y-6">
         <div
@@ -112,16 +111,21 @@
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
               Driving Type
             </label>
-            <select name="driving_type" id="driving_type" v-model="driving_type" class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+            <select
+              name="driving_type"
+              id="driving_type"
+              v-model="driving_type"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
-                py-2">
-                <option value="Please Select" selected>Please Select</option>
-                <option value="4WD">4WD</option>
-                <option value="AWD">AWD</option>
-                <option value="RWD">RWD</option>
-                <option value="FWD">FWD</option>
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="4WD">4WD</option>
+              <option value="AWD">AWD</option>
+              <option value="RWD">RWD</option>
+              <option value="FWD">FWD</option>
             </select>
           </div>
           <div class="mb-4">
@@ -157,12 +161,12 @@
             />
           </div>
           <div class="mb-4 grid grid-cols-2 gap-4">
-              <div>
-            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Gear Transmission
-            </label>
-            <input
-              class="
+            <div>
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Gear Transmission
+              </label>
+              <input
+                class="
                 form-control
                 block
                 w-full
@@ -182,19 +186,19 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              id="gear_transmission"
-              name="gear"
-              type="text"
-              placeholder=""
-              v-model="gear"
-            />
-              </div>
-              <div>
-            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Number Of Gears
-            </label>
-            <input
-              class="
+                id="gear_transmission"
+                name="gear"
+                type="text"
+                placeholder=""
+                v-model="gear"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Number Of Gears
+              </label>
+              <input
+                class="
                 form-control
                 block
                 w-full
@@ -214,13 +218,13 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              id="number_of_gear"
-              name="num_gear"
-              type="number"
-              placeholder=""
-              v-model="num_gear"
-            />
-              </div>
+                id="number_of_gear"
+                name="num_gear"
+                type="number"
+                placeholder=""
+                v-model="num_gear"
+              />
+            </div>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -513,10 +517,36 @@
               id="username"
               name="name"
               type="file"
+              accept="image/png, image/jpeg, image/webp"
+              @change="selectImages"
               placeholder=""
             />
           </div>
-          
+          <div v-if="images" class="columns is-multiline">
+            <div
+              v-for="(image, index) in images"
+              :key="image.id"
+              class="column is-one-quarter"
+            >
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      :src="showSelectImage(image)"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <footer class="card-footer">
+                  <a
+                    @click="deleteSelectImage(index)"
+                    class="card-footer-item has-text-danger"
+                    >Delete</a
+                  >
+                </footer>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="w-full max-w-3xl space-y-6">
@@ -533,7 +563,6 @@
               Comfirm to post your ad!
             </button>
           </div>
-          
         </div>
       </div>
     </div>
@@ -551,20 +580,20 @@ export default {
   name: "Addcar",
   data() {
     return {
-      brand: '',
-      model: '',
+      brand: "",
+      model: "",
       number_door: 0,
-      driving_type: 'Please Select',
-      engine: '',
-      gear: '',
-      num_gear: '',
-      car_act: '',
-      car_regis: '',
+      driving_type: "Please Select",
+      engine: "",
+      gear: "",
+      num_gear: "",
+      car_act: "",
+      car_regis: "",
       mileage: 0,
-      registration_year: '',
-      color: '',
-      selling_price: '',
-      car_desc: ''
+      registration_year: "",
+      color: "",
+      selling_price: "",
+      car_desc: ""
     };
   },
   components: {
@@ -578,6 +607,13 @@ export default {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
     }
-  }
+  },
+  showSelectImage(image) {
+      return URL.createObjectURL(image[0]);
+    },
+    deleteSelectImage(index) {
+      this.images = Array.from(this.images);
+      this.images.splice(index, 1);
+    },
 };
 </script>
