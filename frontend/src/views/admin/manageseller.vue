@@ -32,7 +32,7 @@ import navbar from "../component/navbar.vue";
 import footer from "../component/footer.vue";
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: "Manageseller",
   data() {
     return {
       selleruser: [],

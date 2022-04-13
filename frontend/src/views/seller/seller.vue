@@ -11,7 +11,7 @@ import navbar from "../component/navbar.vue";
 import footer from "../component/footer.vue";
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: "Seller",
   data() {
     return {
       loginuser: [],
@@ -35,13 +35,13 @@ export default {
         axios
         .post(`http://localhost:3000/seller/${this.loginuser.user_id}`)
         .then((response) => {
-          this.users = response.data;
+          this.users = response.data[0];
           console.log(this.users)
-          if(this.users.seller_type == null){
+          if(!this.users.seller_type){
               this.$router.push('/vertified_seller')
           }
           else{
-              this.$router.push('/seller')
+              this.$router.push('/addcar')
           }
         })
         .catch((error) => {

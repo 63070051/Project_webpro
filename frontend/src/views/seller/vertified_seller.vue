@@ -2,7 +2,7 @@
   <div id="app">
     <div
       class="flex justify-center items-center h-screen "
-      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%"
+      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto"
     >
       <div
         class="w-full  space-y-6  max-w-xl bg-gray-100 round rounded-xl p-6 shadow-xl"
@@ -158,7 +158,7 @@
 import axios from "axios";
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: "Vertified_seller",
   data() {
     return {
       loginuser: [],

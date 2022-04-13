@@ -72,7 +72,7 @@
           />
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-12 px-24">
+      <div class="grid grid-cols-3 gap-12 px-24 mb-10">
         <div class=" text-center space-y-12">
           <p class="font-bold text-xl">ความรู้สึกถึงการเป็นเจ้าของ</p>
           <p class="text-gray-400">
@@ -166,7 +166,7 @@ import navbar from "../component/navbar.vue";
 import footer from "../component/footer.vue";
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: "About",
   data() {
     return {
       loginuser: []

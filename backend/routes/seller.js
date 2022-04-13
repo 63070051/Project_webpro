@@ -22,7 +22,7 @@ const upload = multer({ storage: storage });
 router.post('/seller/:id',async function(req, res, next) {
     try {
         const [row, field] = await pool.query(
-            'SELECT * FROM Users WHERE user_id = ?', [
+            'SELECT * FROM Users AS u JOIN (SELECT * FROM seller) AS s ON u.user_id = s.User_user_id WHERE u.user_id = ?', [
                 req.params.id
             ]
         )
