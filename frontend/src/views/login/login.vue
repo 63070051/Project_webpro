@@ -1,40 +1,83 @@
 <template>
     <div id="app">
         <div class="flex justify-center items-center h-screen " style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%">
-            <div class="w-full  space-y-6  max-w-xl bg-gray-100 round rounded-xl p-6 shadow-xl">
-                <p class="text-3xl font-bold">เข้าสู่ระบบ</p>
-                <div method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" >
-                            ชื่อผู้ใช้
-                        </label>
-                        <input
-                            class="shadow
-                             appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username" name="username" type="text" placeholder="Username" v-model="username">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
-                            รหัสผ่าน
-                        </label>
-                        <input
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password" name="password" type="password" placeholder="******************" v-model="password">
-                        <p v-show="error" class="text-red-600">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</p>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            @click="login()">
-                            เข้าสู่ระบบ
-                        </button>
-                        <router-link class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/register">สมัครสมาชิก</router-link>
-                    </div>
-                    <div class="flex">
-                        <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="">ลืมรหัสผ่าน</a>
-                    </div>
-                </div>
+            <section class="h-screen">
+  <div class="px-6 h-full text-gray-800">
+    <div
+      class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+    >
+      <div
+        class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
+      >
+        <img
+          src="https://cdn.discordapp.com/attachments/958256273592307722/963694321704513536/draw2.webp"
+          class="w-full"
+          alt="Sample image"
+        />
+      </div>
+      <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+        <form>
+          <div class="flex items-center justify-center py-4">
+            <p class="text-2xl text-center mb-0 mr-4">Member Login</p>
+                      </div>
+
+         
+
+          <!-- Email input -->
+          <div class="mb-6">
+            <input
+              type="text"
+              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="exampleFormControlInput2"
+              placeholder="Email address"
+            />
+          </div>
+
+          <!-- Password input -->
+          <div class="mb-6">
+            <input
+              type="password"
+              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="exampleFormControlInput2"
+              placeholder="Password"
+            />
+          </div>
+
+          <div class="flex justify-between items-center mb-6">
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                id="exampleCheck2"
+              />
+              <label class="form-check-label inline-block text-gray-800" for="exampleCheck2"
+                >Remember me</label
+              >
             </div>
+            <a href="#!" class="text-gray-800">Forgot password?</a>
+          </div>
+
+          <div class="text-center lg:text-left">
+            <button
+              type="button"
+              class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+            >
+              Login
+            </button>
+            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+              Don't have an account?
+              <a
+                href="#!"
+                class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+                >Register</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
         </div>
     </div>
 </template>
