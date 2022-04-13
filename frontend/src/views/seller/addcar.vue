@@ -46,7 +46,7 @@
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Model
+              Model Year
             </label>
             <input
               class="
@@ -256,7 +256,7 @@
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Car Register
+              Registration
             </label>
             <input
               class="
@@ -320,7 +320,7 @@
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Registration year
+              Registration Year
             </label>
             <input
               class="
