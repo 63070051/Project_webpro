@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <nav
-      id="nav"
       class="flex items-center px-12 py-3 justify-between shadow-md"
       style="background: rgb(238, 237, 237)"
       v-if="loginuser == null"
@@ -83,7 +82,6 @@
         </div>
       </div>
     </nav>
-    <a id="scrollup" class="hidden" href="#nav"><img width="50px" class="fixed right-12 bottom-24 z-10" src="http://seenual.com/wp-content/uploads/2016/03/1459083547_ChevronUpCircle.png" alt=""></a>
   </div>
 </template>
 
@@ -106,7 +104,7 @@ export default {
     },
     signout(){
         localStorage.removeItem("user");
-        this.$router.push('/')
+        location.reload();
     }
   }
 };
