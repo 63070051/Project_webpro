@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="flex justify-center items-center h-screen " style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%">
+        <div class="flex justify-center items-center h-screen " style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto">
             <section class="h-screen">
   <div class="px-6 h-full text-gray-800">
     <div
@@ -91,7 +91,7 @@
 import axios from "axios";
 // @ is an alias to /src
 export default {
-    name: "Home",
+    name: "Login",
         data() {
             return {
                 username : '',

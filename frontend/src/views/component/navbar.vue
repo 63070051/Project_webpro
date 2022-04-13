@@ -104,7 +104,7 @@ export default {
     },
     signout(){
         localStorage.removeItem("user");
-        location.reload();
+        this.$router.push('/')
     }
   }
 };

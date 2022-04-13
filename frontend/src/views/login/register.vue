@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div
-      class="flex justify-center items-center py-16"
-      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto"
+      class="flex justify-center items-center py-16 bg-no-repeat bg-cover h-fullscreen"
+      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg);"
     >
       <div class="w-full max-w-xl space-y-6">
         <p class="text-3xl font-bold">ลงทะเบียน</p>
@@ -194,7 +194,7 @@
 import axios from "axios";
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: "Register",
   data() {
     return {
       username: "",
