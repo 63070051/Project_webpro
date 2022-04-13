@@ -5,14 +5,14 @@
       style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto"
     >
       <div class="w-full max-w-xl space-y-6">
-        <p class="text-3xl font-bold">Sign Up</p>
+        <p class="text-3xl font-bold">ลงทะเบียน</p>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Username
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              ชื่อผู้ใช้
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               name="name"
               type="text"
@@ -21,11 +21,11 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Password
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              รหัสผ่าน
             </label>
             <input
-             class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               name="password1"
               type="password"
@@ -34,11 +34,11 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Confirm Password
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              ยืนยันรหัสผ่าน
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password2"
               name="password2"
               type="password"
@@ -46,13 +46,12 @@
               v-model="password2"
             />
           </div>
-          <div class="grid grid-cols-5 gap-2">
-            <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Firstname
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              ชื่อจริง
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="firstname"
               name="firstname"
               type="text"
@@ -60,12 +59,12 @@
               v-model="firstname"
             />
           </div>
-          <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Lastname
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              นามสกุล
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="lastname"
               name="lastname"
               type="text"
@@ -73,12 +72,12 @@
               v-model="lastname"
             />
           </div>
-          <div class="col-span-1">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Age
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              อายุ
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="age"
               name="age"
               type="number"
@@ -86,14 +85,12 @@
               v-model="age"
             />
           </div>
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <div >
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              ID Card
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              รหัสบัตรประชาชน
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="idcard"
               name="idcard"
               type="text"
@@ -102,11 +99,11 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Tel
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              เบอร์โทรศัพท์
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="tel"
               name="tel"
               type="tel"
@@ -114,13 +111,12 @@
               v-model="tel"
             />
           </div>
-          </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Address
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              ที่อยู่
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="address"
               name="address"
               type="text"
@@ -129,11 +125,11 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              E-mail
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              อีเมล
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               name="email"
               type="text"
@@ -143,11 +139,11 @@
           </div>
           <div class="flex grid grid-cols-3 gap-4">
             <div class="mb-6 col-span-2">
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-                Date of Birth
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                วันเกิด
               </label>
               <input
-                class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="date"
                 name="date"
                 type="date"
@@ -155,15 +151,14 @@
               />
             </div>
             <div>
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-                Gender
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                เพศ
               </label>
               <div class="flex justify-center">
-                <div class="mb-3 lg:w-96">
+                <div class="mb-3 xl:w-96">
                   <select
-                    
                     name="gender"
-                   class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    class="form-select shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3"
                     v-model="gender"
                   >
                     <option selected>Selected</option>
@@ -175,21 +170,19 @@
             </div>
           </div>
           <div class="flex items-center justify-between">
-           
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              @click="register()"
+            >
+              สมัครสมาชิก
+            </button>
             <router-link to='/login'>
               <button
                 class="bg-zinc-400 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               >
-                Back
+                ย้อนกลับ
               </button>
-              
             </router-link>
-             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
-              @click="register()"
-            >
-              Register
-            </button>
           </div>
         </div>
       </div>
