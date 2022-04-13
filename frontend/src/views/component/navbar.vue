@@ -82,6 +82,7 @@
         </div>
       </div>
     </nav>
+    <a id="scrollup" class="hidden" onclick="backToTop()"><img width="50px" class="fixed right-12 bottom-24 z-10" src="http://seenual.com/wp-content/uploads/2016/03/1459083547_ChevronUpCircle.png" alt=""></a>
   </div>
 </template>
 
