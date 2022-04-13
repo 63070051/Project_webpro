@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
   filename: function (req, file, callback) {
     callback(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.originalname.split(path.extname(file.originalname))[0] + '-' + Date.now() + path.extname(file.originalname)
     );
   },
 });
@@ -81,7 +81,10 @@ router.post('/cancelseller/:id',async function(req, res, next) {
         return res.status(500).json(err)
     }
 })
-router.post('/addcar/:id', upload.array("myImage", 12), async function(req, res, next) {
+router.post('/addcar/:id', upload.array("carImage", 6), async function(req, res, next) {
+    const conn = await pool.getConnection();
+    await conn.beginTransaction();
+    console.log(req.files)
     try {
         const file = req.files
         let pathArray = []
@@ -100,21 +103,25 @@ router.post('/addcar/:id', upload.array("myImage", 12), async function(req, res,
         let car_drive_type = req.body.car_drive_type
         let car_act = req.body.car_act
         let car_num_of_door = req.body.car_num_of_door
-
-        const [car, field1] = await pool.query(
-            'INSERT INTO Car(seller_id, car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door)', [
+        console.log(car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door)
+        const [car, field1] = await conn.query(
+            'INSERT INTO Car(seller_id, car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
                 req.params.id, car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door
             ]
         )
+        console.log(car.insertId)
         file.forEach((file, index) => {
             let path = [file.path.substring(6), car.insertId];
             pathArray.push(path);
-          });
-        const [img, field2] = await pool.query(
-            'INSERT INTO Car_images(car_img, Car_car_id)', [
+        });
+        console.log(pathArray)
+        const [img, field2] = await conn.query(
+            'INSERT INTO Car_images(car_img, Car_car_id) VALUES ?;', [
                 pathArray
             ]
         )
+        await conn.commit()
+        console.log(img.insertId)
         return res.json('success');
       } catch (err) {
         return res.status(500).json(err)

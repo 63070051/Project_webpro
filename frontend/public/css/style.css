@@ -2,6 +2,10 @@
     display: block;
     animation: fadeout 0.5s ease-in-out;
 }
+.fadein {
+    display: block;
+    animation: fadein 0.5s ease-in-out;
+}
 @keyframes fadeout {
     0%{
         opacity: 0;
@@ -10,7 +14,16 @@
         opacity: 1;
     }
 }
+@keyframes fadein {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
 *{
+    scroll-behavior: smooth;
     font-family: 'Open Sans', sans-serif;
     font-family: 'Prompt', sans-serif;
 }
@@ -37,3 +50,15 @@
           height: 100vh
       }
   }
+.animate {
+    animation: animate 1s ease-in-out
+}
+@keyframes animate {
+    0% {
+        opacity: 0
+        
+    }
+    100%{
+        opacity: 1
+    }
+}

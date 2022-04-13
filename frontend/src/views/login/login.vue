@@ -43,6 +43,7 @@
               id="exampleFormControlInput2"
               placeholder="Password"
             />
+            <p v-show="error" class="text-red-600 pl-2 py-1">Username or Password incorrect</p>
           </div>
 
           <div class="flex justify-between items-center mb-6">
@@ -102,7 +103,6 @@ export default {
         },
         methods :{
             login(){
-                
                 axios
                     .post(`http://localhost:3000/connected/`, {
                         username : this.username, password : this.password

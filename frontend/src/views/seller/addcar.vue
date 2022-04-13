@@ -3,7 +3,6 @@
     <Navbar />
     <div
       class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200 bg-gra-01"
-      
     >
       <div class="w-full max-w-3xl space-y-6">
         <div
@@ -16,33 +15,23 @@
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
               Car Brand
             </label>
-            <input
-              class="
-                form-control
-                block
-                w-full
-                px-4
-                py-2
-                text-xl
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700
+            <select
+              name="driving_type"
+              id="driving_type"
+              v-model="brand"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
-              "
-              id="car_brand"
-              name="brand"
-              type="text"
-              placeholder=""
-              v-model="brand"
-            />
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="Mercedes Benz">Mercedes Benz</option>
+              <option value="BMW">BMW</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Honda">Honda</option>
+              <option value="Toyota">Toyota</option>
+            </select>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -112,16 +101,21 @@
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
               Driving Type
             </label>
-            <select name="driving_type" id="driving_type" v-model="driving_type" class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+            <select
+              name="driving_type"
+              id="driving_type"
+              v-model="driving_type"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
-                py-2">
-                <option value="Please Select" selected>Please Select</option>
-                <option value="4WD">4WD</option>
-                <option value="AWD">AWD</option>
-                <option value="RWD">RWD</option>
-                <option value="FWD">FWD</option>
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="4WD">4WD</option>
+              <option value="AWD">AWD</option>
+              <option value="RWD">RWD</option>
+              <option value="FWD">FWD</option>
             </select>
           </div>
           <div class="mb-4">
@@ -156,13 +150,13 @@
               v-model="engine"
             />
           </div>
-          <div class="mb-4 grid grid-cols-2 gap-4">
-              <div>
-            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Gear Transmission
-            </label>
-            <input
-              class="
+          <div class="mb-4 grid grid-cols-3 gap-4">
+            <div>
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Gear Transmission
+              </label>
+              <input
+                class="
                 form-control
                 block
                 w-full
@@ -182,19 +176,19 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              id="gear_transmission"
-              name="gear"
-              type="text"
-              placeholder=""
-              v-model="gear"
-            />
-              </div>
-              <div>
-            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Number Of Gears
-            </label>
-            <input
-              class="
+                id="gear_transmission"
+                name="gear"
+                type="text"
+                placeholder=""
+                v-model="gear"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Number Of Gears
+              </label>
+              <input
+                class="
                 form-control
                 block
                 w-full
@@ -214,13 +208,35 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              id="number_of_gear"
-              name="num_gear"
-              type="number"
-              placeholder=""
-              v-model="num_gear"
-            />
-              </div>
+                id="number_of_gear"
+                name="num_gear"
+                type="number"
+                placeholder=""
+                v-model="num_gear"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Owner
+              </label>
+              <select
+              name="owner"
+              id="owner"
+              v-model="owner"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+                focus:bg-white
+                focus:border-blue-600
+                focus:outline-none
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="1st">1st</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+              <option value="5th">5th</option>
+            </select>
+            </div>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -513,10 +529,25 @@
               id="username"
               name="name"
               type="file"
+              accept="image/png, image/jpeg, image/webp"
+              @change="selectImages"
               placeholder=""
             />
           </div>
-          
+          <div v-if="images" class="grid grid-cols-3 gap-4">
+            <div
+              class="relative"
+              v-for="image, index in images"
+              :key="image.id"
+            >
+              <div class="rounded overflow-hidden shadow-lg">
+                <img class="w-full object-cover h-36" :src="showSelectImage(image)" alt="Placeholder image" />
+              </div>
+              <div class="grid grid-cols-1 text-center my-1">
+                <img width="20px" @click="deleteSelectImage(index)" class="absolute top-1 right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="w-full max-w-3xl space-y-6">
@@ -527,13 +558,12 @@
             <p class="text-2xl font-bold mb-5">
               <span class="text-blue-600">Step 3/3:</span> Click To Confirm
             </p>
-            <button
+            <button @click="submitcar()"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
             >
               Comfirm to post your ad!
             </button>
           </div>
-          
         </div>
       </div>
     </div>
@@ -551,20 +581,24 @@ export default {
   name: "Addcar",
   data() {
     return {
-      brand: '',
-      model: '',
+      loginuser : [],
+      brand: "Please Select",
+      model: "",
       number_door: 0,
-      driving_type: 'Please Select',
-      engine: '',
-      gear: '',
-      num_gear: '',
-      car_act: '',
-      car_regis: '',
+      driving_type: "Please Select",
+      engine: "",
+      gear: "",
+      num_gear: "",
+      car_act: "",
+      car_regis: "",
       mileage: 0,
-      registration_year: '',
-      color: '',
-      selling_price: '',
-      car_desc: ''
+      registration_year: "",
+      color: "",
+      owner : 'Please Select',
+      selling_price: "",
+      car_desc: "",
+      images: [],
+      check : null
     };
   },
   components: {
@@ -577,6 +611,48 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+    },
+    selectImages(event) {
+      // console.log(event.target.files)
+      if(this.images.length > 5){
+        alert('Max-Limit images is 6')
+      }
+      else{
+        this.images.push(event.target.files);
+      }
+    },
+    showSelectImage(image) {
+      return URL.createObjectURL(image[0]);
+    },
+    deleteSelectImage(index) {
+      this.images = Array.from(this.images);
+      this.images.splice(index, 1);
+    },
+    submitcar(){
+      let formData = new FormData();
+      formData.append("car_brand", this.brand);
+      formData.append("car_year", this.model);
+      formData.append("car_color", this.color);
+      formData.append("car_desc", this.car_desc);
+      formData.append("car_price", this.selling_price);
+      formData.append("car_regis", this.car_regis);
+      formData.append("car_distance", this.mileage);
+      formData.append("car_engine", this.engine);
+      formData.append("car_gear", this.gear);
+      formData.append("car_yearbought", this.registration_year);
+      formData.append("car_owner", this.owner);
+      formData.append("car_num_of_gear", this.num_gear);
+      formData.append("car_drive_type", this.driving_type);
+      formData.append("car_act", this.car_act);
+      formData.append("car_num_of_door", this.number_door);
+      this.images.forEach((image) => {
+        console.log(image[0])
+        formData.append("carImage", image[0]);
+      });
+      axios
+        .post(`http://localhost:3000/addcar/${this.loginuser.user_id}`, formData)
+        .then((res) => this.$router.push({name: 'home'}))
+        .catch((error) => console.log(error.response.data));
     }
   }
 };
