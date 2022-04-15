@@ -8,13 +8,13 @@
       <div class="w-full max-w-xl space-y-6 bg-gray-300  px-4 py-4 rounded-2xl">
         <div >
             <img class="mx-auto mb-2" width="100px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
-            <p class="text-3xl font-bold text-center">Profile</p>
+            <p class="text-3xl font-bold text-center">Edit Profile</p>
             <div class="w-28 h-1 bg-blue-600 mt-1 rounded-lg mx-auto"></div>
         </div>
         <div class="bg-white shadow-md  rounded px-8 pt-6 pb-8 mb-4 space-y-2">
           
           <!-- <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               ยืนยันรหัสผ่าน
             </label>
             <input
@@ -27,7 +27,7 @@
             />
           </div> -->
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               ชื่อจริง
             </label>
             <input
@@ -40,7 +40,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               นามสกุล
             </label>
             <input
@@ -53,7 +53,7 @@
             />
           </div>
           <!-- <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               อายุ
             </label>
             <input
@@ -66,7 +66,7 @@
             />
           </div> -->
             <!-- <div>
-                <label class="block text-gray-700 text-sm font-bold mb-2">
+                <label class="block text-gray-700 text-lg font-bold mb-2">
                 รหัสบัตรประชาชน
                 </label>
                 <input
@@ -79,7 +79,7 @@
                 />
             </div> -->
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               เบอร์โทรศัพท์
             </label>
             <input
@@ -92,7 +92,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               ที่อยู่
             </label>
             <input
@@ -105,7 +105,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">
+            <label class="block text-gray-700 text-lg font-bold mb-2">
               อีเมล
             </label>
             <input
@@ -136,14 +136,14 @@
         </div>
       </div>
     </div>
-    <Footer />
+    
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import navbar from "../component/navbar.vue";
-import footer from "../component/footer.vue";
+
 // @ is an alias to /src
 export default {
   name: "Profile",
@@ -158,8 +158,7 @@ export default {
     };
   },
   components :{
-    Navbar : navbar,
-    Footer : footer
+    Navbar : navbar
   },
   mounted() {
     this.getdata();
