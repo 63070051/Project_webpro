@@ -223,27 +223,29 @@ export default {
         if (this.password1 != this.password2){
             alert('password does not match')
         }
-      axios
-        .post(`http://localhost:3000/register/account`, {
-          username: this.username,
-          password1: this.password1,
-          password2: this.password2,
-          tel: this.tel,
-          email: this.email,
-          birth: this.birth,
-          address: this.address,
-          gender: this.gender,
-          firstname: this.firstname,
-          lastname: this.lastname,
-          idcard: this.idcard,
-          age: this.age
-        })
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {
-          this.error = error.response.data.message;
-        });
+        else{
+          axios
+          .post(`http://localhost:3000/register/account`, {
+            username: this.username,
+            password1: this.password1,
+            password2: this.password2,
+            tel: this.tel,
+            email: this.email,
+            birth: this.birth,
+            address: this.address,
+            gender: this.gender,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            idcard: this.idcard,
+            age: this.age
+          })
+          .then(response => {
+            this.$router.push("/login");
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
+        }
     }
   }
 };
