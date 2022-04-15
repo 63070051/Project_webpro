@@ -4,11 +4,12 @@
       class="flex justify-center items-center py-16 bg-no-repeat bg-cover h-fullscreen"
       style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg);"
     >
-      <div class="w-full max-w-xl space-y-6">
-        <p class="text-3xl font-bold">Sign Up</p>
+      <div class="w-full max-w-xl ">
+        <p class="text-3xl font-bold text-center">Registration Form</p>
+        <div class="w-64 h-1 bg-blue-600 mt-2 mb-6 mx-auto rounded-lg"></div>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Username
             </label>
             <input
@@ -21,7 +22,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Password
             </label>
             <input
@@ -34,7 +35,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Confirm Password
             </label>
             <input
@@ -48,7 +49,7 @@
           </div>
           <div class="grid grid-cols-5 gap-2">
             <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Firstname
             </label>
             <input
@@ -61,7 +62,7 @@
             />
           </div>
           <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Lastname
             </label>
             <input
@@ -74,7 +75,7 @@
             />
           </div>
           <div class="col-span-1">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Age
             </label>
             <input
@@ -89,7 +90,7 @@
           </div>
           <div class="grid grid-cols-2 gap-2">
             <div >
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               ID Card
             </label>
             <input
@@ -102,7 +103,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Tel
             </label>
             <input
@@ -116,7 +117,7 @@
           </div>
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Address
             </label>
             <input
@@ -129,7 +130,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               E-mail
             </label>
             <input
@@ -143,7 +144,7 @@
           </div>
           <div class="flex grid grid-cols-3 gap-4">
             <div class="mb-6 col-span-2">
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
                 Date of Birth
               </label>
               <input
@@ -155,7 +156,7 @@
               />
             </div>
             <div>
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
                 Gender
               </label>
               <div class="flex justify-center">
