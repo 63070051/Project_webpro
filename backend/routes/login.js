@@ -13,7 +13,6 @@ router.post('/register/account',async function(req, res, next) {
     let password2 = req.body.password2;
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
-    let age = req.body.age;
     let idcard = req.body.idcard;
     let tel = req.body.tel;
     let email = req.body.email;
@@ -21,6 +20,16 @@ router.post('/register/account',async function(req, res, next) {
     let birth = req.body.birth;
     let gender = req.body.gender;
     let customer = null;
+
+
+
+    let now = new Date();
+    let birthDate = new Date(birth);
+    let age = now.getFullYear() - birthDate.getFullYear();
+    let m = now.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birthDate.getDate())) {
+        age--;
+    }
     if(age >= 20){
         customer = true
     }
@@ -33,14 +42,14 @@ router.post('/register/account',async function(req, res, next) {
         await conn.beginTransaction();
         try {
             const user = await conn.query(
-                'INSERT INTO Users(user_name, user_password, user_firstname, user_lastname, user_idcard, user_age, user_phone, user_address, user_email, user_gender, user_birth, customer_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-                    username, password1, firstname, lastname, idcard, age, tel, address, email, gender, birth, customer
+                'INSERT INTO Users(user_firstname, user_lastname, user_idcard, user_age, user_phone, user_address, user_email, user_gender, user_birth, customer_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                    firstname, lastname, idcard, age, tel, address, email, gender, birth, customer
                 ]
             )
             user_id = user[0].insertId
             console.log(user_id)
             const login = await conn.query(
-                'INSERT INTO Login(login_username, login_password, User_user_id) VALUES(?, ?, ?)', [
+                'INSERT INTO Login(login_username, login_password, user_id) VALUES(?, ?, ?)', [
                     username, password1, user_id
                 ]
             )
@@ -61,7 +70,7 @@ router.post('/connected',async function(req, res, next) {
     let username = req.body.username;
     let password = req.body.password
     const [data, field] = await pool.query(
-        'SELECT login_username, login_password, User_user_id FROM Login WHERE login_username = ?',[
+        'SELECT login_username, login_password, user_id FROM Login WHERE login_username = ?',[
             username
         ]
     )
@@ -69,7 +78,7 @@ router.post('/connected',async function(req, res, next) {
         res.json('error')
     }
     else{
-        let fklogin = data[0].User_user_id
+        let fklogin = data[0].user_id
         const [user, field1] = await pool.query(
             'SELECT * FROM Users WHERE user_id = ?',[
                 fklogin

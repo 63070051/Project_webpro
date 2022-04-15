@@ -47,7 +47,7 @@
               v-model="password2"
             />
           </div>
-          <div class="grid grid-cols-5 gap-2">
+          <div class="grid grid-cols-4 gap-2">
             <div class="col-span-2">
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Firstname
@@ -72,19 +72,6 @@
               type="text"
               placeholder="Lastname"
               v-model="lastname"
-            />
-          </div>
-          <div class="col-span-1">
-            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
-              Age
-            </label>
-            <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="age"
-              name="age"
-              type="number"
-              placeholder="Address"
-              v-model="age"
             />
           </div>
           </div>

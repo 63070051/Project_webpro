@@ -52,77 +52,50 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="bg-white border-b border-black">
+                  <tr class="bg-white border-b border-black" v-for="seller, index in selleruser" :key="seller.user_id">
                     <td
                       class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
                     >
-                      1
+                      {{seller.user_id}}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      Mark
+                      {{seller.user_firstname}}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      Otto
+                      {{seller.user_lastname}}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      @mdo
+                      {{seller.user_phone}}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      @mdo
+                      {{seller.user_email}}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
                       <button
+                        v-show="seller.s_vertified != 'Vertified'"
+                        @click="vertified(seller.user_id, index)"
                         type="button"
                         class="inline-block px-6 py-2.5 bg-green-600 text-white  text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out font-bold"
                       >
                         Confirm
                       </button>
-                    </td>
-                  </tr>
-                  <tr class="bg-white border-b border-black">
-                    <td
-                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
-                    >
-                      2
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      Jacob
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      Thornton
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      @fat
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      @mdo
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
                       <button
+                        v-show="seller.s_vertified == 'Vertified'"
+                        @click="cancelvertified(seller.user_id, index)"
                         type="button"
-                        class="inline-block px-6 py-2.5 bg-green-600 text-white  text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out font-bold"
+                        class="inline-block px-6 py-2.5 bg-red-600 text-white  text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out font-bold"
                       >
-                        Confirm
+                        Cancel
                       </button>
                     </td>
                   </tr>
@@ -160,6 +133,7 @@ export default {
         .post(`http://localhost:3000/getseller`)
         .then(response => {
           this.selleruser = response.data;
+          console.log(this.selleruser)
         })
         .catch(error => {
           console.log("error");
@@ -183,7 +157,7 @@ export default {
         .post(`http://localhost:3000/cancelseller/${sellerid}`)
         .then(response => {
           this.selleruser[index].s_vertified = "Not-Vertified";
-          console.log("success");
+          console.log("canceled");
         })
         .catch(error => {
           console.log("err");

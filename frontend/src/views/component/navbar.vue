@@ -50,7 +50,7 @@
                 class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
               >
                 <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
-                <span class="mx-3">{{ loginuser.user_name }}</span>
+                <span class="mx-3">{{ loginuser.user_firstname }}</span>
                 <svg
                   class="fill-current h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"

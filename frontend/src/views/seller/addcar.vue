@@ -31,6 +31,7 @@
               <option value="Nissan">Nissan</option>
               <option value="Honda">Honda</option>
               <option value="Toyota">Toyota</option>
+              <option value="Mazda">Mazda</option>
             </select>
           </div>
           <div class="mb-4">
@@ -60,9 +61,41 @@
               "
               id="model"
               name="model"
-              type="number"
+              type="text"
               placeholder=""
               v-model="model"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+              Model Year
+            </label>
+            <input
+              class="
+                form-control
+                block
+                w-full
+                px-4
+                py-2
+                text-xl
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700
+                focus:bg-white
+                focus:border-blue-600
+                focus:outline-none
+              "
+              id="modelyear"
+              name="modelyear"
+              type="number"
+              placeholder=""
+              v-model="modelyear"
             />
           </div>
           <div class="mb-4">
@@ -370,33 +403,30 @@
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
               Color
             </label>
-            <input
-              class="
-                form-control
-                block
-                w-full
-                px-4
-                py-2
-                text-xl
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700
+            <select
+              name="color"
+              id="color"
+              v-model="color"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
-              "
-              id="color"
-              name="color"
-              type="text"
-              placeholder=""
-              v-model="color"
-            />
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="white">white</option>
+              <option value="Black">Black</option>
+              <option value="Gray">Gray</option>
+              <option value="Broze">Broze</option>
+              <option value="Blue">Blue</option>
+              <option value="Red">Red</option>
+              <option value="Green">Green</option>
+              <option value="Brown">Brown</option>
+              <option value="Orange">Orange</option>
+              <option value="Gold">Gold</option>
+              <option value="Sliver">Sliver</option>
+              <option value="Others">Others</option>
+            </select>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -584,6 +614,7 @@ export default {
       loginuser : [],
       brand: "Please Select",
       model: "",
+      modelyear : 0,
       number_door: 0,
       driving_type: "Please Select",
       engine: "",
@@ -593,7 +624,7 @@ export default {
       car_regis: "",
       mileage: 0,
       registration_year: "",
-      color: "",
+      color: "Please Select",
       owner : 'Please Select',
       selling_price: "",
       car_desc: "",
@@ -631,7 +662,8 @@ export default {
     submitcar(){
       let formData = new FormData();
       formData.append("car_brand", this.brand);
-      formData.append("car_year", this.model);
+      formData.append("car_model", this.model);
+      formData.append("car_year", this.modelyear);
       formData.append("car_color", this.color);
       formData.append("car_desc", this.car_desc);
       formData.append("car_price", this.selling_price);
