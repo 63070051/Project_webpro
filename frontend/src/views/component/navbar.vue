@@ -7,7 +7,7 @@
     >
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
-        <router-link class="" to="/question">ค้นหารถ</router-link>
+        <router-link class="" to="/searchcar">ค้นหารถ</router-link>
         <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
@@ -32,7 +32,7 @@
     >
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
-        <router-link class="" to="/question">ค้นหารถ</router-link>
+        <router-link class="" to="/searchcar">ค้นหารถ</router-link>
         <router-link class="" to="/seller" v-show="loginuser.employee_type != 'employee'">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
         <router-link class="" to="/question">คำถามพบบ่อย</router-link>
@@ -50,7 +50,7 @@
                 class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
               >
                 <img width="40px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
-                <span class="mx-3">{{ loginuser.user_name }}</span>
+                <span class="mx-3">{{ loginuser.user_firstname }}</span>
                 <svg
                   class="fill-current h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@
         </div>
       </div>
     </nav>
-    <a id="scrollup" class="hidden" onclick="backToTop()"><img width="50px" class="fixed right-12 bottom-24 z-10" src="http://seenual.com/wp-content/uploads/2016/03/1459083547_ChevronUpCircle.png" alt=""></a>
+    <a id="scrollup" class="hidden" onclick="backToTop()"><img width="50px" class="fixed right-12 bottom-16 z-10" src="http://seenual.com/wp-content/uploads/2016/03/1459083547_ChevronUpCircle.png" alt=""></a>
   </div>
 </template>
 

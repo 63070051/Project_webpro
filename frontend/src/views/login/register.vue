@@ -4,14 +4,15 @@
       class="flex justify-center items-center py-16 bg-no-repeat bg-cover h-fullscreen"
       style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg);"
     >
-      <div class="w-full max-w-xl space-y-6">
-        <p class="text-3xl font-bold">Sign Up</p>
+      <div class="w-full max-w-xl ">
+        <p class="text-3xl font-bold text-center">Registration Form</p>
+        <div class="w-64 h-1 bg-blue-600 mt-2 mb-6 mx-auto rounded-lg"></div>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Username
             </label>
-            <input
+            <input 
               class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="username"
               name="name"
@@ -21,7 +22,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Password
             </label>
             <input
@@ -31,10 +32,13 @@
               type="password"
               placeholder="******************"
               v-model="password1"
+              @keyup="check_password"
             />
+            <p v-show="checkpassword" class="text-red-500">password min length 8!</p>
+
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Confirm Password
             </label>
             <input
@@ -43,15 +47,18 @@
               name="password2"
               type="password"
               placeholder="******************"
+              @keyup="confirm_password"
               v-model="password2"
             />
+            <p v-show="checkpassword2" class="text-red-500">Password Does Not Match</p>
           </div>
-          <div class="grid grid-cols-5 gap-2">
+          <div class="grid grid-cols-4 gap-2">
             <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Firstname
             </label>
             <input
+              
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="firstname"
               name="firstname"
@@ -61,7 +68,7 @@
             />
           </div>
           <div class="col-span-2">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Lastname
             </label>
             <input
@@ -73,23 +80,10 @@
               v-model="lastname"
             />
           </div>
-          <div class="col-span-1">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
-              Age
-            </label>
-            <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="age"
-              name="age"
-              type="number"
-              placeholder="Address"
-              v-model="age"
-            />
-          </div>
           </div>
           <div class="grid grid-cols-2 gap-2">
             <div >
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               ID Card
             </label>
             <input
@@ -102,7 +96,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Tel
             </label>
             <input
@@ -116,7 +110,7 @@
           </div>
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Address
             </label>
             <input
@@ -129,7 +123,7 @@
             />
           </div>
           <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               E-mail
             </label>
             <input
@@ -143,7 +137,7 @@
           </div>
           <div class="flex grid grid-cols-3 gap-4">
             <div class="mb-6 col-span-2">
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
                 Date of Birth
               </label>
               <input
@@ -155,7 +149,7 @@
               />
             </div>
             <div>
-              <label class="block text-gray-700 text-sm font-bold mb-2 text-lg">
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
                 Gender
               </label>
               <div class="flex justify-center">
@@ -209,41 +203,63 @@ export default {
       password2: "",
       firstname: "",
       lastname: "",
-      age: 0,
       idcard: "",
       tel: "",
       email: "",
       address: "",
       birth: Date,
-      gender: "Selected"
+      gender: "Selected",
+      checkpassword: false,
+      checkpassword2: false  
     };
   },
   methods: {
     register() {
         if (this.password1 != this.password2){
-            alert('password does not match')
+            alert('Password does not match')
         }
-      axios
-        .post(`http://localhost:3000/register/account`, {
-          username: this.username,
-          password1: this.password1,
-          password2: this.password2,
-          tel: this.tel,
-          email: this.email,
-          birth: this.birth,
-          address: this.address,
-          gender: this.gender,
-          firstname: this.firstname,
-          lastname: this.lastname,
-          idcard: this.idcard,
-          age: this.age
-        })
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {
-          this.error = error.response.data.message;
-        });
+        else if (this.username == "" || this.lastname == "" || this.firstname == "" || this.idcard == "" || this.tel == "" || this.email == "" || this.address == "" || this.address == "") {
+          alert('Please Enter Your Information')
+        }
+        else{
+          axios
+          .post(`http://localhost:3000/register/account`, {
+            username: this.username,
+            password1: this.password1,
+            password2: this.password2,
+            tel: this.tel,
+            email: this.email,
+            birth: this.birth,
+            address: this.address,
+            gender: this.gender,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            idcard: this.idcard,
+          })
+          .then(response => {
+            this.$router.push("/login");
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
+        }
+    },
+    check_password() {
+      console.log(1)
+      if(this.password1.length < 8) {
+        this.checkpassword = true;
+      }
+      else {
+        this.checkpassword = false;
+      }
+    },
+    confirm_password() {
+      if(this.password1 != this.password2) {
+        this.checkpassword2 = true;
+      }
+      else {
+        this.checkpassword2 = false;
+      }
     }
   }
 };

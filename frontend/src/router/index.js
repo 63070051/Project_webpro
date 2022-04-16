@@ -54,6 +54,11 @@ const routes = [
     name: 'addcar',
     component: () => import('../views/seller/addcar.vue')
   },
+  {
+    path: '/searchcar',
+    name: 'searchcar',
+    component: () => import('../views/main/searchcar.vue')
+  },
 ]
 
 
