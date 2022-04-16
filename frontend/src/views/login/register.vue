@@ -12,7 +12,7 @@
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Username
             </label>
-            <input
+            <input 
               class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="username"
               name="name"
@@ -32,7 +32,10 @@
               type="password"
               placeholder="******************"
               v-model="password1"
+              @keyup="check_password"
             />
+            <p v-show="checkpassword" class="text-red-500">password min length 8!</p>
+
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -44,8 +47,10 @@
               name="password2"
               type="password"
               placeholder="******************"
+              @keyup="confirm_password"
               v-model="password2"
             />
+            <p v-show="checkpassword2" class="text-red-500">Password Does Not Match</p>
           </div>
           <div class="grid grid-cols-4 gap-2">
             <div class="col-span-2">
@@ -53,6 +58,7 @@
               Firstname
             </label>
             <input
+              
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="firstname"
               name="firstname"
@@ -197,19 +203,23 @@ export default {
       password2: "",
       firstname: "",
       lastname: "",
-      age: 0,
       idcard: "",
       tel: "",
       email: "",
       address: "",
       birth: Date,
-      gender: "Selected"
+      gender: "Selected",
+      checkpassword: false,
+      checkpassword2: false  
     };
   },
   methods: {
     register() {
         if (this.password1 != this.password2){
-            alert('password does not match')
+            alert('Password does not match')
+        }
+        else if (this.username == "" || this.lastname == "" || this.firstname == "" || this.idcard == "" || this.tel == "" || this.email == "" || this.address == "" || this.address == "") {
+          alert('Please Enter Your Information')
         }
         else{
           axios
@@ -225,7 +235,6 @@ export default {
             firstname: this.firstname,
             lastname: this.lastname,
             idcard: this.idcard,
-            age: this.age
           })
           .then(response => {
             this.$router.push("/login");
@@ -234,6 +243,23 @@ export default {
             this.error = error.response.data.message;
           });
         }
+    },
+    check_password() {
+      console.log(1)
+      if(this.password1.length < 8) {
+        this.checkpassword = true;
+      }
+      else {
+        this.checkpassword = false;
+      }
+    },
+    confirm_password() {
+      if(this.password1 != this.password2) {
+        this.checkpassword2 = true;
+      }
+      else {
+        this.checkpassword2 = false;
+      }
     }
   }
 };
