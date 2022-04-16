@@ -2,18 +2,22 @@
   <div id="app">
     <div
       class="flex justify-center items-center py-16 bg-no-repeat bg-cover h-fullscreen"
-      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg);"
     >
       <div class="w-full max-w-xl ">
-        <p class="text-3xl font-bold text-center">Registration Form</p>
-        <div class="w-64 h-1 bg-blue-600 mt-2 mb-6 mx-auto rounded-lg"></div>
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2">
+         <h2
+              class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+                        xl:text-bold mb-4"
+            >
+              Registration Form
+            </h2>
+       
+        <div class=" rounded px-8 pt-6 pb-8 mb-4 space-y-8">
           <div class="mb-4">
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Username
             </label>
             <input 
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="username"
               name="name"
               type="text"
@@ -26,7 +30,7 @@
               Password
             </label>
             <input
-             class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+             class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="password"
               name="password1"
               type="password"
@@ -42,7 +46,7 @@
               Confirm Password
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="password2"
               name="password2"
               type="password"
@@ -52,14 +56,14 @@
             />
             <p v-show="checkpassword2" class="text-red-500">Password Does Not Match</p>
           </div>
-          <div class="grid grid-cols-4 gap-2">
+          <div class="grid grid-cols-4 gap-4">
             <div class="col-span-2">
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               Firstname
             </label>
             <input
               
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="firstname"
               name="firstname"
               type="text"
@@ -72,7 +76,7 @@
               Lastname
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="lastname"
               name="lastname"
               type="text"
@@ -81,13 +85,13 @@
             />
           </div>
           </div>
-          <div class="grid grid-cols-2 gap-2">
+          <div class="grid grid-cols-2 gap-4">
             <div >
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
               ID Card
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="idcard"
               name="idcard"
               type="text"
@@ -100,7 +104,7 @@
               Tel
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="tel"
               name="tel"
               type="tel"
@@ -114,7 +118,7 @@
               Address
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="address"
               name="address"
               type="text"
@@ -127,7 +131,7 @@
               E-mail
             </label>
             <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="email"
               name="email"
               type="text"
@@ -141,7 +145,7 @@
                 Date of Birth
               </label>
               <input
-                class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                 id="date"
                 name="date"
                 type="date"
@@ -157,7 +161,7 @@
                   <select
                     
                     name="gender"
-                   class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                   class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                     v-model="gender"
                   >
                     <option selected>Selected</option>
@@ -179,7 +183,7 @@
               
             </router-link>
              <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               @click="register()"
             >
               Register

@@ -12,6 +12,7 @@ router.post('/register/account',async function(req, res, next) {
     let password1 = req.body.password1;
     let password2 = req.body.password2;
     let firstname = req.body.firstname;
+    
     let lastname = req.body.lastname;
     let idcard = req.body.idcard;
     let tel = req.body.tel;
