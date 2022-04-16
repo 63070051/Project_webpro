@@ -34,100 +34,102 @@
           </button>
         </div>
       </div>
-      
     </div>
     <div class="max-w-5xl mx-auto">
       <div class="filter grid grid-cols-5 gap-4">
-
         <div>
           <select
-          name="driving_type"
-          id="driving_type"
-          v-model="brand"
-          class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+            name="driving_type"
+            id="driving_type"
+            v-model="brand"
+            class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-        >
-          <option value="Please Select" selected>Please Select</option>
-          <option value="Mercedes Benz">Mercedes Benz</option>
-          <option value="BMW">BMW</option>
-          <option value="Nissan">Nissan</option>
-          <option value="Honda">Honda</option>
-          <option value="Toyota">Toyota</option>
-        </select>
+          >
+            <option value="Please Select" selected>Please Select</option>
+            <option value="Mercedes Benz">Mercedes Benz</option>
+            <option value="BMW">BMW</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Honda">Honda</option>
+            <option value="Toyota">Toyota</option>
+          </select>
         </div>
-        
+
         <div class="flex items-center col-span-2">
           <input
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="minprice"
-              name="minprice"
-              type="number"
-              placeholder="MinPrice"
-              v-model="minprice"
-            />
-            <div class="w-12 h-1 bg-black "></div>
-            <input
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="maxprice"
-              name="maxprice"
-              type="number"
-              placeholder="MaxPrice"
-              v-model="maxprice"
-            />
+            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="minprice"
+            name="minprice"
+            type="number"
+            placeholder="MinPrice"
+            v-model="minprice"
+          />
+          <div class="w-12 h-1 bg-black "></div>
+          <input
+            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="maxprice"
+            name="maxprice"
+            type="number"
+            placeholder="MaxPrice"
+            v-model="maxprice"
+          />
         </div>
 
         <div>
           <select
-          name="driving_type"
-          id="driving_type"
-          v-model="maxprice"
-          class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+            name="driving_type"
+            id="driving_type"
+            v-model="maxprice"
+            class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-        >
-          <option value="Please Select" selected>Please Select</option>
-          <option value="Mercedes Benz">Mercedes Benz</option>
-          <option value="BMW">BMW</option>
-          <option value="Nissan">Nissan</option>
-          <option value="Honda">Honda</option>
-          <option value="Toyota">Toyota</option>
-        </select>
+          >
+            <option value="Please Select" selected>Please Select</option>
+            <option value="Mercedes Benz">Mercedes Benz</option>
+            <option value="BMW">BMW</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Honda">Honda</option>
+            <option value="Toyota">Toyota</option>
+          </select>
         </div>
-
-        
       </div>
     </div>
     <div class="max-w-5xl mx-auto py-4">
       <div class="grid grid-cols-3 gap-2">
-        <div class="flex justify-center">
-  <div class="rounded-lg shadow-lg bg-white max-w-sm">
-    <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-      <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt=""/>
-    </a>
-    
-    <div class="p-6">
-      <h5 class="text-gray-900 text-xl font-medium mb-2">ชื่อรุ่นย่อย</h5>
-      <p class="text-gray-700 text-base mb-4">
+        <div class="flex justify-center" v-for="car in cars" :key="car.car_id">
+          <div class="rounded-lg shadow-lg bg-white max-w-sm">
+            <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+              <img
+                class="rounded-t-lg"
+                :src="selectimgcar(car.car_img)"
+                alt=""
+              />
+            </a>
 
-        เครื่อง / เกียร์
-        
-      </p>
-      <p>
-        ระยะ / ใช้น้ำมัน
-      </p>
-      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">ราคา</button>
-      <button class="button is-info is-light float-right  ">
-      <i class="far fa-thumbs-up mr-2"></i> Like
-    </button>
-    </div>
-  </div>
-</div>
-    </div>
+            <div class="p-6 space-y-3">
+              <h5 class="text-gray-900 text-xl font-medium">
+                {{ car.car_model }}
+              </h5>
+              <p class="text-gray-700 text-base">
+                {{ car.car_engine + " / " + car.car_gear }}
+              </p>
+              <p class="pb-2 border-b border-gray-300">
+                {{ car.car_distance }} ก.ม.
+              </p>
+              <div class="flex justify-between">
+                <p class="text-orange-500 font-bold text-xl float-right">
+                  {{ car.car_price }}
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -143,8 +145,10 @@ export default {
   data() {
     return {
       loginuser: [],
-      brand: 'Please Select',
-
+      brand: "Please Select",
+      cars: [],
+      minprice: 0,
+      maxprice: 9999999999,
     };
   },
   components: {
@@ -153,10 +157,29 @@ export default {
   },
   mounted() {
     this.getdata();
+    this.getcar();
   },
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+    },
+    getcar() {
+      axios
+        .post(`http://localhost:3000/getcar`)
+        .then(response => {
+          this.cars = response.data;
+        })
+        .catch(error => {
+          this.error = error.response.data.message;
+        });
+    },
+    selectimgcar(car_img) {
+      if (car_img) {
+        console.log("http://localhost:3000/" + car_img);
+        return "http://localhost:3000/" + car_img;
+      } else {
+        return "https://bulma.io/images/placeholders/640x360.png";
+      }
     }
   }
 };

@@ -123,13 +123,17 @@ router.post('/addcar/:id', upload.array("carImage", 6), async function (req, res
         ]
         )
         console.log(car.insertId)
+        let checkmain = true;
         file.forEach((file, index) => {
-            let path = [file.path.substring(6), car.insertId];
+            let path = [file.path.substring(6), car.insertId, checkmain];
             pathArray.push(path);
+            if(checkmain == true){
+                checkmain = false
+            }
         });
         console.log(pathArray)
         const [img, field2] = await conn.query(
-            'INSERT INTO Car_images(car_img, car_id) VALUES ?;', [
+            'INSERT INTO Car_images(car_img, car_id, main) VALUES ?;', [
             pathArray
         ]
         )
@@ -139,6 +143,21 @@ router.post('/addcar/:id', upload.array("carImage", 6), async function (req, res
     } catch (err) {
         await conn.rollback()
         next(err)
+    }
+})
+
+router.post('/getcar', async function (req, res, next) {
+    try {
+        const [cars, field] = await pool.query(
+            'SELECT * FROM Car Join Car_images USING(car_id) WHERE main = 1'
+        )
+        cars.forEach(car => {
+            var thai = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'THB' }).format(car.car_price);
+            car.car_price = thai
+        });
+        return res.json(cars);
+    } catch (err) {
+        return res.status(500).json(err)
     }
 })
 
