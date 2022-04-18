@@ -43,7 +43,7 @@
            
             
           </div>
-        </section>
+        </section>     
     <Footer />
   </div>
 </template>
