@@ -285,16 +285,16 @@
       
     </div>
     <div class="max-w-5xl mx-auto py-4">
-      <div class="grid grid-cols-3 gap-8">
-        <div class="flex justify-center" v-for="car in cars" :key="car.car_id">
+      <div class="grid grid-cols-3 gap-2">
+        <div class="flex justify-center" v-for="car in cars" :key="car.car_id" @click="detailcar(car.car_id)">
           <div class="rounded-lg shadow-lg bg-white max-w-sm">
-            <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+            <div data-mdb-ripple="true" data-mdb-ripple-color="light">
               <img
                 class="rounded-t-lg"
                 :src="selectimgcar(car.car_img)"
                 alt=""
               />
-            </a>
+            </div>
 
             <div class="p-6 space-y-3">
               <h5 class="text-gray-900 text-xl font-medium">
@@ -362,12 +362,15 @@ export default {
     },
     selectimgcar(car_img) {
       if (car_img) {
-        console.log("http://localhost:3000/" + car_img);
+        // console.log("http://localhost:3000/" + car_img);
         return "http://localhost:3000/" + car_img;
       } else {
         return "https://bulma.io/images/placeholders/640x360.png";
       }
     },
-  },
+    detailcar(carid){
+      this.$router.push(`/detail/${carid}`)
+    }
+  }
 };
 </script>

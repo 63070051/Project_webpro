@@ -59,6 +59,11 @@ const routes = [
     name: 'searchcar',
     component: () => import('../views/main/searchcar.vue')
   },
+  {
+    path: '/detail/:carid',
+    name: 'detail',
+    component: () => import('../views/car/detail.vue')
+  },
 ]
 
 
