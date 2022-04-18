@@ -6,7 +6,7 @@
       v-if="loginuser == null"
     >
       <div class="space-x-6 flex items-center">
-        <router-link class="text-xl font-bold" to="/">CAR USED</router-link>
+        <router-link class="text-xl font-bold text-indigo-900" to="/">CAR USED</router-link>
         <router-link class="" to="/searchcar">ค้นหารถ</router-link>
         <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
