@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="pt-10" style="background-color: #ededed">
-      <div class="grid grid-cols-3 gap-4 max-w-6xl mx-auto">
+      <div class="grid grid-cols-3 gap-10 max-w-6xl mx-auto">
         <div>
           <div class="flex space-x-8">
             <img
@@ -99,7 +99,7 @@
               >
                 <img
                   width="30px"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/962345035599339582/phone.png"
+                  src="https://cdn.discordapp.com/attachments/958256273592307722/962345034945003580/headphone.png"
                   alt=""
                 />
               </div>
@@ -124,7 +124,7 @@
               >
                 <img
                   width="30px"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/962345034945003580/headphone.png"
+                  src="https://cdn.discordapp.com/attachments/958256273592307722/962345035599339582/phone.png"
                   alt=""
                 />
               </div>
@@ -162,7 +162,7 @@
         <div>
           <p>© CARS24 2021</p>
         </div>
-        <div class="flex space-x-2 text-gray-500">
+        <div class="flex space-x-3 text-gray-500">
           <p>คำถามที่พบบ่อย</p>
           <p>|</p>
           <p>นโยบายความเป็นส่วนตัว</p>
