@@ -19,11 +19,7 @@
         </div>
       </div>
       <div>
-        <img
-          class="w-full"
-          :src=firstimg
-          alt=""
-        />
+        <img class="w-full" :src="firstimg" alt="" />
       </div>
     </div>
     <section>
@@ -32,10 +28,32 @@
           <img
             @click="changefirstimg(img.car_img)"
             class="rounded-lg"
-            :src=selectimgcar(img.car_img)
+            :src="selectimgcar(img.car_img)"
             alt=""
           />
           <!-- <p class="text-center">หน้า</p> -->
+        </div>
+      </div>
+    </section>
+    <section class="py-4 my-4 bg-gray-200">
+      <div
+        class=" max-w-6xl mx-auto grid grid-cols-3 rounded-lg gap-8"
+      >
+        <div class="grid grid-cols-2 col-span-2 gap-4 bg-white rounded-lg ">
+          <div>
+            <p>modelyear     xxxx</p>
+            <p>color</p>
+            <p>gear</p>
+          </div>
+          <div>
+            <p>ทะเบียน</p>
+            <p>car owner</p>
+            <p>ระยะ</p>
+          </div>
+          
+        </div>
+        <div class="bg-white p-4 rounded-lg">
+          <img src="https://cdn.discordapp.com/attachments/958256273592307722/965612398209806336/unknown.png" alt="">
         </div>
       </div>
     </section>
@@ -76,7 +94,7 @@ export default {
         .then(response => {
           this.detailcar = response.data.detailcar;
           this.carimg = response.data.carimg;
-          console.log(this.detailcar, this.carimg)
+          console.log(this.detailcar, this.carimg);
           this.firstimg = this.selectimgcar(this.carimg[0].car_img);
         })
         .catch(error => {
