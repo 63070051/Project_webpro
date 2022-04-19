@@ -371,6 +371,6 @@ export default {
     detailcar(carid){
       this.$router.push(`/detail/${carid}`)
     }
-  }
+  },
 };
 </script>
