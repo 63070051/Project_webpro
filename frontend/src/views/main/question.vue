@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <Navbar />
+    <Navbar />
     <div class="container mx-auto max-w-6xl pb-12">
       <p class="text-2xl mt-8">คำถามที่พบบ่อย</p>
       <div class="w-10 h-1 bg-blue-600 mt-2 rounded-lg"></div>
@@ -12,7 +12,7 @@
         เราเข้าใจว่าการตัดสินใจซื้อรถสักคันนั้นสำคัญแค่ไหน
         และเป้าหมายของเราก็คือการทำให้ลูกค้าของเรามีอำนาจในการตัดสินใจในทุกขั้นตอนการซื้อขาย
       </p>
-      <ul style="list-style-type:disc" class="mt-6 pl-9">
+      <ul style="list-style-type: disc" class="mt-6 pl-9">
         <li class="mb-6">
           <p class="text-gray-400">
             สะดวก -
@@ -105,7 +105,7 @@
         จุดซึ่งจะบอกรายละเอียดเกี่ยวกับมาตรวัดต่างๆเพื่อเป็นข้อมูลในการตัดสินใจซื้อของคุณ
         คุณยังสามารถเช็ครถได้โดยละเอียดผ่านกล้อง 360 องศาของเรา
       </p>
-      <ul style="list-style-type:disc" class="mt-6 pl-9">
+      <ul style="list-style-type: disc" class="mt-6 pl-9">
         <li class="mb-6">
           <p class="text-gray-400">
             ข้อมูลจำเพาะของรถ: ผู้ผลิต โมเดล รุ่น ปีที่ผลิต ระยะทางวิ่ง
@@ -125,7 +125,7 @@
       <p class="mt-2 text-gray-400">
         ราคาของรถแต่ละคันแตกต่างกันขึ้นอยู่กับหลายปัจจัยเช่น:
       </p>
-      <ul style="list-style-type:disc" class="mt-6 pl-9">
+      <ul style="list-style-type: disc" class="mt-6 pl-9">
         <li class="mb-6">
           <p class="text-gray-400">
             รายละเอียดทั่วไปของรถ: ผู้ผลิต โมเดล ชื่อรุ่นย่อย อายุ
@@ -332,7 +332,7 @@
       </p>
       <p class="mt-2 text-gray-400">คุณจะต้องใช้เอกสารในการซื้อ ดังต่อไปนี้:</p>
       <p class="mt-6 text-gray-400">สำหรับกรณีการชำระเงินแบบเต็มจำนวน:</p>
-      <ul style="list-style-type:disc" class="mt-6 pl-9">
+      <ul style="list-style-type: disc" class="mt-6 pl-9">
         <li class="mb-6">
           <p class="text-gray-400">
             บัตรประจำตัวประชาชน หรือ
@@ -344,7 +344,7 @@
         </li>
       </ul>
       <p class="text-gray-400">สำหรับกรณีการขอสินเชื้อ:</p>
-      <ul style="list-style-type:disc" class="mt-6 pl-9">
+      <ul style="list-style-type: disc" class="mt-6 pl-9">
         <li class="mb-6">
           <p class="text-gray-400">
             บัตรประจำตัวประชาชน หรือ
@@ -357,7 +357,7 @@
         <li class="mb-6">
           <p class="text-gray-400">เอกสารแสดงรายได้</p>
           <p class="text-gray-500 mt-6 pl-9">กรณีเป็นพนักงานบริษัท</p>
-          <ul style="list-style-type:disc" class="mt-6 pl-9">
+          <ul style="list-style-type: disc" class="mt-6 pl-9">
             <li class="mb-6">
               <p class="text-gray-400">
                 สลิปเงินเดือนย้อนหลัง 3 เดือน หรือหนังสือรับรองเงินเดือน
@@ -368,7 +368,7 @@
             </li>
           </ul>
           <p class="text-gray-500 mt-6 pl-9">กรณีเป็นเจ้าของกิจการ</p>
-          <ul style="list-style-type:disc" class="mt-6 pl-9">
+          <ul style="list-style-type: disc" class="mt-6 pl-9">
             <li class="mb-6">
               <p class="text-gray-400">หนังสือรับรองการจดทะเบียนของบริษัท</p>
             </li>
@@ -377,7 +377,7 @@
             </li>
           </ul>
           <p class="text-gray-500 mt-6 pl-9">กรณีประกอบอาชีพอิสระ</p>
-          <ul style="list-style-type:disc" class="mt-6 pl-9">
+          <ul style="list-style-type: disc" class="mt-6 pl-9">
             <li class="mb-6">
               <p class="text-gray-400">
                 หนังสือรับรองการหักภาษี ณ ที่จ่าย (ทวิ 50) แบบรายปีในปีที่ผ่านมา
@@ -442,12 +442,12 @@ export default {
   name: "Question",
   data() {
     return {
-      loginuser: []
+      loginuser: [],
     };
   },
   components: {
     Navbar: navbar,
-    Footer : footer
+    Footer: footer,
   },
   mounted() {
     this.getdata();
