@@ -45,7 +45,7 @@
                     <div>
                       <p class="text-gray-600 mb-1">ราคาต่ำสุด</p>
                       <div class="flex items-center">
-                        <input type="text" class="border-2 rounded-l-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model="minprice" type="number" class="border-2 rounded-l-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                         <div class="border-y-2 border-r-2 px-1 py-1 rounded-r-md bg-gray-100 font-semibold">THB</div>
                       </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div>
                       <p class="text-gray-600 mb-1">ราคาสูงสุด</p>
                       <div class="flex items-center">
-                        <input type="text" class="border-2 rounded-l-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model="maxprice" type="number" class="border-2 rounded-l-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                         <div class="border-y-2 border-r-2 px-1 py-1 rounded-r-md font-semibold">THB</div>
                       </div>
                     </div>
@@ -61,10 +61,10 @@
                   <div class="mt-7">
                     <p>แนะนำ</p>
                       <div class="grid grid-cols-2 mt-3 gap-2">
-                        <div class="border-2 w-44 text-center rounded-md hover:bg-gray-100">ภายใต้ THB 400,000</div>
-                        <div class="border-2 w-44 text-center rounded-md hover:bg-gray-100">THB 400k - 600k</div>
-                        <div class="border-2 w-44 text-center rounded-md hover:bg-gray-100">THB 600k - 800k</div>
-                        <div class="border-2 w-44 text-center rounded-md hover:bg-gray-100">สูงกว่า THB 800k</div>
+                        <div @click="ChangePrice(0, 400000)" class="border-2 w-44 text-center rounded-md hover:bg-gray-100">ภายใต้ THB 400,000</div>
+                        <div @click="ChangePrice(400000, 600000)" class="border-2 w-44 text-center rounded-md hover:bg-gray-100">THB 400k - 600k</div>
+                        <div @click="ChangePrice(600000, 800000)" class="border-2 w-44 text-center rounded-md hover:bg-gray-100">THB 600k - 800k</div>
+                        <div @click="ChangePrice(800000, 99999999)" class="border-2 w-44 text-center rounded-md hover:bg-gray-100">สูงกว่า THB 800k</div>
                       </div>
                   </div>
                 </div>
@@ -88,7 +88,7 @@
                     </svg>
             </button>
             <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
-             <div style="width: 500px; height: 500px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
+             <div style="width: 500px; height: 550px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
                <div class="px-3">
                 <div class="text-gray-500 pl-5 py-2 border-b-2 ">
                   แบรนด์ทั้งหมด
@@ -228,53 +228,68 @@
                     </svg>
             </button>
             <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
-              <div style="width: 500px; height: 500px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
+              <div style="width: 500px; height: 400px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
                <div class="px-3">
                 <div class="text-gray-600 font-medium pl-5 pt-5">
                   สี
                 </div>
                 <div class="px-6 py-5 grid grid-cols-3 gap-6">
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'White')">
                     <div class=" w-8 py-2 bg-white border-gray-400" style="border: 1px solid gray"></div>
                     <p>ขาว</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Black')">
                     <div class=" w-8 py-2 bg-black border-gray-400" style="border: 1px solid gray"></div>
                     <p>ดำ</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Gray')">
                     <div class=" w-8 py-2 bg-gray-500 border-gray-400" style="border: 1px solid gray"></div>
                     <p>เทา</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
-                    <div class=" w-8 py-2 bg-gray-300 border-gray-400" style="border: 1px solid gray"></div>
+                    <input type="checkbox" @change="FillterColor($event,'Bronze')">
+                    <div class=" w-8 py-2 bg-yellow-700 border-gray-400" style="border: 1px solid gray"></div>
                     <p>บรอนซ์</p>
                   </div><div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Blue')">
                     <div class=" w-8 py-2 bg-cyan-700 border-gray-400" style="border: 1px solid gray"></div>
                     <p>น้ำเงิน</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Red')">
                     <div class=" w-8 py-2 border-gray-400" style="border: 1px solid gray; background-color: red;"></div>
                     <p>แดง</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Brown')">
                     <div class=" w-8 py-2 bg-yellow-800 border-gray-400" style="border: 1px solid gray"></div>
                     <p>น้ำตาล</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Orange')">
                     <div class=" w-8 py-2 bg-orange-400 border-gray-400" style="border: 1px solid gray"></div>
                     <p>ส้ม</p>
                   </div>
                   <div class="flex items-center gap-4">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterColor($event,'Green')">
+                    <div class=" w-8 py-2 bg-green-800 border-gray-400" style="border: 1px solid gray"></div>
+                    <p>เขียว</p>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" @change="FillterColor($event,'Gold')">
+                    <div class=" w-8 py-2 bg-yellow-300 border-gray-400" style="border: 1px solid gray"></div>
+                    <p>ทอง</p>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" @change="FillterColor($event,'Silver')">
+                    <div class=" w-8 py-2 bg-slate-400 border-gray-400" style="border: 1px solid gray"></div>
+                    <p>เงิน</p>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <input type="checkbox" @change="FillterColor($event,'Others')">
                     <div class=" w-8 py-2 border-gray-400" style="border: 1px solid gray ;background-image: url('https://www.cars24.co.th/th/static/js/9c28e4e1d6d13ff6948f8aec8986ead0.svg')"></div>
                     <p>อื่นๆ</p>
                   </div>
@@ -339,8 +354,9 @@ export default {
       brand: [],
       cars: [],
       minprice: 0,
-      maxprice: 9999999999,
-      instead: ''
+      maxprice: 0,
+      instead: '',
+      color: [],
     };
   },
   components: {
@@ -354,9 +370,22 @@ export default {
   computed: {
       showcars() {
         let car_copy = this.cars
-        if (this.brand != []){
-          car_copy = this.brand.length && car_copy.filter(car => this.brand.some(val => car.car_brand.match(val))) || this.cars
+        if (this.brand.length != 0){
+          car_copy = car_copy.filter(car => this.brand.some(val => car.car_brand.match(val)))
 
+        }
+        if (this.color.length != 0){
+          car_copy = car_copy.filter(car => this.color.some(val => car.car_color.match(val)))
+
+        }
+        if (this.minprice > 0 || this.maxprice > 0){
+          car_copy = car_copy.filter(car => {
+            console.log(car.car_price);
+            if (car.car_price >= this.minprice && car.car_price <= this.maxprice){
+              return car;
+            }
+          })
+          
         }
         if(this.instead != ''){
           car_copy = car_copy.filter(car => car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1)
@@ -399,6 +428,19 @@ export default {
         let index = this.brand.indexOf(brand)
         this.brand.splice(index, 1)
       }
+    },
+    FillterColor($event, color){
+      if ($event.target.checked) {
+        this.color.push(color)
+      }
+      else {
+        let index = this.color.indexOf(color)
+        this.color.splice(index, 1)
+      }
+    },
+    ChangePrice(minprice, maxprice){
+      this.minprice = minprice
+      this.maxprice = maxprice
     }
   },
 };
