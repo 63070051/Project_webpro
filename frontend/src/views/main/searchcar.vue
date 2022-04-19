@@ -10,6 +10,7 @@
           "
         ></div>
         <input
+          v-model="instead"
           class="
             w-full
             text-lg
@@ -94,27 +95,31 @@
                 </div>
                 <div class="px-6 py-5 grid grid-rows-6 gap-3">
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
-                    <p class="ml-4">Totota</p>
+                    <input type="checkbox" @change="FillterBrand($event,'Toyota')">
+                    <p class="ml-4">Toyota</p>
                   </div>
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
-                    <p class="ml-4">Mercedes-Benz</p>
+                    <input type="checkbox" @change="FillterBrand($event,'Mercedes Benz')">
+                    <p class="ml-4">Mercedes Benz</p>
                   </div>
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterBrand($event,'BMW')">
                     <p class="ml-4">BMW</p>
                   </div>
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterBrand($event,'Honda')">
                     <p class="ml-4">Honda</p>
                   </div>
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterBrand($event,'Nissan')">
                     <p class="ml-4">Nissan</p>
                   </div>
                   <div class="flex items-center border-b-2 py-2">
-                    <input type="checkbox">
+                    <input type="checkbox" @change="FillterBrand($event,'Mazda')">
+                    <p class="ml-4">Mazda</p>
+                  </div>
+                  <div class="flex items-center border-b-2 py-2">
+                    <input type="checkbox" @change="FillterBrand($event,'Others')">
                     <p class="ml-4">Others</p>
                   </div>
                 </div>
@@ -285,8 +290,8 @@
       
     </div>
     <div class="max-w-5xl mx-auto py-4">
-      <div class="grid grid-cols-3 gap-2">
-        <div class="flex justify-center" v-for="car in cars" :key="car.car_id" @click="detailcar(car.car_id)">
+      <div class="grid grid-cols-3 gap-8">
+        <div class="flex justify-center" v-for="car in showcars" :key="car.car_id" @click="detailcar(car.car_id)">
           <div class="rounded-lg shadow-lg bg-white max-w-sm">
             <div data-mdb-ripple="true" data-mdb-ripple-color="light">
               <img
@@ -331,10 +336,11 @@ export default {
   data() {
     return {
       loginuser: [],
-      brand: "Please Select",
+      brand: [],
       cars: [],
       minprice: 0,
       maxprice: 9999999999,
+      instead: ''
     };
   },
   components: {
@@ -344,6 +350,20 @@ export default {
   mounted() {
     this.getdata();
     this.getcar();
+  },
+  computed: {
+      showcars() {
+        let car_copy = this.cars
+        if (this.brand != []){
+          car_copy = this.brand.length && car_copy.filter(car => this.brand.some(val => car.car_brand.match(val))) || this.cars
+
+        }
+        if(this.instead != ''){
+          car_copy = car_copy.filter(car => car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1)
+        }
+        return car_copy
+      },
+
   },
   methods: {
     getdata() {
@@ -370,6 +390,15 @@ export default {
     },
     detailcar(carid){
       this.$router.push(`/detail/${carid}`)
+    },
+    FillterBrand($event, brand){
+      if ($event.target.checked) {
+        this.brand.push(brand)
+      }
+      else {
+        let index = this.brand.indexOf(brand)
+        this.brand.splice(index, 1)
+      }
     }
   }
 };
