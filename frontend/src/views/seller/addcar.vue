@@ -151,12 +151,13 @@
               <option value="FWD">FWD</option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Car Engine
-            </label>
-            <input
-              class="
+          <div class="grid grid-cols-2 gap-4">
+            <div class="mb-4">
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Car Engine
+              </label>
+              <input
+                class="
                 form-control
                 block
                 w-full
@@ -176,12 +177,36 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              id="car_engine"
-              name="engine"
-              type="text"
-              placeholder=""
-              v-model="engine"
-            />
+                id="car_engine"
+                name="engine"
+                type="text"
+                placeholder=""
+                v-model="engine"
+              />
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
+                Car Engine
+              </label>
+              <select
+              name="car_type"
+              id="car_type"
+              v-model="car_type"
+              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+                focus:bg-white
+                focus:border-blue-600
+                focus:outline-none
+                py-2"
+            >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Pickup">Pickup</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="SUV">SUV</option>
+              <option value="7 seater">7 seater</option>
+              <option value="MPV">MPV</option>
+            </select>
+            </div>
           </div>
           <div class="mb-4 grid grid-cols-3 gap-4">
             <div>
@@ -253,22 +278,22 @@
                 Owner
               </label>
               <select
-              name="owner"
-              id="owner"
-              v-model="owner"
-              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+                name="owner"
+                id="owner"
+                v-model="owner"
+                class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-            >
-              <option value="Please Select" selected>Please Select</option>
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-              <option value="4th">4th</option>
-              <option value="5th">5th</option>
-            </select>
+              >
+                <option value="Please Select" selected>Please Select</option>
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+              </select>
             </div>
           </div>
           <div class="mb-4">
@@ -414,7 +439,7 @@
                 py-2"
             >
               <option value="Please Select" selected>Please Select</option>
-              <option value="white">white</option>
+              <option value="white">White</option>
               <option value="Black">Black</option>
               <option value="Gray">Gray</option>
               <option value="Broze">Broze</option>
@@ -567,14 +592,24 @@
           <div v-if="images" class="grid grid-cols-3 gap-4">
             <div
               class="relative"
-              v-for="image, index in images"
+              v-for="(image, index) in images"
               :key="image.id"
             >
               <div class="rounded overflow-hidden shadow-lg">
-                <img class="w-full object-cover h-36" :src="showSelectImage(image)" alt="Placeholder image" />
+                <img
+                  class="w-full object-cover h-36"
+                  :src="showSelectImage(image)"
+                  alt="Placeholder image"
+                />
               </div>
               <div class="grid grid-cols-1 text-center my-1">
-                <img width="20px" @click="deleteSelectImage(index)" class="absolute top-1 right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+                <img
+                  width="20px"
+                  @click="deleteSelectImage(index)"
+                  class="absolute top-1 right-1"
+                  src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -588,7 +623,8 @@
             <p class="text-2xl font-bold mb-5">
               <span class="text-blue-600">Step 3/3:</span> Click To Confirm
             </p>
-            <button @click="submitcar()"
+            <button
+              @click="submitcar()"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
             >
               Comfirm to post your ad!
@@ -611,10 +647,10 @@ export default {
   name: "Addcar",
   data() {
     return {
-      loginuser : [],
+      loginuser: [],
       brand: "Please Select",
       model: "",
-      modelyear : 0,
+      modelyear: 0,
       number_door: 0,
       driving_type: "Please Select",
       engine: "",
@@ -622,14 +658,15 @@ export default {
       num_gear: "",
       car_act: "",
       car_regis: "",
+      car_type : "Please Select",
       mileage: 0,
       registration_year: "",
       color: "Please Select",
-      owner : 'Please Select',
+      owner: "Please Select",
       selling_price: "",
       car_desc: "",
       images: [],
-      check : null
+      check: null
     };
   },
   components: {
@@ -645,10 +682,9 @@ export default {
     },
     selectImages(event) {
       // console.log(event.target.files)
-      if(this.images.length > 5){
-        alert('Max-Limit images is 6')
-      }
-      else{
+      if (this.images.length > 5) {
+        alert("Max-Limit images is 6");
+      } else {
         this.images.push(event.target.files);
       }
     },
@@ -659,7 +695,7 @@ export default {
       this.images = Array.from(this.images);
       this.images.splice(index, 1);
     },
-    submitcar(){
+    submitcar() {
       let formData = new FormData();
       formData.append("car_brand", this.brand);
       formData.append("car_model", this.model);
@@ -671,20 +707,24 @@ export default {
       formData.append("car_distance", this.mileage);
       formData.append("car_engine", this.engine);
       formData.append("car_gear", this.gear);
+      formData.append("car_type", this.car_type);
       formData.append("car_yearbought", this.registration_year);
       formData.append("car_owner", this.owner);
       formData.append("car_num_of_gear", this.num_gear);
       formData.append("car_drive_type", this.driving_type);
       formData.append("car_act", this.car_act);
       formData.append("car_num_of_door", this.number_door);
-      this.images.forEach((image) => {
-        console.log(image[0])
+      this.images.forEach(image => {
+        console.log(image[0]);
         formData.append("carImage", image[0]);
       });
       axios
-        .post(`http://localhost:3000/addcar/${this.loginuser.user_id}`, formData)
-        .then((res) => this.$router.push({name: 'home'}))
-        .catch((error) => console.log(error.response.data));
+        .post(
+          `http://localhost:3000/addcar/${this.loginuser.user_id}`,
+          formData
+        )
+        .then(res => this.$router.push({ name: "home" }))
+        .catch(error => console.log(error.response.data));
     }
   }
 };

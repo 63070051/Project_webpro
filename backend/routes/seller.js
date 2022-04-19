@@ -112,14 +112,15 @@ router.post('/addcar/:id', upload.array("carImage", 6), async function (req, res
         let car_yearbought = req.body.car_yearbought
         let car_owner = req.body.car_owner
         let car_num_of_gear = req.body.car_num_of_gear
+        let car_type = req.body.car_type
         let car_brand = req.body.car_brand
         let car_drive_type = req.body.car_drive_type
         let car_act = req.body.car_act
         let car_num_of_door = req.body.car_num_of_door
         console.log(car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door)
         const [car, field1] = await conn.query(
-            'INSERT INTO Car(seller_id, car_model, car_modelyear, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            req.params.id, car_model, car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_brand, car_drive_type, car_act, car_num_of_door
+            'INSERT INTO Car(seller_id, car_model, car_modelyear, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_type, car_brand, car_drive_type, car_act, car_num_of_door) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            req.params.id, car_model, car_year, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_type, car_brand, car_drive_type, car_act, car_num_of_door
         ]
         )
         console.log(car.insertId)
@@ -146,19 +147,5 @@ router.post('/addcar/:id', upload.array("carImage", 6), async function (req, res
     }
 })
 
-router.post('/getcar', async function (req, res, next) {
-    try {
-        const [cars, field] = await pool.query(
-            'SELECT * FROM Car Join Car_images USING(car_id) WHERE main = 1'
-        )
-        cars.forEach(car => {
-            var thai = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'THB' }).format(car.car_price);
-            car.car_price = thai
-        });
-        return res.json(cars);
-    } catch (err) {
-        return res.status(500).json(err)
-    }
-})
 
 module.exports = router
