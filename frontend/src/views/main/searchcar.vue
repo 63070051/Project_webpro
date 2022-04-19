@@ -25,8 +25,8 @@
         />
       </div>
       <div class="grid grid-cols-5 gap-4">
-        <div class="dropdown inline-block relative">
-            <button class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
+        <div class="inline-block relative">
+            <button @click="priceactive = priceactive ? false : true, yearactive = false, distanceactive = false, brandactive = false, coloractive = false" class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
               <p>ราคา</p>
               <svg
                       class="fill-current h-4 w-4 text-amber-600"
@@ -38,7 +38,7 @@
                       />
                     </svg>
             </button>
-            <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
+            <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md" :class="[priceactive ? 'dropdown-active' : '']">
               <div style="width: 500px; height: 350px" class="bg-white rounded-lg z-50 flex flex-col justify-between">
                 <div class=" px-6 py-5">
                   <div class="flex justify-between items-end">
@@ -74,8 +74,8 @@
               </div>
             </div>
           </div>
-          <div class="dropdown inline-block relative">
-            <button class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
+          <div   class="inline-block relative">
+            <button @click="brandactive = brandactive ? false : true, yearactive = false, priceactive = false, coloractive = false, distanceactive = false" class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
               <p>แบรนด์</p>
               <svg
                       class="fill-current h-4 w-4 text-amber-600"
@@ -87,7 +87,7 @@
                       />
                     </svg>
             </button>
-            <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
+            <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md" :class="[brandactive ? 'dropdown-active' : '']">
              <div style="width: 500px; height: 550px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
                <div class="px-3">
                 <div class="text-gray-500 pl-5 py-2 border-b-2 ">
@@ -130,8 +130,8 @@
               </div>
             </div>
           </div>
-          <div class="dropdown inline-block relative">
-            <button class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
+          <div class="inline-block relative">
+            <button @click="yearactive = yearactive ? false : true, priceactive = false, distanceactive = false, coloractive = false, brandactive = false" class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
               <p>ปี</p>
               <svg
                       class="fill-current h-4 w-4 text-amber-600"
@@ -143,7 +143,7 @@
                       />
                     </svg>
             </button>
-            <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
+            <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md" :class="[yearactive ? 'dropdown-active' : '']">
               <div style="width: 500px; height: 400px" class="bg-white rounded-lg z-50 flex flex-col justify-between">
                 <div class=" px-6 py-5">
                   <div class="flex justify-between items-end">
@@ -172,8 +172,8 @@
               </div>
             </div>
           </div>
-           <div class="dropdown inline-block relative">
-            <button class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
+           <div class="inline-block relative">
+            <button @click="distanceactive = distanceactive ? false : true, brandactive = false, yearactive = false, priceactive = false, coloractive = false" class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
               <p>เลขไมล์</p>
               <svg
                       class="fill-current h-4 w-4 text-amber-600"
@@ -185,7 +185,7 @@
                       />
                     </svg>
             </button>
-            <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
+            <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md" :class="[distanceactive ? 'dropdown-active' : '']">
               <div style="width: 500px; height: 400px" class="bg-white rounded-lg z-50 flex flex-col justify-between">
                 <div class=" px-6 py-5">
                   <div class="flex justify-between items-end">
@@ -214,8 +214,8 @@
               </div>
             </div>
           </div>
-          <div class="dropdown inline-block relative">
-            <button class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
+          <div class="inline-block relative">
+            <button @click="coloractive = coloractive ? false : true, priceactive = false, distanceactive = false, brandactive = false, yearactive = false" class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0">
               <p>สี</p>
               <svg
                       class="fill-current h-4 w-4 text-amber-600"
@@ -227,7 +227,7 @@
                       />
                     </svg>
             </button>
-            <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	">
+            <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md" :class="[coloractive ? 'dropdown-active' : '']">
               <div style="width: 500px; height: 400px" class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3">
                <div class="px-3">
                 <div class="text-gray-600 font-medium pl-5 pt-5">
@@ -357,6 +357,11 @@ export default {
       maxprice: 0,
       instead: '',
       color: [],
+      priceactive : false,
+      distanceactive : false,
+      coloractive : false,
+      brandactive : false,
+      yearactive : false
     };
   },
   components: {

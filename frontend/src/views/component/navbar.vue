@@ -6,7 +6,7 @@
       v-if="loginuser == null"
     >
       <div class="space-x-6 flex items-center">
-        <router-link class="text-xl font-bold text-indigo-900" to="/">CAR USED</router-link>
+        <router-link class="text-xl font-bold" to="/"><img width="110px" src="https://cdn.discordapp.com/attachments/958256273592307722/964954378614210680/logo3.png" alt=""></router-link>
         <router-link class="" to="/searchcar">ค้นหารถ</router-link>
         <router-link class="" to="/seller">ขายรถยนต์</router-link>
         <router-link class="" to="/about">เกี่ยวกับ</router-link>
@@ -32,8 +32,8 @@
     >
       <div class="space-x-6 flex items-center">
         <router-link class="text-xl font-bold" to="/"><img width="110px" src="https://cdn.discordapp.com/attachments/958256273592307722/964954378614210680/logo3.png" alt=""></router-link>
-        <div class="dropdown inline-block relative">
-          <button class="inline-flex items-center gap-1">
+        <div class="inline-block relative">
+          <button @click="navbrand = navbrand ? false : true" class="inline-flex items-center gap-1">
             <router-link class="" to="/searchcar">ค้นหารถ</router-link>
             <svg
                     class="fill-current h-4 w-4"
@@ -45,7 +45,7 @@
                     />
                   </svg>
           </button>
-          <div class="dropdown-menu absolute hidden text-gray-700 pt-1 drop-shadow-md	z-10">
+          <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md	z-10" :class="[navbrand ? 'dropdown-active' : '']">
             <div style="width: 600px; height: 300px" class="bg-white rounded-lg z-50 grid grid-cols-3 p-5">
               <div class="space-y-4">
                 <p class="font-bold">แบรนด์</p>
@@ -135,7 +135,8 @@ export default {
   name: "Navbar",
   data() {
     return {
-      loginuser: []
+      loginuser: [],
+      navbrand : false
     };
   },
   mounted() {

@@ -2,6 +2,10 @@
     display: block;
     animation: fadeout 0.5s ease-in-out;
 }
+.dropdown-active {
+    display: block;
+    animation: fadeout 0.5s ease-in-out;
+}
 .fadein {
     display: block;
     animation: fadein 0.5s ease-in-out;
