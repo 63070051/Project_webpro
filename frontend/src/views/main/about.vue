@@ -4,15 +4,16 @@
     <div class="h-96" style="background-size: cover;background-position: 50% 50%; background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/964940060497686568/2909224.jpg)"> 
      
     </div>
-    <div class="container mx-auto max-w-4xl">
+    <div class="container mx-auto max-w-6xl">
       <section>
         <div class="flex justify-center">
           <div class="space-y-4 max-w-4xl pt-12">
             
-            <div class="py-4">
+            <div class="py-4 items-center flex flex-col">
               <p class="text-center text-xl font-bold">
-                <span class="py-1 border-b-4 border-amber-600">About</span>
+                <span >เกี่ยวกับเรา</span>
               </p>
+              <div class="w-24 h-1 bg-amber-500 mt-2 rounded-lg"></div>
             </div>
             <div class="flex justify-center pb-12">
               <p class="text-center text-gray-400 ">
@@ -38,10 +39,13 @@
       style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);"
     >
       <div class="space-y-4">
-        <p class="text-center text-xl font-bold">
-          <span class="py-1 border-b-4 border-gray-600">พันธกิจของเรา</span>
+        <div class="flex flex-col items-center">
+        <p class="text-center text-xl font-extrabold">
+          <span>พันธกิจของเรา</span>
         </p>
-        <p class="text-center max-w-4xl">
+        <div class="w-32 h-1 bg-amber-500 mt-2 rounded-lg"></div>
+        </div>
+        <p class="text-center max-w-4xl font-semibold">
           พันธกิจของ CARS24 คือ การปฏิวัติวิธีการซื้อขายรถยนต์มือสองในประเทศไทย
           ซึ่งเราพยายามเป็นอย่างยิ่ง
           ที่จะมอบประสบการณ์ให้แก่คุณในการรับบริการจากเราซึ่งจะไม่ยุ่งยาก
@@ -49,16 +53,21 @@
         </p>
       </div>
     </div>
-    <section>
-      <div class="grid grid-cols-2 space-y-4 px-24 py-12">
-        <div class="space-y-8">
-          <p class="text-center text-xl font-bold ">
-            <span class="py-1 border-b-4 border-gray-600 ">ค่านิยม</span>
-          </p>
-          <div class="text-gray-400 max-w-lg mx-auto">
-            ค่านิยมและจริยธรรมของ CARS24 เป็นสิ่งที่ช่วยกำหนดแนวทางการจัดระเบียบ
-            และวางโครงสร้างขององค์กรให้สมบูรณ์ยั่งยืนมากขึ้น ในฐานะขององค์กร
-            องค์กรหนึ่งเรามีค่านิยมของเราเองที่เราเชื่อมั่นและปฏิบัติตาม
+    <section class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 space-y-4 py-12">
+        <div class="space-y-8 justify-center flex flex-col">
+          <div class="text-left">
+            <p class=" text-xl font-bold">
+              <span >ค่านิยมของเรา</span>
+            </p>
+            <div class="w-10 h-1 bg-amber-500 mt-2 rounded-lg"></div>
+          </div>
+          <div class="text-left">
+            <div class="text-gray-400">
+              ค่านิยมและจริยธรรมของ CARS24 เป็นสิ่งที่ช่วยกำหนดแนวทางการจัดระเบียบ
+              และวางโครงสร้างขององค์กรให้สมบูรณ์ยั่งยืนมากขึ้น ในฐานะขององค์กร
+              องค์กรหนึ่งเรามีค่านิยมของเราเองที่เราเชื่อมั่นและปฏิบัติตาม
+            </div>
           </div>
         </div>
         <div class="flex justify-center">
@@ -71,10 +80,10 @@
           />
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-12 px-24 mb-10">
-        <div class=" text-center space-y-12">
-          <p class="font-bold text-xl">ความรู้สึกถึงการเป็นเจ้าของ</p>
-          <p class="text-gray-400">
+      <div class="grid grid-cols-3 gap-20 mb-10">
+        <div class="space-y-12">
+          <p class="font-bold text-xl text-left">ความรู้สึกถึงการเป็นเจ้าของ</p>
+          <p class="text-gray-400 text-left">
             เราไม่ต้องการที่จะให้พนักงานของเรานั้นรู้สึกว่าถูก
             ควบคุมในการทำงานหากแต่เราอยากให้พวกเขาเหล่า
             นั้นเป็นผู้ที่ดำเนินการจัดการสิ่งต่างๆเอง
@@ -84,10 +93,10 @@
           </p>
         </div>
         <div class=" text-center space-y-12">
-          <p class="font-bold text-xl">
+          <p class="font-bold text-xl text-left">
             การลงทุนใส่ใจเกี่ยวกับพนักงาน และพันธมิตรธุรกิจ
           </p>
-          <p class="text-gray-400">
+          <p class="text-gray-400 text-left">
             เราไม่ได้อยากที่จะเพิ่มต้นทุนค่าใช้จ่ายหากแต่ต้อง
             การเพิ่มบุคคลากรและพันธมิตรธุรกิจให้มากขึ้น สำหรับที่ CARS24
             เราไม่ได้เล็งเห็นว่าความ สำเร็จของเราจะมาจากเพียงแค่การทำผลกำไรและ
@@ -100,10 +109,10 @@
           </p>
         </div>
         <div class=" text-center space-y-12">
-          <p class="font-bold text-xl">
+          <p class="font-bold text-xl text-left">
             การมีมาตรฐานสูง และการได้รับผลลัพธ์สูง
           </p>
-          <p class="text-gray-400">
+          <p class="text-gray-400 text-left">
             เราไม่ได้จำยอมในสิ่งใดก็ตามอย่างลดน้อยลง
             หากแต่เรามุ่งเน้นสิ่งต่างๆเหล่านั้นให้มากขึ้น
             สำหรับที่CARS24เราไม่ได้ชื่นชมกับสิ่งใดก็ตามที่มี
@@ -112,8 +121,8 @@
           </p>
         </div>
         <div class="text-center space-y-12">
-          <p class="font-bold text-xl">คุณธรรมาธิปไตย</p>
-          <p class="text-gray-400">
+          <p class="font-bold text-xl text-left">คุณธรรมาธิปไตย</p>
+          <p class="text-gray-400 text-left">
             เราจะไม่ยอมให้ผลงานใดก็ตามที่ดีเยี่ยมนั้นปราศจาก การได้รับสิ่งตอบแทน
             สำหรับที่ CARS24 แล้ว ความมุ่งมาดปรารถนาของเรานั้นมีมากกว่าที่ปรากฎ
             อยู่เราไม่ได้มองว่าคุณธรรมาธิปไตยนั้นว่าเป็นเรื่อง
@@ -124,8 +133,8 @@
           </p>
         </div>
         <div class="text-center space-y-12">
-          <p class="font-bold text-xl">ความเชื่อมั่น</p>
-          <p class="text-gray-400">
+          <p class="font-bold text-xl text-left">ความเชื่อมั่น</p>
+          <p class="text-gray-400 text-left">
             เราจะไม่ประสบความสำเร็จจนกว่าจะได้รับความไว้วาง
             ใจอย่างแรงกล้าและลึกซึ้งจากผู้มีส่วนได้ส่วนเสียทุก ราย สำหรับที่
             CARS24 แล้วนั้นเราไม่ได้มองว่าเรา
@@ -137,8 +146,8 @@
           </p>
         </div>
         <div class="text-center space-y-12">
-          <p class="font-bold text-xl">ความมัธยัสถ์</p>
-          <p class="text-gray-400">
+          <p class="font-bold text-xl text-left">ความมัธยัสถ์</p>
+          <p class="text-gray-400 text-left">
             เราไม่พยายามที่จะเป็นผู้ที่ใช้เงินอย่างตระหนี่หรือใช้จ่
             ายฟุ่มเฟือยอย่างคนเขลา ดังสำนวนที่ว่า “เสียน้อยเสียยาก
             เสียมากเสียง่าย”
