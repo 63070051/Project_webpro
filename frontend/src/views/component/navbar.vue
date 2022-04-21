@@ -136,7 +136,7 @@ export default {
   data() {
     return {
       loginuser: [],
-      navbrand : false
+      navbrand : false,
     };
   },
   mounted() {
