@@ -1,67 +1,85 @@
 <template>
   <div id="app">
     <div class="h-screen flex justify-center items-center">
-      <div class="w-full max-w-xs">
+      
+      <div class="w-full max-w-sm ">
+        <h2
+              class=" text-4xl text-indigo-900 font-display font-semibold 
+                         mb-4"
+            >
+              Reset Password
+            </h2>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div class="mb-4">
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              class="block text-gray-700 text-lg font-bold mb-2"
               for="Email"
             >
               Email
             </label>
             <input
               v-model="email"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="Email"
               type="text"
               placeholder="Email"
             />
           </div>
-          <div>
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+          <div class="mb-6 relative">
+            <div>
+              <label
+              class="block text-gray-700 text-lg font-bold mb-2"
               for="password"
             >
               Passcode
             </label>
             <input
               v-model="passcode"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="Passcode"
-              type="text"
-              placeholder="Passcode"
+              type="password"
+              placeholder="*************"
             />
+            </div>
+            <a
+              @click="sendemail()"
+               class=" absolute right-0 bottom-2 text-gray-400  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+            >
+              sendcode
+            </a>
           </div>
           <div class="mb-6">
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              class="block text-gray-700 text-lg font-bold mb-2"
               for="password"
             >
               New Password
             </label>
             <input
               v-model="newpassword"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="New Password"
               type="password"
               placeholder="*************"
             />
           </div>
           <div class="flex items-center justify-between">
+            <router-link to='/login'>
+              <button
+                class="bg-zinc-400 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              >
+                Back
+              </button>
+              
+            </router-link>
             <button
               @click="changepassword"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+             class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               type="button"
             >
               Confirm
             </button>
-            <a
-              @click="sendemail()"
-              class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 cursor-pointer"
-            >
-              sendcode
-            </a>
+            
           </div>
         </div>
       </div>
