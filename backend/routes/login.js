@@ -4,17 +4,50 @@ const path = require("path")
 const Joi = require('joi')
 const multer = require('multer')
 const { json } = require("express");
+const nodemailer = require('nodemailer')
 const router = express.Router()
 let alert = require('alert');
 
-// const usernameValidator = async (value, helpers) => {
-//     const [rows, _] = await pool.query("SELECT username FROM users WHERE username = ?", [value])
-//     if (rows.length > 0) {
-//         const message = 'This username is already taken'
-//         throw new Joi.ValidationError(message, { message })
-//     }
-//     return value
-// }
+const usernameValidator = async (value, helpers) => {
+    const [rows, _] = await pool.query("SELECT login_username FROM Login WHERE login_username = ?", [value])
+    if (rows.length > 0) {
+        const message = 'This username is already taken'
+        alert(message)
+    }
+    else{
+        return value
+    }
+}
+const emailValidator = async (value, helpers) => {
+    const [rows, _] = await pool.query("SELECT user_email FROM Users WHERE user_email = ?", [value])
+    if (rows.length > 0) {
+        const message = 'This email is already taken'
+        alert(message)
+    }
+    else{
+        return value
+    }
+}
+const idcardValidator = async (value, helpers) => {
+    const [rows, _] = await pool.query("SELECT user_idcard FROM Users WHERE user_idcard = ?", [value])
+    if (rows.length > 0) {
+        const message = 'This ID card is already taken'
+        alert(message)
+    }
+    else{
+        return value
+    }
+}
+const phoneValidator = async (value, helpers) => {
+    const [rows, _] = await pool.query("SELECT user_phone FROM Users WHERE user_phone = ?", [value])
+    if (rows.length > 0) {
+        const message = 'This phone is already taken'
+        alert(message)
+    }
+    else{
+        return value
+    }
+}
 
 // const passwordValidator = (value, helpers) => {
 //     if (value.length < 8) {
@@ -26,27 +59,26 @@ let alert = require('alert');
 //     return value
 // }
 
-// const signupSchema = Joi.object({
-//     idcard : Joi.string().required().min(13).max(13),
-//     email: Joi.string().required().email(),
-//     tel: Joi.string().required().pattern(/0[0-9]{9}/),
-//     firstname: Joi.string().required().max(150),
-//     lastname: Joi.string().required().max(150),
-//     address: Joi.string().required().max(255),
-//     birth : Joi.string().required(),
-//     gender : Joi.string().required(),
-//     password1: Joi.string().required().custom(passwordValidator),
-//     password2: Joi.string().required().custom(passwordValidator),
-//     confirm_password: Joi.string().required().valid(Joi.ref('password')),
-//     username: Joi.string().required().min(5).max(30).external(usernameValidator),
-// })
+const signupSchema = Joi.object({
+    username: Joi.string().required().external(usernameValidator),
+    idcard : Joi.string().required().external(idcardValidator),
+    tel: Joi.string().required().external(phoneValidator),
+    email: Joi.string().required().external(emailValidator),
+    firstname: Joi.string().required(),
+    lastname: Joi.string().required(),
+    address: Joi.string().required(),
+    birth : Joi.string().required(),
+    gender : Joi.string().required(),
+    password1: Joi.string().required(),
+    password2: Joi.string().required(),
+})
 
-router.post('/register/account',async function(req, res, next) {
+router.post('/register/account', async function (req, res, next) {
     let username = req.body.username;
     let password1 = req.body.password1;
     let password2 = req.body.password2;
     let firstname = req.body.firstname;
-    
+
     let lastname = req.body.lastname;
     let idcard = req.body.idcard;
     let tel = req.body.tel;
@@ -65,68 +97,68 @@ router.post('/register/account',async function(req, res, next) {
     if (m < 0 || (m === 0 && now.getDate() < birthDate.getDate())) {
         age--;
     }
-    if(age >= 20){
+    if (age >= 20) {
         customer = true
     }
     const [checkuser, field] = await pool.query(
-        'SELECT * FROM Login WHERE login_username = ?',[
-            username
-        ]
+        'SELECT * FROM Login WHERE login_username = ?', [
+        username
+    ]
     )
-    const [checkphone, field1] = await pool.query(
-        'SELECT * FROM Users WHERE user_phone = ?',[
-            tel
-        ]
-    )
-    const [checkidcard, field2] = await pool.query(
-        'SELECT * FROM Users WHERE user_idcard = ?',[
-            idcard
-        ]
-    )
-    const [checkemail, field3] = await pool.query(
-        'SELECT * FROM Users WHERE user_email = ?',[
-            email
-        ]
-    )
+    // const [checkphone, field1] = await pool.query(
+    //     'SELECT * FROM Users WHERE user_phone = ?', [
+    //     tel
+    // ]
+    // )
+    // const [checkidcard, field2] = await pool.query(
+    //     'SELECT * FROM Users WHERE user_idcard = ?', [
+    //     idcard
+    // ]
+    // )
+    // const [checkemail, field3] = await pool.query(
+    //     'SELECT * FROM Users WHERE user_email = ?', [
+    //     email
+    // ]
+    // )
 
-    // try {
-    //     await signupSchema.validateAsync(req.body, { abortEarly: false })
-    // } catch (err) {
-    //     return res.status(400).send(err)
-    // }
+    try {
+        await signupSchema.validateAsync(req.body, { abortEarly: false })
+    } catch (err) {
+        return res.status(400).send(err)
+    }
 
     // console.log(username, password1, password2, firstname, lastname, age, idcard, tel, email, address, birth, gender)
     console.log(checkuser[0] != undefined)
-    if(password1 != password2){
+    if (password1 != password2) {
         alert('Password do not match')
     }
-    else if(checkuser[0] != undefined){
-        res.json('Username is used')
-    }
-    else if(checkphone[0] != undefined){
-        res.json('Phone is used')
-    }
-    else if(checkidcard[0] != undefined){
-        res.json('ID card is used')
-    }
-    else if(checkemail[0] != undefined){
-        res.json('Email is used')
-    }
-    else{
+    // else if (checkuser[0] != undefined) {
+    //     res.json('Username is used')
+    // }
+    // else if (checkphone[0] != undefined) {
+    //     res.json('Phone is used')
+    // }
+    // else if (checkidcard[0] != undefined) {
+    //     res.json('ID card is used')
+    // }
+    // else if (checkemail[0] != undefined) {
+    //     res.json('Email is used')
+    // }
+    else {
         const conn = await pool.getConnection()
         await conn.beginTransaction();
         try {
             const user = await conn.query(
                 'INSERT INTO Users(user_firstname, user_lastname, user_idcard, user_age, user_phone, user_address, user_email, user_gender, user_birth, customer_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-                    firstname, lastname, idcard, age, tel, address, email, gender, birth, customer
-                ]
+                firstname, lastname, idcard, age, tel, address, email, gender, birth, customer
+            ]
             )
             user_id = user[0].insertId
             console.log(user_id)
             const login = await conn.query(
                 'INSERT INTO Login(login_username, login_password, user_id) VALUES(?, ?, ?)', [
-                    username, password1, user_id
-                ]
+                username, password1, user_id
+            ]
             )
             await conn.commit()
             res.json('success')
@@ -137,44 +169,53 @@ router.post('/register/account',async function(req, res, next) {
             console.log('finally')
             conn.release();
         }
-        
+
     }
-    
+
 })
-router.post('/connected',async function(req, res, next) {
+const loginSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+})
+router.post('/connected', async function (req, res, next) {
     let username = req.body.username;
     let password = req.body.password
+    try {
+        await loginSchema.validateAsync(req.body, { abortEarly: false })
+    } catch (err) {
+        return res.status(400).send(err)
+    }
     const [data, field] = await pool.query(
-        'SELECT login_username, login_password, user_id FROM Login WHERE login_username = ?',[
-            username
-        ]
+        'SELECT login_username, login_password, user_id FROM Login WHERE login_username = ?', [
+        username
+    ]
     )
-    if(data[0] == undefined){
+    if (data[0] == undefined) {
         res.json('error')
     }
-    else{
+    else {
         let fklogin = data[0].user_id
         const [user, field1] = await pool.query(
-            'SELECT * FROM Users WHERE user_id = ?',[
-                fklogin
-            ]
+            'SELECT * FROM Users WHERE user_id = ?', [
+            fklogin
+        ]
         )
         let dataname = ''
         let datapassword = ''
-        if(data.length != 0){
+        if (data.length != 0) {
             dataname = data[0].login_username;
             datapassword = data[0].login_password;
         }
         console.log(data[0])
-        if((dataname == username) && (datapassword == password)){
+        if ((dataname == username) && (datapassword == password)) {
             res.json(user[0])
         }
-        else{
+        else {
             res.json('error')
         }
     }
 })
-router.post('/update/account/:id',async function(req, res, next) {
+router.post('/update/account/:id', async function (req, res, next) {
     let id = req.params.id
     let firstname = req.body.firstname;
     let lastname = req.body.lastname;
@@ -183,18 +224,96 @@ router.post('/update/account/:id',async function(req, res, next) {
     let address = req.body.address;
     try {
         const [data, field] = await pool.query(
-            'UPDATE Users SET user_firstname = ?, user_lastname = ?, user_phone = ?, user_address = ?, user_email = ? WHERE user_id = ?',[
-                firstname, lastname, tel, address, email, id
-            ]
+            'UPDATE Users SET user_firstname = ?, user_lastname = ?, user_phone = ?, user_address = ?, user_email = ? WHERE user_id = ?', [
+            firstname, lastname, tel, address, email, id
+        ]
         )
         const [user, field1] = await pool.query(
-            'SELECT * FROM Users WHERE user_id = ?',[
-                id
-            ]
+            'SELECT * FROM Users WHERE user_id = ?', [
+            id
+        ]
         )
         res.json(user[0])
     } catch (error) {
         res.json(error)
     }
 })
+router.post('/forgot', async function (req, res, next) {
+    let email = req.body.email;
+    let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let passwordLength = 5;
+    let password = "";
+    for (let i = 0; i <= passwordLength; i++) {
+        let randomNumber = Math.floor(Math.random() * chars.length);
+        password += chars.substring(randomNumber, randomNumber + 1);
+    }
+    try {
+        const [data, field] = await pool.query(
+            'SELECT * FROM Users WHERE user_email = ?', [
+            email
+        ]
+        )
+        if (!data[0]) {
+            res.json('error')
+        }
+        else {
+            const output = `
+            <p>You have a new Passcode</p>
+            <h3>Passcode to ChangePassword</h3>
+            <ul>
+                <li>Passcode : ${password}</li>
+            </ul>
+            `
+            // let testAccount = await nodemailer.createTestAccount();
+            // create reusable transporter object using the default SMTP transport
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'tathusphol17599@gmail.com',
+                    pass: 'tathus885269'
+                }
+            });
+
+            var mailOptions = {
+                from: 'tathusphol17599@gmail.com',
+                to: `${email}`,
+                subject: 'Passcode',
+                text: 'Hello!',
+                html : output
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                    res.json(password)
+                }
+            });
+        }
+    } catch (error) {
+        res.json(error)
+    }
+})
+router.post('/changepassword', async function (req, res, next) {
+    let email = req.body.email;
+    let password = req.body.password;
+    try {
+        const [data, field] = await pool.query(
+            'SELECT user_id FROM Users WHERE user_email = ?', [
+            email
+        ]
+        )
+        const [login, field1] = await pool.query(
+            'UPDATE Login SET login_password = ? WHERE user_id = ?', [
+            password, data[0].user_id
+        ]
+        )
+        res.json(user[0])
+    } catch (error) {
+        res.json(error)
+    }
+})
+
+
 module.exports = router

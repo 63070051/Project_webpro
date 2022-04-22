@@ -70,6 +70,11 @@ const routes = [
     name: 'detail',
     component: () => import('../views/car/detail.vue')
   },
+  {
+    path: '/forgetpassword',
+    name: 'forgetpassword',
+    component: () => import('../views/login/forgetpassword.vue')
+  },
 ]
 
 
