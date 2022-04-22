@@ -16,7 +16,7 @@
           </div>
           <div class="mt-10 px-24 w-5/12">
             <h2
-              class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+              class="text-center text-4xl    font-display font-semibold lg:text-left xl:text-5xl
                         xl:text-bold"
             >
               Sign in

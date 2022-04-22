@@ -149,20 +149,20 @@
                   <div class="flex justify-between items-end">
                     <div>
                       <p class="text-gray-600 mb-1">ปีต่ำสุด</p>
-                        <input type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model="minyear"  type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                     </div>
                     <div class="w-6 rounded bg-gray-300 mb-4" style="height: 3px"></div>
                     <div>
                       <p class="text-gray-600 mb-1">ปีสูงสุด</p>
-                        <input type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model='maxyear' type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                     </div>
                   </div>
                   <div class="mt-7">
                     <p>แนะนำ</p>
                       <div class="grid grid-cols-2 mt-3 gap-2">
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2016 - 2018</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2018 - 2020</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2020 - 2021</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minyear = 2016, maxyear = 2018'>2016 - 2018</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minyear = 2018, maxyear = 2020'>2018 - 2020</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minyear = 2020, maxyear = 2022'>2020 - 2022</div>
                       </div>
                   </div>
                 </div>
@@ -191,20 +191,20 @@
                   <div class="flex justify-between items-end">
                     <div>
                       <p class="text-gray-600 mb-1">เลขไมล์ต่ำสุด</p>
-                        <input type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model="minmile" type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                     </div>
                     <div class="w-6 rounded bg-gray-300 mb-4" style="height: 3px"></div>
                     <div>
                       <p class="text-gray-600 mb-1">เลขไมล์สูงสุด</p>
-                        <input type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
+                        <input v-model='maxmile' type="text" class="border-2 rounded-md focus:outline-none py-1 px-2 w-40 font-semibold text-right">
                     </div>
                   </div>
                   <div class="mt-7">
                     <p>แนะนำ</p>
                       <div class="grid grid-cols-2 mt-3 gap-2">
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 20,000 ก.ม.</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 40,000 ก.ม.</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 60,000 ก.ม.</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minmile = 0, maxmile = 20000'>ภายใต้ 20,000 ก.ม.</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minmile = 0, maxmile = 40000'>ภายใต้ 40,000 ก.ม.</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100" @click='minmile = 0, maxmile = 60000'>ภายใต้ 60,000 ก.ม.</div>
                       </div>
                   </div>
                 </div>
@@ -361,7 +361,11 @@ export default {
       distanceactive : false,
       coloractive : false,
       brandactive : false,
-      yearactive : false
+      yearactive : false,
+      minyear: 0,
+      maxyear: 0,
+      minmile: 0,
+      maxmile: 0,
     };
   },
   components: {
@@ -391,10 +395,28 @@ export default {
           })
           
         }
+        if (this.minyear > 0 || this.maxyear > 0){
+          car_copy = car_copy.filter(car => {
+            if (car.car_modelyear >= this.minyear && car.car_modelyear <= this.maxyear){
+              return car;
+            }
+          })
+          
+        }
+        if (this.minmile > 0 || this.maxmile > 0){
+          car_copy = car_copy.filter(car => {
+            if (car.car_distance >= this.minmile && car.car_distance <= this.maxmile){
+              return car;
+            }
+          })
+          
+        }
         if(this.instead != ''){
           car_copy = car_copy.filter(car => car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1)
         }
+
         return car_copy
+
       },
 
   },
