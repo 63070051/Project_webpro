@@ -43,7 +43,7 @@
             </div>
             <a
               @click="sendemail()"
-               class=" absolute right-0 bottom-2 text-gray-400  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+               class=" absolute right-0 bottom-2 text-gray-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300 cursor-pointer hover:text-gray-500"
             >
               sendcode
             </a>
@@ -109,13 +109,11 @@ export default {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
     },
     sendemail() {
-      console.log(1);
       axios
         .post(`http://localhost:3000/forgot`, {
           email: this.email
         })
         .then(response => {
-            console.log(response.data)
           alert("ดู Passcode ที่ Email");
           if (response.data == "error") {
             alert("email ไม่ได้ลงทะเบียนไว้");
@@ -129,7 +127,7 @@ export default {
         });
     },
     changepassword() {
-      if (this.passcode == this.emailpasscode) {
+      if (this.passcode == this.emailpasscode && (this.passcode != "" || this.emailpasscode != "")) {
         axios
           .post(`http://localhost:3000/changepassword`, {
             password: this.newpassword,
