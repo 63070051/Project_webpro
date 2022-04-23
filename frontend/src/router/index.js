@@ -76,8 +76,13 @@ const routes = [
     meta: { guest: true },
     component: () => import('../views/login/forgetpassword.vue')
   },
+  {
+    path: '/update_car/:carid',
+    name: 'update_car',
+    meta: { login: true },
+    component: () => import('../views/seller/update_car.vue')
+  },
 ]
-
 
 const router = new VueRouter({
   routes

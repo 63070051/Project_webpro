@@ -306,11 +306,11 @@
     </div>
     <div class="max-w-5xl mx-auto py-4">
       <div class="grid grid-cols-3 gap-8">
-        <div class="flex justify-center" v-for="car in showcars" :key="car.car_id" @click="detailcar(car.car_id)">
+        <div class="flex justify-center cursor-pointer" v-for="car in showcars" :key="car.car_id" @click="detailcar(car.car_id)">
           <div class="rounded-lg shadow-lg bg-white max-w-sm">
-            <div data-mdb-ripple="true" data-mdb-ripple-color="light">
+            <div data-mdb-ripple="true" data-mdb-ripple-color="light" class="overflow-hidden">
               <img
-                class="rounded-t-lg"
+                class="rounded-t-lg zoom duration-500"
                 :src="selectimgcar(car.car_img)"
                 alt=""
               />
@@ -473,3 +473,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .zoom:hover{
+    transform: scale(1.2);
+  }
+</style>

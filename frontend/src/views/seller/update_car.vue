@@ -145,10 +145,10 @@
                 py-2"
             >
               <option value="Please Select" selected>Please Select</option>
-              <option value="4WD">4WD</option>
-              <option value="AWD">AWD</option>
-              <option value="RWD">RWD</option>
-              <option value="FWD">FWD</option>
+              <option value="4wd">4WD</option>
+              <option value="awd">AWD</option>
+              <option value="rwd">RWD</option>
+              <option value="fwd">FWD</option>
             </select>
           </div>
           <div class="grid grid-cols-2 gap-4">
@@ -189,23 +189,23 @@
                 Car Type
               </label>
               <select
-              name="car_type"
-              id="car_type"
-              v-model="car_type"
-              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+                name="car_type"
+                id="car_type"
+                v-model="car_type"
+                class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-            >
-              <option value="Please Select" selected>Please Select</option>
-              <option value="Sedan">Sedan</option>
-              <option value="Pickup">Pickup</option>
-              <option value="Hatchback">Hatchback</option>
-              <option value="SUV">SUV</option>
-              <option value="7 seater">7 seater</option>
-              <option value="MPV">MPV</option>
-            </select>
+              >
+                <option value="Please Select" selected>Please Select</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="SUV">SUV</option>
+                <option value="7 seater">7 seater</option>
+                <option value="MPV">MPV</option>
+              </select>
             </div>
           </div>
           <div class="mb-4 grid grid-cols-3 gap-4">
@@ -323,7 +323,7 @@
               "
               id="car_act"
               name="car_act"
-              type="month"
+              type="date"
               placeholder=""
               v-model="car_act"
             />
@@ -439,7 +439,7 @@
                 py-2"
             >
               <option value="Please Select" selected>Please Select</option>
-              <option value="white">White</option>
+              <option value="White">White</option>
               <option value="Black">Black</option>
               <option value="Gray">Gray</option>
               <option value="Broze">Broze</option>
@@ -449,7 +449,7 @@
               <option value="Brown">Brown</option>
               <option value="Orange">Orange</option>
               <option value="Gold">Gold</option>
-              <option value="Silver">Sliver</option>
+              <option value="Sliver">Sliver</option>
               <option value="Others">Others</option>
             </select>
           </div>
@@ -623,12 +623,19 @@
             <p class="text-2xl font-bold mb-5">
               <span class="text-blue-600">Step 3/3:</span> Click To Confirm
             </p>
-            <button
-              @click="submitcar()"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
-            >
-              Comfirm to post your ad!
-            </button>
+            <div class="flex justify-between">
+              <button
+                @click="submitcar()"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              >
+                Cancel</button
+              ><button
+                @click="submitcar()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              >
+                Comfirm Update
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -658,7 +665,7 @@ export default {
       num_gear: "",
       car_act: "",
       car_regis: "",
-      car_type : "Please Select",
+      car_type: "Please Select",
       mileage: 0,
       registration_year: "",
       color: "Please Select",
@@ -666,6 +673,7 @@ export default {
       selling_price: "",
       car_desc: "",
       images: [],
+      detailcar: [],
       check: null
     };
   },
@@ -675,10 +683,46 @@ export default {
   },
   mounted() {
     this.getdata();
+    this.getcar(this.$route.params.carid);
   },
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+    },
+    getcar(carid) {
+      axios
+        .post(`http://localhost:3000/detail/${carid}`)
+        .then(response => {
+          this.detailcar = response.data.detailcar;
+          this.brand = this.detailcar.car_brand;
+          this.model = this.detailcar.car_model;
+          this.modelyear = this.detailcar.car_modelyear;
+          this.number_door = this.detailcar.car_num_of_door;
+          this.driving_type = this.detailcar.car_drive_type;
+          this.engine = this.detailcar.car_engine;
+          this.gear = this.detailcar.car_gear;
+          this.num_gear = this.detailcar.car_num_of_gear;
+          this.car_act = this.detailcar.car_act;
+          this.car_regis = this.detailcar.car_regis;
+          this.car_type = this.detailcar.car_type;
+          this.mileage = this.detailcar.car_distance;
+          this.registration_year = this.detailcar.car_yearbought;
+          this.selling_price = this.detailcar.car_price;
+          this.color = this.detailcar.car_color;
+          this.owner = this.detailcar.car_owner;
+          this.car_desc = this.detailcar.car_desc;
+          console.log(this.detailcar);
+          if (
+            this.detailcar.seller_id != this.loginuser.user_id &&
+            this.loginuser.employee_type != "employee"
+          ) {
+            alert("You don’t have the right to update");
+            this.$router.push({ name: "home" });
+          }
+        })
+        .catch(error => {
+          this.error = error.response.data.message;
+        });
     },
     selectImages(event) {
       // console.log(event.target.files)
@@ -686,6 +730,7 @@ export default {
         alert("Max-Limit images is 6");
       } else {
         this.images.push(event.target.files);
+        console.log(this.images);
       }
     },
     showSelectImage(image) {
@@ -712,19 +757,26 @@ export default {
       formData.append("car_owner", this.owner);
       formData.append("car_num_of_gear", this.num_gear);
       formData.append("car_drive_type", this.driving_type);
-      formData.append("car_act", this.car_act + '-01');
+      formData.append("car_act", this.car_act);
       formData.append("car_num_of_door", this.number_door);
       this.images.forEach(image => {
-        console.log(image[0]);
         formData.append("carImage", image[0]);
       });
-      axios
-        .post(
-          `http://localhost:3000/addcar/${this.loginuser.user_id}`,
-          formData
-        )
-        .then(res => this.$router.push({ name: "home" }))
-        .catch(error => console.log(error.response.data));
+      if (
+        this.detailcar.seller_id == this.loginuser.user_id ||
+        this.loginuser.employee_type == "employee"
+      ) {
+        axios
+          .post(
+            `http://localhost:3000/updatecar/${this.$route.params.carid}`,
+            formData
+          )
+          .then(res => this.$router.push({ name: "home" }))
+          .catch(error => console.log(error.response.data));
+      } else {
+        alert("You don’t have the right to update");
+        this.$router.push({ name: "home" });
+      }
     }
   }
 };

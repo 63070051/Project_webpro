@@ -27,7 +27,7 @@
         <div v-for="img in carimg" :key="img.image_no">
           <img
             @click="changefirstimg(img.car_img)"
-            class="rounded-lg"
+            class="rounded-lg h-32 w-full"
             :src="selectimgcar(img.car_img)"
             alt=""
           />
@@ -216,7 +216,7 @@ export default {
     },
     convertdate(date) {
       let now = new Date(date);
-      return now.getMonth() + '/' +now.getFullYear()
+      return now.getMonth()+1 + '/' +now.getFullYear()
     }
   }
 };
