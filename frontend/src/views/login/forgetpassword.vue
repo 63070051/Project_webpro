@@ -57,11 +57,13 @@
             </label>
             <input
               v-model="newpassword"
+              @keyup="checklength()"
              class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="New Password"
               type="password"
               placeholder="*************"
             />
+            <p v-show="redtext" class="text-red-500">password min length 8!</p>
           </div>
           <div class="flex items-center justify-between">
             <router-link to='/login'>
@@ -73,8 +75,16 @@
               
             </router-link>
             <button
+            v-show="!redtext"
               @click="changepassword"
              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              type="button"
+            >
+              Confirm
+            </button>
+            <button
+            v-show="redtext"
+             class="bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               type="button"
             >
               Confirm
@@ -98,7 +108,8 @@ export default {
       email: "",
       passcode: "",
       emailpasscode: "",
-      newpassword: ""
+      newpassword: "",
+      redtext : false
     };
   },
   mounted() {
@@ -114,10 +125,10 @@ export default {
           email: this.email
         })
         .then(response => {
-          alert("ดู Passcode ที่ Email");
-          if (response.data == "error") {
-            alert("email ไม่ได้ลงทะเบียนไว้");
+            if (response.data == "error") {
+                alert("email ไม่ได้ลงทะเบียนไว้");
           } else {
+            alert("ดู Passcode ที่ Email");
             this.emailpasscode = response.data;
           }
         })
@@ -145,6 +156,14 @@ export default {
       else{
           alert('Incorrect Passcode')
       }
+    },
+    checklength(){
+        if(this.newpassword.length < 8){
+            this.redtext = true
+        }
+        else{
+            this.redtext = false
+        }
     }
   }
 };
