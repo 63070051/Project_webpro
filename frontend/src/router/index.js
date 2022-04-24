@@ -83,6 +83,7 @@ const routes = [
     component: () => import('../views/seller/update_car.vue')
   },
 ]
+//You don’t have the right to update
 
 const router = new VueRouter({
   routes

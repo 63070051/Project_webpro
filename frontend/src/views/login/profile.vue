@@ -6,13 +6,17 @@
       style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto"
     >
       <div class="w-full max-w-xl space-y-6 bg-gray-300  px-4 py-4 rounded-2xl">
-        <div >
-            <img class="mx-auto mb-2" width="100px" src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png" alt="" />
-            <p class="text-3xl font-bold text-center">Edit Profile</p>
-            <div class="w-28 h-1 bg-blue-600 mt-1 rounded-lg mx-auto"></div>
+        <div>
+          <img
+            class="mx-auto mb-2"
+            width="100px"
+            src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png"
+            alt=""
+          />
+          <p class="text-3xl font-bold text-center">Edit Profile</p>
+          <div class="w-28 h-1 bg-blue-600 mt-1 rounded-lg mx-auto"></div>
         </div>
         <div class="bg-white shadow-md  rounded px-8 pt-6 pb-8 mb-4 space-y-2">
-          
           <!-- <div>
             <label class="block text-gray-700 text-lg font-bold mb-2">
               ยืนยันรหัสผ่าน
@@ -65,7 +69,7 @@
               v-model="age"
             />
           </div> -->
-            <!-- <div>
+          <!-- <div>
                 <label class="block text-gray-700 text-lg font-bold mb-2">
                 รหัสบัตรประชาชน
                 </label>
@@ -124,19 +128,16 @@
             >
               ย้อนกลับ
             </button>
-            <router-link to='/login'>
-              <button
-                class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
-                @click="commit()"
-              >
-                ยืนยัน
-              </button>
-            </router-link>
+            <button
+              class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              @click="commit()"
+            >
+              ยืนยัน
+            </button>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -154,11 +155,11 @@ export default {
       lastname: "",
       tel: "",
       email: "",
-      address: "",
+      address: ""
     };
   },
-  components :{
-    Navbar : navbar
+  components: {
+    Navbar: navbar
   },
   mounted() {
     this.getdata();
@@ -166,33 +167,39 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
-      this.firstname = this.loginuser.user_firstname
-      this.lastname = this.loginuser.user_lastname
-      this.tel = this.loginuser.user_phone
-      this.email = this.loginuser.user_email
-      this.address = this.loginuser.user_address
+      this.firstname = this.loginuser.user_firstname;
+      this.lastname = this.loginuser.user_lastname;
+      this.tel = this.loginuser.user_phone;
+      this.email = this.loginuser.user_email;
+      this.address = this.loginuser.user_address;
     },
-    back(){
-      this.$router.push('/')
+    back() {
+      this.$router.push("/");
     },
-    commit(){
+    commit() {
       axios
-        .post(`http://localhost:3000/update/account/${this.loginuser.user_id}`, {
-          firstname: this.firstname,
-          lastname: this.lastname,
-          tel: this.tel,
-          email: this.email,
-          address: this.address,
-        })
+        .post(
+          `http://localhost:3000/update/account/${this.loginuser.user_id}`,
+          {
+            firstname: this.firstname,
+            lastname: this.lastname,
+            tel: this.tel,
+            email: this.email,
+            address: this.address
+          }
+        )
         .then(response => {
-          localStorage.setItem('user', JSON.stringify(response.data))
-          this.$router.push('/');
+          console.log(response.data)
+          if (response.data != "error") {
+            localStorage.setItem("user", JSON.stringify(response.data));
+            this.$router.push("/");
+          }
         })
         .catch(error => {
-          console.log('error')
+          console.log("error");
           this.error = error.response.data.message;
         });
     }
-  },
+  }
 };
 </script>
