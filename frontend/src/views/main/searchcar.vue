@@ -161,8 +161,8 @@
                     <p>แนะนำ</p>
                       <div class="grid grid-cols-2 mt-3 gap-2">
                         <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2016 - 2018</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2018 -2020</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2020 -2021</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2018 - 2020</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2020 - 2021</div>
                       </div>
                   </div>
                 </div>
@@ -202,9 +202,9 @@
                   <div class="mt-7">
                     <p>แนะนำ</p>
                       <div class="grid grid-cols-2 mt-3 gap-2">
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2016 - 2018</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2018 -2020</div>
-                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">2020 -2021</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 20,000 กม.</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 40,000 กม.</div>
+                        <div class="border-2 w-44 py-3 text-center rounded-md hover:bg-gray-100">ภายใต้ 60,000 กม.</div>
                       </div>
                   </div>
                 </div>
