@@ -718,13 +718,18 @@ export default {
         console.log(image[0]);
         formData.append("carImage", image[0]);
       });
-      axios
+      if(this.images.length != 0){
+        axios
         .post(
           `http://localhost:3000/addcar/${this.loginuser.user_id}`,
           formData
         )
         .then(res => this.$router.push({ name: "home" }))
         .catch(error => console.log(error.response.data));
+      }
+      else{
+        alert('Please add your image')
+      }
     }
   }
 };

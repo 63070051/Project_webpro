@@ -5,7 +5,7 @@ const multer = require('multer')
 const { json } = require("express");
 const fs = require("fs");
 let alert = require('alert');
-
+const Joi = require("joi");
 const router = express.Router()
 
 
@@ -63,12 +63,35 @@ router.post('/getcar', async function (req, res, next) {
     }
 })
 
-
+const add_updateSchema = Joi.object({
+    car_model: Joi.string().required(),
+    car_year: Joi.number().integer().required(),
+    car_color: Joi.string().required(),
+    car_desc: Joi.string().required(),
+    car_price: Joi.string().required(),
+    car_regis: Joi.string().required(),
+    car_distance: Joi.number().integer().required(),
+    car_engine: Joi.string().required(),
+    car_gear: Joi.string().required(),
+    car_yearbought: Joi.number().integer().required(),
+    car_owner: Joi.string().required(),
+    car_num_of_gear: Joi.number().integer().required(),
+    car_type: Joi.string().required(),
+    car_brand: Joi.string().required(),
+    car_drive_type: Joi.string().required(),
+    car_act: Joi.string().required(),
+    car_num_of_door: Joi.number().integer().required()
+});
 
 router.post(
     "/addcar/:id",
     upload.array("carImage", 6),
     async function (req, res, next) {
+        try {
+            await add_updateSchema.validateAsync(req.body, { abortEarly: false });
+        } catch (err) {
+            return res.status(400).send(err);
+        }
         const conn = await pool.getConnection();
         await conn.beginTransaction();
         console.log(req.files);
@@ -207,6 +230,14 @@ router.post(
                 car_act,
                 car_num_of_door
             );
+
+            try {
+                await add_updateSchema.validateAsync(req.body, { abortEarly: false });
+            } catch (err) {
+                alert('Incomplete information.')
+                return res.status(400).send(err);
+            }
+
             const [car, field1] = await conn.query(
                 "UPDATE Car SET car_model = ?, car_modelyear = ?, car_color = ?, car_desc = ?, car_price = ?, car_regis = ?, car_distance = ?, car_engine = ?, car_gear = ?, car_yearbought = ?, car_owner = ?, car_num_of_gear = ?, car_type = ?, car_brand = ?, car_drive_type = ?, car_act = ?, car_num_of_door = ? WHERE car_id = ?",
                 [
