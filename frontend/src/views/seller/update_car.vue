@@ -766,13 +766,18 @@ export default {
         this.detailcar.seller_id == this.loginuser.user_id ||
         this.loginuser.employee_type == "employee"
       ) {
-        axios
+        if(this.images.length != 0){
+            axios
           .post(
             `http://localhost:3000/updatecar/${this.$route.params.carid}`,
             formData
           )
           .then(res => this.$router.push({ name: "home" }))
           .catch(error => console.log(error.response.data));
+        }
+        else{
+            alert('Please add your image')
+        }
       } else {
         alert("You don’t have the right to update");
         this.$router.push({ name: "home" });

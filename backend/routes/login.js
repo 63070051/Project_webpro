@@ -230,42 +230,8 @@ router.post("/connected", async function (req, res, next) {
     }
 });
 
-const updateaccountSchema = Joi.object({
-    email: Joi.string().required(),
-    firstname: Joi.string().required(),
-    lastname: Joi.string().required(),
-    address: Joi.string().required(),
-    tel: Joi.string().required(),
-});
 
 
-router.post("/update/account/:id", async function (req, res, next) {
-    let id = req.params.id;
-    let firstname = req.body.firstname;
-    let lastname = req.body.lastname;
-    let tel = req.body.tel;
-    let email = req.body.email;
-    let address = req.body.address;
-    try {
-        await updateaccountSchema.validateAsync(req.body, { abortEarly: false });
-    } catch (err) {
-        alert('Please input information');
-        return res.status(400).send(err);
-    }
-    try {
-        const [data, field] = await pool.query(
-            "UPDATE Users SET user_firstname = ?, user_lastname = ?, user_phone = ?, user_address = ?, user_email = ? WHERE user_id = ?",
-            [firstname, lastname, tel, address, email, id]
-        );
-        const [user, field1] = await pool.query(
-            "SELECT * FROM Users WHERE user_id = ?",
-            [id]
-        );
-        res.json(user[0]);
-    } catch (error) {
-        res.json('error');
-    }
-});
 router.post("/forgot", async function (req, res, next) {
     let email = req.body.email;
     let chars =
