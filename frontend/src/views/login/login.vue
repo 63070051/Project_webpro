@@ -16,13 +16,13 @@
           </div>
           <div class="mt-10 px-24 w-5/12">
             <h2
-              class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+              class="text-center text-4xl    font-display font-semibold lg:text-left xl:text-5xl
                         xl:text-bold"
             >
               Sign in
             </h2>
             <div class="mt-12">
-              <form>
+              <div>
                 <div>
                   <div class="text-sm font-bold text-gray-700 tracking-wide">
                     Username
@@ -49,11 +49,7 @@
                   <p v-show="error" class="text-red-500 pt-1">Username or Password Incorrect</p>
                 </div>
                 <div class="float-right">
-                  <a
-                    class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800 cursor-pointer"
-                  >
-                    Forgot Password?
-                  </a>
+                  <router-link to="/forgetpassword" class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800 cursor-pointer">Forgot Password?</router-link>
                 </div>
                 <div class="mt-10">
                   <button
@@ -63,7 +59,7 @@
                     Sign In
                   </button>
                 </div>
-              </form>
+              </div>
               <div
                 class="mt-12 text-sm font-display font-semibold text-gray-700 text-center"
               >

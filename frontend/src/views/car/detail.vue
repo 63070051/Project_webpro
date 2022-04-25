@@ -22,12 +22,12 @@
         <img class="w-full" :src="firstimg" alt="" />
       </div>
     </div>
-    <section>
+    <section class="max-w-7xl mx-auto">
       <div class="grid grid-cols-6 gap-4 pt-8">
         <div v-for="img in carimg" :key="img.image_no">
           <img
             @click="changefirstimg(img.car_img)"
-            class="rounded-lg"
+            class="rounded-lg h-32 w-full"
             :src="selectimgcar(img.car_img)"
             alt=""
           />
@@ -35,25 +35,127 @@
         </div>
       </div>
     </section>
-    <section class="py-4 my-4 bg-gray-200">
-      <div
-        class=" max-w-6xl mx-auto grid grid-cols-3 rounded-lg gap-8"
-      >
-        <div class="grid grid-cols-2 col-span-2 gap-4 bg-white rounded-lg ">
+    <section class="py-4 my-4 bg-gray-100">
+      <div class=" max-w-7xl mx-auto grid grid-cols-3 rounded-lg gap-8">
+        <div class="grid grid-cols-2 col-span-2 gap-8 bg-white rounded-lg p-4">
           <div>
-            <p>modelyear     xxxx</p>
-            <p>color</p>
-            <p>gear</p>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/car.svg" alt="" />
+                <p>ID</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_id }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/buyyear.svg" alt="" />
+                <p>ออกรถเมื่อ</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_yearbought }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/gear.svg" alt="" />
+                <p>ระบบเกียร์</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_gear }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/owner.svg" alt="" />
+                <p>เจ้าของ</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_owner }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/inside.svg" alt="" />
+                <p>จำนวนเกียร์</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_num_of_gear }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/inside.svg" alt="" />
+                <p>จำนวนประตู</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_num_of_door }}</p>
+              </div>
+            </div>
           </div>
           <div>
-            <p>ทะเบียน</p>
-            <p>car owner</p>
-            <p>ระยะ</p>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/regis.svg" alt="" />
+                <p>ทะเบียน</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_regis }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/distance.svg" alt="" />
+                <p>ระยะทางที่ขับ</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_distance }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/act.svg" alt="" />
+                <p>พ.ร.บ</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ convertdate(detailcar.car_act) }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/inside.svg" alt="" />
+                <p>เครื่องยนต์</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_engine }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/inside.svg" alt="" />
+                <p>ระบบขับเคลื่อน</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_drive_type }}</p>
+              </div>
+            </div>
+            <div class="flex justify-between border-b pb-1 items-center">
+              <div class="flex items-center space-x-2">
+                <img src="./svg/inside.svg" alt="" />
+                <p>ประเภทของรถ</p>
+              </div>
+              <div>
+                <p class="text-sm">{{ detailcar.car_type }}</p>
+              </div>
+            </div>
           </div>
-          
         </div>
-        <div class="bg-white p-4 rounded-lg">
-          <img src="https://cdn.discordapp.com/attachments/958256273592307722/965612398209806336/unknown.png" alt="">
+        <div class="bg-white p-4 rounded-lg flex items-center">
+          <img
+            src="https://cdn.discordapp.com/attachments/958256273592307722/965612398209806336/unknown.png"
+            alt=""
+          />
         </div>
       </div>
     </section>
@@ -73,7 +175,8 @@ export default {
       loginuser: [],
       detailcar: [],
       carimg: [],
-      firstimg: ""
+      firstimg: "",
+      act: ""
     };
   },
   components: {
@@ -94,7 +197,6 @@ export default {
         .then(response => {
           this.detailcar = response.data.detailcar;
           this.carimg = response.data.carimg;
-          console.log(this.detailcar, this.carimg);
           this.firstimg = this.selectimgcar(this.carimg[0].car_img);
         })
         .catch(error => {
@@ -111,6 +213,10 @@ export default {
     },
     changefirstimg(path) {
       this.firstimg = this.selectimgcar(path);
+    },
+    convertdate(date) {
+      let now = new Date(date);
+      return now.getMonth()+1 + '/' +now.getFullYear()
     }
   }
 };

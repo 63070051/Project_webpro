@@ -12,11 +12,13 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    meta: { guest: true },
     component: () => import('../views/login/login.vue')
   },
   {
     path: '/register',
     name: 'register',
+    meta: { guest: true },
     component: () => import('../views/login/register.vue')
   },
   {
@@ -37,21 +39,25 @@ const routes = [
   {
     path: '/vertified_seller',
     name: 'vertified_seller',
+    meta: { login: true },
     component: () => import('../views/seller/vertified_seller.vue')
   },
   {
     path: '/manageseller',
     name: 'manageseller',
+    meta: { login: true },
     component: () => import('../views/admin/manageseller.vue')
   },
   {
     path: '/profile',
     name: 'profile',
+    meta: { login: true },
     component: () => import('../views/login/profile.vue')
   },
   {
     path: '/addcar',
     name: 'addcar',
+    meta: { login: true },
     component: () => import('../views/seller/addcar.vue')
   },
   {
@@ -64,11 +70,38 @@ const routes = [
     name: 'detail',
     component: () => import('../views/car/detail.vue')
   },
+  {
+    path: '/forgetpassword',
+    name: 'forgetpassword',
+    meta: { guest: true },
+    component: () => import('../views/login/forgetpassword.vue')
+  },
+  {
+    path: '/update_car/:carid',
+    name: 'update_car',
+    meta: { login: true },
+    component: () => import('../views/seller/update_car.vue')
+  },
 ]
-
+//You don’t have the right to update
 
 const router = new VueRouter({
   routes
+})
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = !!localStorage.getItem('user')
+
+  if (to.meta.login && !isLoggedIn) {
+    alert('Please login first!')
+    next({ path: '/login' })
+  }
+
+  if (to.meta.guest && isLoggedIn) {
+    alert("You've already logged in")
+    next({ path: '/'})
+  }
+
+  next()
 })
 
 export default router

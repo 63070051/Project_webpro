@@ -214,7 +214,7 @@ export default {
       birth: Date,
       gender: "Selected",
       checkpassword: false,
-      checkpassword2: false  
+      checkpassword2: false  ,
     };
   },
   methods: {
@@ -241,7 +241,12 @@ export default {
             idcard: this.idcard,
           })
           .then(response => {
-            this.$router.push("/login");
+            console.log(response.data)
+            if(response.data != 'success'){
+              alert(response.data)
+            }else{
+              this.$router.push("/login");
+            }
           })
           .catch(error => {
             this.error = error.response.data.message;
