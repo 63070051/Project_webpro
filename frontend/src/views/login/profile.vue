@@ -177,7 +177,8 @@ export default {
       this.$router.push("/");
     },
     commit() {
-      axios
+      if (confirm('Are you confirm?')){
+        axios
         .post(
           `http://localhost:3000/update/account/${this.loginuser.user_id}`,
           {
@@ -199,6 +200,8 @@ export default {
           console.log("error");
           this.error = error.response.data.message;
         });
+      }
+      
     }
   }
 };

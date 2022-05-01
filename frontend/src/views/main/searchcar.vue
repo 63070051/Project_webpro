@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="max-w-6xl mx-auto mt-10">
+    <div class="max-w-7xl mx-auto mt-10">
       <div class="flex items-center space-x-3 mb-5">
         <div
-          class="centered h-5 w-5 bg-cover bg-center"
+          class="centered h-5 w-5 bg-center"
           style="
-            background-image: url('https://cdn.discordapp.com/attachments/958256273592307722/965169133807337472/search1.png');
+            background-image: url('https://www.cars24.co.th/th/static/js/908298b053135f9e4dc1dc8b8e2ad47f.svg');
           "
         ></div>
         <input
@@ -24,7 +24,7 @@
           placeholder=""
         />
       </div>
-      <div class="grid grid-cols-5 gap-4">
+      <div class="grid grid-cols-6 gap-4">
         <div class="inline-block relative">
           <button
             @click="
@@ -32,7 +32,8 @@
                 (yearactive = false),
                 (distanceactive = false),
                 (brandactive = false),
-                (coloractive = false)
+                (coloractive = false),
+                 (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -143,7 +144,8 @@
                 (yearactive = false),
                 (priceactive = false),
                 (coloractive = false),
-                (distanceactive = false)
+                (distanceactive = false),
+                 (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -250,7 +252,8 @@
                 (priceactive = false),
                 (distanceactive = false),
                 (coloractive = false),
-                (brandactive = false)
+                (brandactive = false),
+                 (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -341,7 +344,8 @@
                 (brandactive = false),
                 (yearactive = false),
                 (priceactive = false),
-                (coloractive = false)
+                (coloractive = false),
+                (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -432,7 +436,8 @@
                 (priceactive = false),
                 (distanceactive = false),
                 (brandactive = false),
-                (yearactive = false)
+                (yearactive = false),
+                 (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -620,10 +625,84 @@
             </div>
           </div>
         </div>
+        <div class="inline-block relative">
+          <button
+            @click="
+              (typeactive = typeactive ? false : true),
+                (brandactive = false),
+                (yearactive = false),
+                (priceactive = false),
+                (coloractive = false),
+                (distanceactive = false)
+            "
+            class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
+          >
+            <p>ประเภทรถ</p>
+            <svg
+              class="fill-current h-4 w-4 text-amber-600"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </button>
+          <div
+            class="absolute hidden text-gray-700 pt-1 drop-shadow-md"
+            :class="[typeactive ? 'dropdown-active' : '']"
+          >
+            <div
+              style="width: 470px; height: 400px"
+              class="bg-white rounded-lg z-50 flex flex-col justify-between"
+            >
+              <div class=" px-6 py-5">
+                <p class="">ประเภทรถ</p>
+                <div class="grid grid-cols-3 gap-4 mt-5">
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/5ea1c908dc78004f8b5938319d75b10b.svg" alt="">
+                    <p class="text-xs mt-2">รถเก๋ง 4 ประตู</p>
+                  </div>
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/011fae70a431e3b54337c4ecda2edb95.svg" alt="">
+                    <p class="text-xs mt-2">รถกระบะ</p>
+                  </div>
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/6e99b56a701c6b33513c3ed5fd6fecdd.png" alt="">
+                    <p class="text-xs mt-2">รถเก๋ง 5 ประตู</p>
+                  </div>
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/85b73be73930f19663cdab1fd1080920.svg" alt="">
+                    <p class="text-xs mt-2">SUV</p>
+                  </div>
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/84550e971e82448925e5058f0d2db357.svg" alt="">
+                    <p class="text-xs mt-2">7 Seater</p>
+                  </div>
+                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                    <img src="https://www.cars24.co.th/th/static/js/3a2b8068cdf30e98a72ff84f98f655ad.svg" alt="">
+                    <p class="text-xs mt-2">MPV</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="h-24 shadow-lg w-full flex justify-center items-center "
+                style="box-shadow: 1px -7px 22px -3px rgba(0,0,0,0.16);"
+              >
+                <div
+                  @click="resetmiles"
+                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                >
+                  Reset
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div @click="closemodal()">
-      <div class="max-w-5xl mx-auto py-4" style="min-height: 500px;">
+      <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
         <div class="grid grid-cols-3 gap-8">
           <div
             class="flex justify-center cursor-pointer"
@@ -641,7 +720,7 @@
               </div>
 
               <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-medium">
+                <h5 class="text-gray-900 text-xl font-bold">
                   {{ car.car_model }}
                 </h5>
                 <p class="text-gray-700 text-base">
@@ -686,6 +765,7 @@ export default {
       coloractive: false,
       brandactive: false,
       yearactive: false,
+      typeactive: false,
       minyear: 0,
       maxyear: 0,
       minmile: 0,
@@ -846,6 +926,7 @@ export default {
       this.coloractive = false;
       this.brandactive = false;
       this.yearactive = false;
+      this.typeactive = false;
     }
   }
 };
