@@ -201,7 +201,7 @@ router.post("/connected", async function (req, res, next) {
     try {
         await loginSchema.validateAsync(req.body, { abortEarly: false });
     } catch (err) {
-        return res.status(400).send(err);
+        return res.json("error");
     }
     const [data, field] = await pool.query(
         "SELECT login_username, login_password, user_id FROM Login WHERE login_username = ?",

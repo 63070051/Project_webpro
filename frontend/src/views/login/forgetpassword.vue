@@ -138,24 +138,28 @@ export default {
         });
     },
     changepassword() {
+      
       if (this.passcode == this.emailpasscode && (this.passcode != "" || this.emailpasscode != "")) {
-        axios
-          .post(`http://localhost:3000/changepassword`, {
-            password: this.newpassword,
-            email : this.email
-          })
-          .then(response => {
-            alert('success')
-            this.$router.push('/login')
-          })
-          .catch(error => {
-          console.log("error");
-          this.error = error.response.data.message;
-        });
+        if (confirm('Confirm new password?')){
+          axios
+            .post(`http://localhost:3000/changepassword`, {
+              password: this.newpassword,
+              email : this.email
+            })
+            .then(response => {
+              alert('success')
+              this.$router.push('/login')
+            })
+            .catch(error => {
+            console.log("error");
+            this.error = error.response.data.message;
+          });
+        }
       }
       else{
           alert('Incorrect Passcode')
       }
+      
     },
     checklength(){
         if(this.newpassword.length < 8){

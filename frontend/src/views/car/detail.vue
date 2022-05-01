@@ -1,23 +1,35 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="max-w-4xl mx-auto">
-      <div class="flex justify-center items-center pt-12 w-full">
-        <div class="space-y-4">
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <p>2013 Mazda 2</p>
-              <p>
-                1.3 Skyactiv High Connect | เกียร์อัตโนมัติ | 40,021 กม. |
-                เบนซิน
-              </p>
+    <div class="max-w-5xl mx-auto">
+      <div class="flex justify-between py-4 h-28 items-center">
+        <div>
+          <p class="text-2xl font-black">2019 Toyota Fortuner</p>
+          <div class="flex gap-2">
+            <p>2.4 V</p>
+            <p>|</p>
+            <p>Automatic</p>
+            <p>|</p>
+            <p>45,476 กม.</p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="text-right mr-7 px-7 border-r-2 borer-gray-400">
+            <p class="font-bold text-xl text-amber-500">1,072,000 บาท</p>
+            <p class="text-xs text-gray-400">1,147,040 บาท (รวมภาษี 7% แล้ว)</p>
+          </div>
+          <div class="flex gap-4">
+            <div class="border-2 border-amber-500 w-12 h-12 rounded-xl flex justify-center items-center">
+              <img width="26" src="https://www.cars24.co.th/th/static/js/2be457deb3cc0c5e4eccf46297b7004a.svg" alt="">
             </div>
-            <div>
-              <p>999999999999</p>
+            <div class="w-28 bg-amber-500 flex justify-center items-center rounded-xl">
+              <p class="text-white font-bold">จองรถ</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="max-w-5xl mx-auto">
       <div>
         <img class="w-full" :src="firstimg" alt="" />
       </div>
@@ -35,7 +47,7 @@
         </div>
       </div>
     </section>
-    <section class="py-4 my-4 bg-gray-100">
+    <section class="py-4 mt-4 bg-gray-100">
       <div class=" max-w-7xl mx-auto grid grid-cols-3 rounded-lg gap-8">
         <div class="grid grid-cols-2 col-span-2 gap-8 bg-white rounded-lg p-4">
           <div>
@@ -140,7 +152,7 @@
                 <p class="text-sm">{{ detailcar.car_drive_type }}</p>
               </div>
             </div>
-            <div class="flex justify-between border-b pb-1 items-center">
+            <div class="flex justify-between border-b pb-1 items-centers">
               <div class="flex items-center space-x-2">
                 <img src="./svg/inside.svg" alt="" />
                 <p>ประเภทของรถ</p>
@@ -151,9 +163,9 @@
             </div>
           </div>
         </div>
-        <div class="bg-white p-4 rounded-lg flex items-center">
+        <div class="bg-white p-4 rounded-lg flex items-center justify-center">
           <img
-            src="https://cdn.discordapp.com/attachments/958256273592307722/965612398209806336/unknown.png"
+            src="https://www.cars24.co.th/th/static/js/35cfef50af690a20611b6fd583ae286d.svg"
             alt=""
           />
         </div>
