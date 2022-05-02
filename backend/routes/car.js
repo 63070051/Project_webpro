@@ -318,4 +318,30 @@ router.post(
         }
     }
 );
+
+router.post('/compare', async function (req, res, next) {
+    let firstcar = req.body.car1;
+    let secondcar = req.body.car2;
+    try {
+        const [detailfirstcar, field] = await pool.query(
+            'SELECT * FROM Car WHERE car_id = ?', [
+            firstcar
+        ]
+        )
+        const [detailsecondcar, field1] = await pool.query(
+            'SELECT * FROM Car WHERE car_id = ?', [
+            secondcar
+        ]
+        )
+        res.json({
+            detailfirstcar: detailfirstcar[0],
+            detailsecondcar: detailsecondcar[0]
+        })
+    } catch (error) {
+        res.json(error)
+    }
+})
+
+
+
 module.exports = router

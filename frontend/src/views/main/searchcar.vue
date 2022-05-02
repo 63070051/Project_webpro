@@ -9,20 +9,28 @@
             background-image: url('https://www.cars24.co.th/th/static/js/908298b053135f9e4dc1dc8b8e2ad47f.svg');
           "
         ></div>
-        <input
-          v-model="instead"
-          :class="[searchactive? 'border-gray-300' : '']"
-          class="
+        <div class="w-full">
+          <input
+            v-model="instead"
+            class="
+            input-border
             w-full
             text-lg
-            focus:outline-none focus:border-indigo-500
+            px-2
+            py-1
           "
-          type="text"
-          id="searchbox"
-          name="searchbox"
-          placeholder=""
-        />
-        <p class="w-20 border-b-2 text-center border-sky-700 text-sky-700 font-bold cursor-pointer" @click="resetall">ตั้งค่าใหม่</p>
+            type="text"
+            id="searchbox"
+            name="searchbox"
+            placeholder=""
+          />
+        </div>
+        <p
+          class="w-20 border-b-2 text-center border-sky-700 text-sky-700 font-bold cursor-pointer"
+          @click="resetall"
+        >
+          ตั้งค่าใหม่
+        </p>
       </div>
       <div class="grid grid-cols-6 gap-4">
         <div class="inline-block relative">
@@ -33,7 +41,7 @@
                 (distanceactive = false),
                 (brandactive = false),
                 (coloractive = false),
-                 (typeactive = false)
+                (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -145,7 +153,7 @@
                 (priceactive = false),
                 (coloractive = false),
                 (distanceactive = false),
-                 (typeactive = false)
+                (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -253,7 +261,7 @@
                 (distanceactive = false),
                 (coloractive = false),
                 (brandactive = false),
-                 (typeactive = false)
+                (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -437,7 +445,7 @@
                 (distanceactive = false),
                 (brandactive = false),
                 (yearactive = false),
-                 (typeactive = false)
+                (typeactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -659,28 +667,77 @@
               <div class=" px-6 py-5">
                 <p class="">ประเภทรถ</p>
                 <div class="grid grid-cols-3 gap-4 mt-5">
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[fourdoor? 'border-black' : 'border-gray-200']" @click="fourdoor = !fourdoor, FillterType('Sedan', fourdoor)">
-                    <img src="https://www.cars24.co.th/th/static/js/5ea1c908dc78004f8b5938319d75b10b.svg" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[fourdoor ? 'border-black' : 'border-gray-200']"
+                    @click="
+                      (fourdoor = !fourdoor), FillterType('Sedan', fourdoor)
+                    "
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/5ea1c908dc78004f8b5938319d75b10b.svg"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">รถเก๋ง 4 ประตู</p>
                   </div>
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[pickup? 'border-black' : 'border-gray-200']" @click="pickup = !pickup, FillterType('Pickup', pickup)">
-                    <img src="https://www.cars24.co.th/th/static/js/011fae70a431e3b54337c4ecda2edb95.svg" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[pickup ? 'border-black' : 'border-gray-200']"
+                    @click="(pickup = !pickup), FillterType('Pickup', pickup)"
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/011fae70a431e3b54337c4ecda2edb95.svg"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">รถกระบะ</p>
                   </div>
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[fivedoor? 'border-black' : 'border-gray-200']" @click="fivedoor = !fivedoor, FillterType('Hatchback', fivedoor)">
-                    <img src="https://www.cars24.co.th/th/static/js/6e99b56a701c6b33513c3ed5fd6fecdd.png" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[fivedoor ? 'border-black' : 'border-gray-200']"
+                    @click="
+                      (fivedoor = !fivedoor), FillterType('Hatchback', fivedoor)
+                    "
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/6e99b56a701c6b33513c3ed5fd6fecdd.png"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">รถเก๋ง 5 ประตู</p>
                   </div>
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[suv? 'border-black' : 'border-gray-200']" @click="suv = !suv, FillterType('SUV', suv)">
-                    <img src="https://www.cars24.co.th/th/static/js/85b73be73930f19663cdab1fd1080920.svg" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[suv ? 'border-black' : 'border-gray-200']"
+                    @click="(suv = !suv), FillterType('SUV', suv)"
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/85b73be73930f19663cdab1fd1080920.svg"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">SUV</p>
                   </div>
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[sevenseat? 'border-black' : 'border-gray-200']" @click="sevenseat = !sevenseat, FillterType('7 seater', sevenseat)">
-                    <img src="https://www.cars24.co.th/th/static/js/84550e971e82448925e5058f0d2db357.svg" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[sevenseat ? 'border-black' : 'border-gray-200']"
+                    @click="
+                      (sevenseat = !sevenseat),
+                        FillterType('7 seater', sevenseat)
+                    "
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/84550e971e82448925e5058f0d2db357.svg"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">7 Seater</p>
                   </div>
-                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[mpv? 'border-black' : 'border-gray-200']" @click="mpv = !mpv, FillterType('MPV', mpv)">
-                    <img src="https://www.cars24.co.th/th/static/js/3a2b8068cdf30e98a72ff84f98f655ad.svg" alt="">
+                  <div
+                    class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer"
+                    :class="[mpv ? 'border-black' : 'border-gray-200']"
+                    @click="(mpv = !mpv), FillterType('MPV', mpv)"
+                  >
+                    <img
+                      src="https://www.cars24.co.th/th/static/js/3a2b8068cdf30e98a72ff84f98f655ad.svg"
+                      alt=""
+                    />
                     <p class="text-xs mt-2">MPV</p>
                   </div>
                 </div>
@@ -904,14 +961,14 @@ export default {
         style: "currency",
         currency: "THB"
       }).format(price);
-      return price2.slice(4, price2.length - 3) + ' บาท'
+      return price2.slice(4, price2.length - 3) + " บาท";
     },
     convertdistance(km) {
       let dis = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "THB"
       }).format(km);
-      return dis.slice(4, dis.length - 3) + ' กม.'
+      return dis.slice(4, dis.length - 3) + " กม.";
     },
     resetbrand() {
       document.querySelectorAll(".brand").forEach(e => {
@@ -943,13 +1000,13 @@ export default {
       this.closemodal();
     },
     resettype() {
-      this.cartype = []
-      this.fourdoor = false
-      this.pickup = false
-      this.fivedoor = false
-      this.suv = false
-      this.sevenseat = false
-      this.mpv = false
+      this.cartype = [];
+      this.fourdoor = false;
+      this.pickup = false;
+      this.fivedoor = false;
+      this.suv = false;
+      this.sevenseat = false;
+      this.mpv = false;
     },
     resetall() {
       this.resetbrand();
