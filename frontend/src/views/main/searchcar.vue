@@ -727,11 +727,11 @@
                   {{ car.car_engine + " / " + car.car_gear }}
                 </p>
                 <p class="pb-2 border-b border-gray-300">
-                  {{ convertdistance(car.car_distance) }}
+                  {{car.car_distance}}
                 </p>
                 <div class="flex justify-between">
                   <p class="text-orange-500 font-bold text-xl float-right">
-                    {{ convertprice(car.car_price) }}
+                    {{car.car_price}}
                   </p>
                 </div>
               </div>

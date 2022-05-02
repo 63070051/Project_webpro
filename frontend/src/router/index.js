@@ -71,6 +71,11 @@ const routes = [
     component: () => import('../views/car/detail.vue')
   },
   {
+    path: '/compare',
+    name: 'compare',
+    component: () => import('../views/car/compare.vue')
+  },
+  {
     path: '/forgetpassword',
     name: 'forgetpassword',
     meta: { guest: true },
