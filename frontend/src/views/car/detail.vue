@@ -4,19 +4,19 @@
     <div class="max-w-5xl mx-auto">
       <div class="flex justify-between py-4 h-28 items-center">
         <div>
-          <p class="text-2xl font-black">2019 Toyota Fortuner</p>
+          <p class="text-2xl font-black">{{detailcar.car_model}}</p>
           <div class="flex gap-2">
-            <p>2.4 V</p>
+            <p>{{detailcar.car_engine}}</p>
             <p>|</p>
-            <p>Automatic</p>
+            <p>{{detailcar.car_gear}}</p>
             <p>|</p>
-            <p>45,476 กม.</p>
+            <p>{{convertdistance(detailcar.car_distance)}}</p>
           </div>
         </div>
         <div class="flex">
           <div class="text-right mr-7 px-7 border-r-2 borer-gray-400">
-            <p class="font-bold text-xl text-amber-500">1,072,000 บาท</p>
-            <p class="text-xs text-gray-400">1,147,040 บาท (รวมภาษี 7% แล้ว)</p>
+            <p class="font-bold text-xl text-amber-500">{{convertprice(detailcar.car_price)}}</p>
+            <p class="text-xs text-gray-400">{{convertvat(detailcar.car_price)}} (รวมภาษี 7% แล้ว)</p>
           </div>
           <div class="flex gap-4">
             <div class="border-2 border-amber-500 w-12 h-12 rounded-xl flex justify-center items-center">
@@ -122,7 +122,7 @@
                 <p>ระยะทางที่ขับ</p>
               </div>
               <div>
-                <p class="text-sm">{{ detailcar.car_distance }}</p>
+                <p class="text-sm">{{ convertdistance(detailcar.car_distance) }}</p>
               </div>
             </div>
             <div class="flex justify-between border-b pb-1 items-center">
@@ -157,7 +157,7 @@
                 <img src="./svg/inside.svg" alt="" />
                 <p>ประเภทของรถ</p>
               </div>
-              <div>
+              <div class="flex items-center">
                 <p class="text-sm">{{ detailcar.car_type }}</p>
               </div>
             </div>
@@ -229,6 +229,28 @@ export default {
     convertdate(date) {
       let now = new Date(date);
       return now.getMonth()+1 + '/' +now.getFullYear()
+    },
+    convertdistance(km) {
+      let dis = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(km);
+      return dis.slice(4, dis.length - 3) + ' กม.'
+    },
+    convertprice(price) {
+      let price2 = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(price);
+      return price2.slice(4, price2.length - 3) + ' บาท'
+    },
+    convertvat(price){
+     let vat = price * 1.07
+     vat = new Intl.NumberFormat("en-Us", {
+       style: "currency",
+       currency: "THB"
+     }).format(vat);
+     return vat.slice(4, vat.length - 3) + ' บาท'
     }
   }
 };

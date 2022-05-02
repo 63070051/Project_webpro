@@ -32,7 +32,7 @@
                 src="https://cdn.discordapp.com/attachments/958256273592307722/962345035599339582/phone.png"
                 alt=""
               />
-              <p>+66 2508 8646</p>
+              <p>+08 5553 5835</p>
             </div>
             <div class="flex space-x-4">
               <img
@@ -40,7 +40,7 @@
                 src="https://cdn-icons-png.flaticon.com/512/893/893257.png"
                 alt=""
               />
-              <p>TH.support@cars24.com</p>
+              <p>TH.support@autostyle.com</p>
             </div>
             <div class="flex space-x-4">
               <div class="w-6 h-6 absolute">
@@ -51,8 +51,7 @@
                 />
               </div>
               <p class="pl-6">
-                188 WeWork อาคารสปริงทาวเวอร์ ชั้นที่ 12 ถนน พญาไท แขวง
-                ทุ่งพญาไท เขตราชเทวี กรุงเทพมหานคร 10400
+                98/34  บลอสซั่มคอนโด แอท แฟชั่น อัลทิทูต แขวง คันนายาว เขตคันนายาว กรุงเทพมหานคร 10230
               </p>
             </div>
           </div>
@@ -139,9 +138,9 @@
         </div>
         <div class="mx-auto">
           <p class="text-xl">ข้อมูลที่เป็นประโยชน์</p>
-          <div class="space-y-6 mt-9 text-gray-500">
-            <p>ค้นหารถ</p>
-            <p>เกี่ยวกับเรา</p>
+          <div class="space-y-6 mt-9 text-gray-500 flex flex-col">
+            <router-link to="/searchcar" class="cursor-pointer" onclick="backToTop()">ค้นหารถ</router-link>
+            <router-link to="/about" class="cursor-pointer" onclick="backToTop()">เกี่ยวกับเรา</router-link>
             <p>ติดต่อเรา</p>
             <p>แผนผังเว็บไซต์</p>
           </div>
@@ -160,10 +159,10 @@
         "
       >
         <div>
-          <p>© CARS24 2021</p>
+          <p>© AUTOSTYLE 2022</p>
         </div>
         <div class="flex space-x-3 text-gray-500">
-          <p>คำถามที่พบบ่อย</p>
+          <router-link to="/question" onclick="backToTop()">คำถามที่พบบ่อย</router-link>
           <p>|</p>
           <p>นโยบายความเป็นส่วนตัว</p>
           <p>|</p>
