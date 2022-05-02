@@ -11,11 +11,10 @@
         ></div>
         <input
           v-model="instead"
+          :class="[searchactive? 'border-gray-300' : '']"
           class="
             w-full
             text-lg
-            py-2
-            border-b border-gray-300
             focus:outline-none focus:border-indigo-500
           "
           type="text"
@@ -23,6 +22,7 @@
           name="searchbox"
           placeholder=""
         />
+        <p class="w-20 border-b-2 text-center border-sky-700 text-sky-700 font-bold cursor-pointer" @click="resetall">ตั้งค่าใหม่</p>
       </div>
       <div class="grid grid-cols-6 gap-4">
         <div class="inline-block relative">
@@ -129,7 +129,7 @@
               >
                 <div
                   @click="resetprice"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -237,7 +237,7 @@
               >
                 <div
                   @click="resetbrand"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -329,7 +329,7 @@
               >
                 <div
                   @click="resetyear"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -421,7 +421,7 @@
               >
                 <div
                   @click="resetmiles"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -617,7 +617,7 @@
               >
                 <div
                   @click="resetcolor"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -659,27 +659,27 @@
               <div class=" px-6 py-5">
                 <p class="">ประเภทรถ</p>
                 <div class="grid grid-cols-3 gap-4 mt-5">
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[fourdoor? 'border-black' : 'border-gray-200']" @click="fourdoor = !fourdoor, FillterType('Sedan', fourdoor)">
                     <img src="https://www.cars24.co.th/th/static/js/5ea1c908dc78004f8b5938319d75b10b.svg" alt="">
                     <p class="text-xs mt-2">รถเก๋ง 4 ประตู</p>
                   </div>
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[pickup? 'border-black' : 'border-gray-200']" @click="pickup = !pickup, FillterType('Pickup', pickup)">
                     <img src="https://www.cars24.co.th/th/static/js/011fae70a431e3b54337c4ecda2edb95.svg" alt="">
                     <p class="text-xs mt-2">รถกระบะ</p>
                   </div>
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[fivedoor? 'border-black' : 'border-gray-200']" @click="fivedoor = !fivedoor, FillterType('Hatchback', fivedoor)">
                     <img src="https://www.cars24.co.th/th/static/js/6e99b56a701c6b33513c3ed5fd6fecdd.png" alt="">
                     <p class="text-xs mt-2">รถเก๋ง 5 ประตู</p>
                   </div>
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[suv? 'border-black' : 'border-gray-200']" @click="suv = !suv, FillterType('SUV', suv)">
                     <img src="https://www.cars24.co.th/th/static/js/85b73be73930f19663cdab1fd1080920.svg" alt="">
                     <p class="text-xs mt-2">SUV</p>
                   </div>
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[sevenseat? 'border-black' : 'border-gray-200']" @click="sevenseat = !sevenseat, FillterType('7 seater', sevenseat)">
                     <img src="https://www.cars24.co.th/th/static/js/84550e971e82448925e5058f0d2db357.svg" alt="">
                     <p class="text-xs mt-2">7 Seater</p>
                   </div>
-                  <div class="py-2 px-2 border-gray-200 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl">
+                  <div class="py-2 px-2 border-2 w-32 h-24 flex flex-col justify-center items-center rounded-xl cursor-pointer" :class="[mpv? 'border-black' : 'border-gray-200']" @click="mpv = !mpv, FillterType('MPV', mpv)">
                     <img src="https://www.cars24.co.th/th/static/js/3a2b8068cdf30e98a72ff84f98f655ad.svg" alt="">
                     <p class="text-xs mt-2">MPV</p>
                   </div>
@@ -690,8 +690,8 @@
                 style="box-shadow: 1px -7px 22px -3px rgba(0,0,0,0.16);"
               >
                 <div
-                  @click="resetmiles"
-                  class="w-60 text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
+                  @click="resettype"
+                  class="w-60 cursor-pointer text-center font-extrabold text-lg rounded-md bg-orange-500 text-white py-3 hover:bg-white hover:text-orange-500  border-2 border-orange-500"
                 >
                   Reset
                 </div>
@@ -727,7 +727,7 @@
                   {{ car.car_engine + " / " + car.car_gear }}
                 </p>
                 <p class="pb-2 border-b border-gray-300">
-                  {{ car.car_distance }} ก.ม.
+                  {{ convertdistance(car.car_distance) }}
                 </p>
                 <div class="flex justify-between">
                   <p class="text-orange-500 font-bold text-xl float-right">
@@ -760,6 +760,7 @@ export default {
       maxprice: 0,
       instead: "",
       color: [],
+      cartype: [],
       priceactive: false,
       distanceactive: false,
       coloractive: false,
@@ -769,7 +770,13 @@ export default {
       minyear: 0,
       maxyear: 0,
       minmile: 0,
-      maxmile: 0
+      maxmile: 0,
+      fourdoor: false,
+      pickup: false,
+      fivedoor: false,
+      suv: false,
+      sevenseat: false,
+      mpv: false
     };
   },
   components: {
@@ -791,6 +798,11 @@ export default {
       if (this.color.length != 0) {
         car_copy = car_copy.filter(car =>
           this.color.some(val => car.car_color.match(val))
+        );
+      }
+      if (this.cartype.length != 0) {
+        car_copy = car_copy.filter(car =>
+          this.cartype.some(val => car.car_type.match(val))
         );
       }
       if (this.minprice > 0 || this.maxprice > 0) {
@@ -874,15 +886,32 @@ export default {
         this.color.splice(index, 1);
       }
     },
+    FillterType(type, check) {
+      console.log(1);
+      if (check) {
+        this.cartype.push(type);
+      } else {
+        let index = this.cartype.indexOf(type);
+        this.cartype.splice(index, 1);
+      }
+    },
     ChangePrice(minprice, maxprice) {
       this.minprice = minprice;
       this.maxprice = maxprice;
     },
     convertprice(price) {
-      return new Intl.NumberFormat("en-US", {
+      let price2 = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "THB"
       }).format(price);
+      return price2.slice(4, price2.length - 3) + ' บาท'
+    },
+    convertdistance(km) {
+      let dis = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(km);
+      return dis.slice(4, dis.length - 3) + ' กม.'
     },
     resetbrand() {
       document.querySelectorAll(".brand").forEach(e => {
@@ -913,12 +942,22 @@ export default {
       this.minmile = 0;
       this.closemodal();
     },
+    resettype() {
+      this.cartype = []
+      this.fourdoor = false
+      this.pickup = false
+      this.fivedoor = false
+      this.suv = false
+      this.sevenseat = false
+      this.mpv = false
+    },
     resetall() {
       this.resetbrand();
       this.resetcolor();
       this.resetprice();
       this.resetmiles();
       this.resetyear();
+      this.resettype();
     },
     closemodal() {
       this.priceactive = false;
