@@ -5,47 +5,47 @@
       <!-- <div class="flex justify-center my-8">
         <img width="100px" class="rounded-full" src="https://cdn.discordapp.com/attachments/958256273592307722/964456831676219473/verified-users.png" alt="">
       </div> -->
-      <div class="max-w-6xl mx-auto  my-4 bg-gray-300 px-6 rounded-2xl space-y-8 ">
-      <div class="flex flex-col ">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 ">
-          <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8 ">
-            <div class="overflow-hidden">
-              <table class="min-w-full text-center">
-                <thead class="border-b bg-gray-800 ">
+      <div class="max-w-7xl mx-auto  my-8 bg-white px-6 rounded-2xl space-y-8 ">
+      <div class="flex flex-col rounded-2xl">
+        <div class="overflow-x-auto lg:-mx-6 lg:-mx-8 rounded-2xl">
+          <div class="py-8 inline-block min-w-full lg:px-6 lg:px-8  ">
+            <div class="overflow-hidden rounded-2xl">
+              <table class="min-w-full text-center ">
+                <thead class="border-b bg-sky-800 ">
                   <tr>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       ID
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       First
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       Last
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       Tel
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       E-mail
                     </th>
                     <th
                       scope="col"
-                      class="text-sm font-medium text-white px-6 py-4"
+                      class="text-2xl font-medium text-white px-6 py-4"
                     >
                       Vertified
                     </th>
@@ -54,32 +54,32 @@
                 <tbody>
                   <tr class="bg-white border-b border-black" v-for="seller, index in selleruser" :key="seller.user_id">
                     <td
-                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900"
                     >
                       {{seller.user_id}}
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-lg text-gray-900 font-bold px-6 py-4 whitespace-nowrap"
                     >
                       {{seller.user_firstname}}
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-lg text-gray-900 font-bold px-6 py-4 whitespace-nowrap"
                     >
                       {{seller.user_lastname}}
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-lg text-gray-900 font-bold px-6 py-4 whitespace-nowrap"
                     >
                       {{seller.user_phone}}
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-lg text-gray-900 font-bold px-6 py-4 whitespace-nowrap"
                     >
                       {{seller.user_email}}
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-lg text-gray-900 font-bold px-6 py-4 whitespace-nowrap"
                     >
                       <button
                         v-show="seller.s_vertified != 'Vertified'"
