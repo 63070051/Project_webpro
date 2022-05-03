@@ -13,7 +13,6 @@ router.post("/seller/:id", async function (req, res, next) {
       "SELECT * FROM Users WHERE user_id = ?",
       [req.params.id]
     );
-    console.log(row);
     return res.json(row);
   } catch (err) {
     return res.status(500).json(err);
@@ -35,7 +34,6 @@ router.post("/getseller", async function (req, res, next) {
     const [row, field] = await pool.query(
       "SELECT * FROM Users JOIN Seller USING(user_id)"
     );
-    console.log(row);
     return res.json(row);
   } catch (err) {
     next(err);
@@ -51,7 +49,6 @@ router.post("/vertifiedseller/:id", async function (req, res, next) {
       "UPDATE Users SET `seller_type` = 1 WHERE user_id = ?",
       [req.params.id]
     );
-    console.log(row);
     return res.json("success");
   } catch (err) {
     next(err);
@@ -67,7 +64,6 @@ router.post("/cancelseller/:id", async function (req, res, next) {
       "UPDATE Users SET `seller_type` = 0 WHERE user_id = ?",
       [req.params.id]
     );
-    console.log(row);
     return res.json("success");
   } catch (err) {
     return res.status(500).json(err);

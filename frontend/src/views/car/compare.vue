@@ -345,6 +345,8 @@ export default {
   },
   mounted() {
     this.getdata();
+    this.getfirstcar();
+    this.getsescondcar();
   },
   methods: {
     getdata() {

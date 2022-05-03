@@ -171,7 +171,6 @@ router.post("/register/account", async function (req, res, next) {
                 ]
             );
             user_id = user[0].insertId;
-            console.log(user_id);
             const addcus = await conn.query(
                 "INSERT INTO Customer(cus_vertified, user_id) VALUES(?, ?)",
                 [cus_vertified, user_id]
@@ -221,7 +220,6 @@ router.post("/connected", async function (req, res, next) {
             dataname = data[0].login_username;
             datapassword = data[0].login_password;
         }
-        console.log(data[0]);
         if (dataname == username && datapassword == password) {
             res.json(user[0]);
         } else {

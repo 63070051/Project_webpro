@@ -71,7 +71,7 @@ const routes = [
     component: () => import('../views/car/detail.vue')
   },
   {
-    path: '/compare',
+    path: '/compare/:firstcar/:secondcar',
     name: 'compare',
     component: () => import('../views/car/compare.vue')
   },

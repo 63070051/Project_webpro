@@ -126,7 +126,6 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
-      console.log(this.loginuser);
     },
     signout(){
         localStorage.removeItem("user");

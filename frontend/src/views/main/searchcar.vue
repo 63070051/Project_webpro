@@ -6,31 +6,20 @@
         <p>เปรียบเทียบรถยนต์</p>
       </button>
       <div class="hidden" :class="[compareactive ? 'dropdown-active' : '']">
-        <div class="w-72 bg-gray-100">
-          <div class="flex py-3 pl-3 pr-5 justify-between">
-            <img width="100px" src="https://fastly-production.24c.in/hello-ar/dev/uploads/76f466e0-bf53-4e2a-ac95-977b67a551f3/82d26e5a-0edc-4f97-a281-8da702b1e964/62.jpg?w=1035&h=505&auto=format" alt="">
-            <img width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+        <div class="w-72 bg-gray-100" v-for="carcom, index in comparecar" :key="carcom.car_id">
+          <div class="grid grid-cols-2 py-3 pl-3 pr-5">
+            <img width="100px" :src=selectimgcar(carcom.car_img) alt="">
+            <img @click="deletecompare(carcom, index)" width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
             <div>
-              <p class="text-xs font-bold">2017 Toyota Corolla Altis</p>
-              <p class="text-xs">1.6 G Sedan</p>
-              <p class="text-sm text-orange-500">507,000 บาท</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-72 bg-gray-100">
-          <div class="flex py-3 pl-3 pr-5 justify-between">
-            <img width="100px" src="https://fastly-production.24c.in/hello-ar/dev/uploads/76f466e0-bf53-4e2a-ac95-977b67a551f3/82d26e5a-0edc-4f97-a281-8da702b1e964/62.jpg?w=1035&h=505&auto=format" alt="">
-            <img width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
-            <div>
-              <p class="text-xs font-bold">2017 Toyota Corolla Altis</p>
-              <p class="text-xs">1.6 G Sedan</p>
-              <p class="text-sm text-orange-500">507,000 บาท</p>
+              <p class="text-xs font-bold text-start">{{carcom.car_model}}</p>
+              <p class="text-xs">{{carcom.car_engine + ' ' + carcom.car_type}}</p>
+              <p class="text-sm text-orange-500">{{convertprice(carcom.car_price)}}</p>
             </div>
           </div>
         </div>
         <div class="bg-gray-100 flex justify-center pb-2">
-          <div class="w-60 text-center bg-sky-700 text-white py-1 rounded cursor-pointer">
-            <p class="">เปรียบเทียบรถใหม่</p>
+          <div @click="linkcompare()" class="w-60 text-center bg-sky-700 text-white py-1 rounded cursor-pointer">
+            <p class="">Compare</p>
           </div>
         </div>
       </div>
@@ -826,7 +815,7 @@
                     {{convertprice(car.car_price)}}
                   </p>
                   <div class="flex items-center gap-2">
-                    <input type="checkbox">
+                    <input type="checkbox" class="compareclass" @click="compare($event, car)">
                     <p>เปรียบเทียบ</p>
                   </div>
                 </div>
@@ -872,7 +861,9 @@ export default {
       fivedoor: false,
       suv: false,
       sevenseat: false,
-      mpv: false
+      mpv: false,
+      comparecar : [],
+      indexcarcompare : []
     };
   },
   components: {
@@ -886,6 +877,7 @@ export default {
   computed: {
     showcars() {
       let car_copy = this.cars;
+      let indexcompare = [];
       if (this.brand.length != 0) {
         car_copy = car_copy.filter(car =>
           this.brand.some(val => car.car_brand.match(val))
@@ -937,7 +929,12 @@ export default {
             car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1
         );
       }
-
+      if(this.comparecar.length != 0){
+        this.comparecar.forEach((e) => {
+          indexcompare.push(car_copy.indexOf(e))
+        });
+      }
+      this.checkedcompare(indexcompare)
       return car_copy;
     }
   },
@@ -983,7 +980,6 @@ export default {
       }
     },
     FillterType(type, check) {
-      console.log(1);
       if (check) {
         this.cartype.push(type);
       } else {
@@ -1062,6 +1058,48 @@ export default {
       this.brandactive = false;
       this.yearactive = false;
       this.typeactive = false;
+    },
+    compare($event, car){
+      if($event.target.checked){
+        this.comparecar.push(car)
+      }
+      else{
+        let index = this.comparecar.indexOf(car);
+        this.comparecar.splice(index, 1);
+      }
+      // console.log(this.comparecar)
+    },
+    deletecompare(car, index){
+      let indexcar = this.cars.indexOf(car);
+      document.querySelectorAll(".compareclass").forEach((e, indexchecked) => {
+        if(indexchecked == indexcar){
+          e.checked = false
+          this.comparecar.splice(index, 1)
+        }
+      });
+    },
+    checkedcompare(indexcompare){
+      this.indexcarcompare = indexcompare
+      if(this.comparecar.length != 0){
+        setTimeout(() => {
+        document.querySelectorAll(".compareclass").forEach((e, indexchecked) => {
+          indexcompare.forEach(compare => {
+            if(indexchecked == compare){
+              e.checked = true
+            }
+          });
+        });
+        }, 1);
+        // console.log(indexcompare)
+      }
+    },
+    linkcompare(){
+      if(this.comparecar.length == 2){
+        this.$router.push(`/compare/${this.indexcarcompare[0]}/${this.indexcarcompare[1]}`)
+      }
+      else{
+        alert('Please Select Car')
+      }
     }
   }
 };
