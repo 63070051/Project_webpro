@@ -46,7 +46,7 @@
                 <span class="mx-3 text-sky-700">{{ loginuser.user_firstname }} {{loginuser.user_lastname}}</span>
                 <img width="25px" src="https://cdn.discordapp.com/attachments/958256273592307722/968926310451798036/user.png" alt="" />
               </button>
-              <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full shadow-md rounded-lg">
+              <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 w-full shadow-md rounded-lg z-50">
                 <li class="">
                     <router-link class="" to="/profile">
                     <p class="bg-white rounded-t hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">

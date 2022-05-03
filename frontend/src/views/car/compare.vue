@@ -78,6 +78,32 @@
 
 
                                 <!-- Add additional indicators for each slide-->
+                                <ol class="carousel-indicators">
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-1"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-2"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-3"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-4"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-5"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-6"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                </ol>
                             </div>
                         </div>
                     </div>
@@ -179,7 +205,33 @@
                                     class="next control-12 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
                                     class="fas fa-angle-right mt-3"></i></label>
 
-
+                                <!-- Add additional indicators for each slide-->
+                                <ol class="carousel-indicators">
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-7"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-8"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-9"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-10"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-11"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                    <li class="inline-block mr-3">
+                                    <label for="carousel-12"
+                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                    </li>
+                                </ol>
                                
                             </div>
                         </div>
@@ -240,6 +292,25 @@
     #carousel-11:checked~.control-11,
     #carousel-12:checked~.control-12{
         display: block;
+    }
+
+    #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
+    #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
+    #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet,
+    #carousel-4:checked~.control-4~.carousel-indicators li:nth-child(4) .carousel-bullet,
+    #carousel-5:checked~.control-5~.carousel-indicators li:nth-child(5) .carousel-bullet,
+    #carousel-6:checked~.control-6~.carousel-indicators li:nth-child(6) .carousel-bullet{
+        color: #2b6cb0;
+        /*Set to match the Tailwind colour you want the active one to be */
+    }
+    #carousel-7:checked~.control-7~.carousel-indicators li:nth-child(1) .carousel-bullet,
+    #carousel-8:checked~.control-8~.carousel-indicators li:nth-child(2) .carousel-bullet,
+    #carousel-9:checked~.control-9~.carousel-indicators li:nth-child(3) .carousel-bullet,
+    #carousel-10:checked~.control-10~.carousel-indicators li:nth-child(4) .carousel-bullet,
+    #carousel-11:checked~.control-11~.carousel-indicators li:nth-child(5) .carousel-bullet,
+    #carousel-12:checked~.control-12~.carousel-indicators li:nth-child(6) .carousel-bullet{
+        color: #2b6cb0;
+        /*Set to match the Tailwind colour you want the active one to be */
     }
 
     .carousel-indicators {
