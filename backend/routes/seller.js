@@ -70,6 +70,17 @@ router.post("/cancelseller/:id", async function (req, res, next) {
   }
 });
 
+router.get("/getcarseller/:id", async function (req, res, next) {
+  try {
+    const [carseller, field] = await pool.query(
+      "SELECT * FROM Car AS c JOIN Seller AS s ON(user_id = seller_id) JOIN Car_images AS ci ON(ci.car_id = c.car_id) WHERE main = 1 AND seller_id = ?",
+      [req.params.id]
+    );
+    return res.json(carseller);
+  } catch (err) {
+    return next(err);
+  }
+});
 
 
 module.exports = router;
