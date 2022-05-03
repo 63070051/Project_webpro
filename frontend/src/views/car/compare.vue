@@ -14,7 +14,7 @@
                                 <div class="carousel-item absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/052.jpg)">
 
                                 </div>
-                                <label for="carousel-3"
+                                <label for="carousel-6"
                                     class="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"><i
                                     class="fas fa-angle-left mt-3"></i></label>
                                 <label for="carousel-2"

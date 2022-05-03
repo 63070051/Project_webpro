@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="fixed bottom-0 right-56">
+    <div v-if="comparecar.length != 0" class="fixed bottom-0 right-56">
       <button class="h-10 py-2 w-72 rounded-t-lg text-white bg-orange-500 cursor-pointer text-lg" @click="compareactive = !compareactive">
         <p>เปรียบเทียบรถยนต์</p>
       </button>
@@ -9,7 +9,7 @@
         <div class="w-72 bg-gray-100" v-for="carcom, index in comparecar" :key="carcom.car_id">
           <div class="grid grid-cols-2 py-3 pl-3 pr-5">
             <img width="100px" :src=selectimgcar(carcom.car_img) alt="">
-            <img @click="deletecompare(carcom, index)" width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+            <img @click="deletecompare(carcom, index)" width="12px" class="cursor-pointer absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
             <div>
               <p class="text-xs font-bold text-start">{{carcom.car_model}}</p>
               <p class="text-xs">{{carcom.car_engine + ' ' + carcom.car_type}}</p>
@@ -1062,6 +1062,12 @@ export default {
     compare($event, car){
       if($event.target.checked){
         this.comparecar.push(car)
+        if(this.comparecar.length == 3){
+          alert('เปรียบเทียบได้มากสุด 2 คัน');
+          let index = this.comparecar.indexOf(car);
+          this.comparecar.splice(index, 1);
+          $event.target.checked = false;
+        }
       }
       else{
         let index = this.comparecar.indexOf(car);

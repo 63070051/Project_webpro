@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
     <div
-      class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200 bg-gra-01"
+      class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200"
     >
       <div class="w-full max-w-3xl space-y-6">
         <div
@@ -629,7 +629,7 @@
             </p>
             <button
               @click="submitcar()"
-              class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
             >
               Comfirm to post your ad!
             </button>
@@ -658,7 +658,7 @@ export default {
       number_door: "",
       driving_type: "Please Select",
       engine: "",
-      gear: "",
+      gear: "Please Select",
       num_gear: "",
       car_act: "",
       car_regis: "",
