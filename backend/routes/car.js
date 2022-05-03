@@ -115,23 +115,23 @@ router.post(
             let car_drive_type = req.body.car_drive_type;
             let car_act = req.body.car_act;
             let car_num_of_door = req.body.car_num_of_door;
-            console.log(
-                car_year,
-                car_color,
-                car_desc,
-                car_price,
-                car_regis,
-                car_distance,
-                car_engine,
-                car_gear,
-                car_yearbought,
-                car_owner,
-                car_num_of_gear,
-                car_brand,
-                car_drive_type,
-                car_act,
-                car_num_of_door
-            );
+            // console.log(
+            //     car_year,
+            //     car_color,
+            //     car_desc,
+            //     car_price,
+            //     car_regis,
+            //     car_distance,
+            //     car_engine,
+            //     car_gear,
+            //     car_yearbought,
+            //     car_owner,
+            //     car_num_of_gear,
+            //     car_brand,
+            //     car_drive_type,
+            //     car_act,
+            //     car_num_of_door
+            // );
             const [car, field1] = await conn.query(
                 "INSERT INTO Car(seller_id, car_model, car_modelyear, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_type, car_brand, car_drive_type, car_act, car_num_of_door) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 [
@@ -347,6 +347,19 @@ router.get('/compare/:car1/:car2', async function (req, res, next) {
             imgcar1: firstcar_img,
             imgcar2: firstcar_img2
         })
+    } catch (error) {
+        res.json(error)
+    }
+})
+router.get('/randomcar', async function (req, res, next) {
+    try {
+        let random = []
+        const [randomcar, field] = await pool.query(
+            'SELECT * FROM Car JOIN Car_images USING(car_id) WHERE main = 1')
+        for(let i = 0 ; i < 6 ; i++){
+            random.push(randomcar[Math.floor(Math.random()*randomcar.length)])
+        }
+        return res.json(random)
     } catch (error) {
         res.json(error)
     }

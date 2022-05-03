@@ -211,7 +211,7 @@ router.post("/connected", async function (req, res, next) {
     } else {
         let fklogin = data[0].user_id;
         const [user, field1] = await pool.query(
-            "SELECT * FROM Users WHERE user_id = ?",
+            "SELECT * FROM Users JOIN Seller USING(user_id) WHERE user_id = ?",
             [fklogin]
         );
         let dataname = "";
