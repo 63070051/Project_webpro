@@ -1095,7 +1095,7 @@ export default {
     },
     linkcompare(){
       if(this.comparecar.length == 2){
-        this.$router.push(`/compare/${this.indexcarcompare[0]}/${this.indexcarcompare[1]}`)
+        this.$router.push(`/compare/${this.comparecar[0].car_id}/${this.comparecar[1].car_id}`)
       }
       else{
         alert('Please Select Car')
