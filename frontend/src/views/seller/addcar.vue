@@ -36,7 +36,7 @@
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
-              Model Year
+              Model
             </label>
             <input
               class="
@@ -213,7 +213,7 @@
               <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
                 Gear Transmission
               </label>
-              <input
+              <select
                 class="
                 form-control
                 block
@@ -239,7 +239,11 @@
                 type="text"
                 placeholder=""
                 v-model="gear"
-              />
+              >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+              </select>
             </div>
             <div>
               <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -625,7 +629,7 @@
             </p>
             <button
               @click="submitcar()"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
             >
               Comfirm to post your ad!
             </button>
@@ -650,8 +654,8 @@ export default {
       loginuser: [],
       brand: "Please Select",
       model: "",
-      modelyear: 0,
-      number_door: 0,
+      modelyear: "",
+      number_door: "",
       driving_type: "Please Select",
       engine: "",
       gear: "",
@@ -659,7 +663,7 @@ export default {
       car_act: "",
       car_regis: "",
       car_type : "Please Select",
-      mileage: 0,
+      mileage: "",
       registration_year: "",
       color: "Please Select",
       owner: "Please Select",

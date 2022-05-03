@@ -1,6 +1,40 @@
 <template>
   <div id="app">
     <Navbar />
+    <div class="fixed bottom-0 right-56">
+      <button class="h-10 py-2 w-72 rounded-t-lg text-white bg-orange-500 cursor-pointer text-lg" @click="compareactive = !compareactive">
+        <p>เปรียบเทียบรถยนต์</p>
+      </button>
+      <div class="hidden" :class="[compareactive ? 'dropdown-active' : '']">
+        <div class="w-72 bg-gray-100">
+          <div class="flex py-3 pl-3 pr-5 justify-between">
+            <img width="100px" src="https://fastly-production.24c.in/hello-ar/dev/uploads/76f466e0-bf53-4e2a-ac95-977b67a551f3/82d26e5a-0edc-4f97-a281-8da702b1e964/62.jpg?w=1035&h=505&auto=format" alt="">
+            <img width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+            <div>
+              <p class="text-xs font-bold">2017 Toyota Corolla Altis</p>
+              <p class="text-xs">1.6 G Sedan</p>
+              <p class="text-sm text-orange-500">507,000 บาท</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-72 bg-gray-100">
+          <div class="flex py-3 pl-3 pr-5 justify-between">
+            <img width="100px" src="https://fastly-production.24c.in/hello-ar/dev/uploads/76f466e0-bf53-4e2a-ac95-977b67a551f3/82d26e5a-0edc-4f97-a281-8da702b1e964/62.jpg?w=1035&h=505&auto=format" alt="">
+            <img width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+            <div>
+              <p class="text-xs font-bold">2017 Toyota Corolla Altis</p>
+              <p class="text-xs">1.6 G Sedan</p>
+              <p class="text-sm text-orange-500">507,000 บาท</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-100 flex justify-center pb-2">
+          <div class="w-60 text-center bg-sky-700 text-white py-1 rounded cursor-pointer">
+            <p class="">เปรียบเทียบรถใหม่</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="max-w-7xl mx-auto mt-10">
       <div class="flex items-center space-x-3 mb-5">
         <div
@@ -765,10 +799,9 @@
             class="flex justify-center cursor-pointer"
             v-for="car in showcars"
             :key="car.car_id"
-            @click="detailcar(car.car_id)"
           >
             <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
+              <div data-mdb-ripple="true" data-mdb-ripple-color="light" @click="detailcar(car.car_id)">
                 <img
                   class="rounded-t-lg"
                   :src="selectimgcar(car.car_img)"
@@ -776,7 +809,7 @@
                 />
               </div>
 
-              <div class="p-6 space-y-3">
+              <div class="px-6 pt-6 space-y-3"  @click="detailcar(car.car_id)">
                 <h5 class="text-gray-900 text-xl font-bold">
                   {{ car.car_model }}
                 </h5>
@@ -784,14 +817,19 @@
                   {{ car.car_engine + " / " + car.car_gear }}
                 </p>
                 <p class="pb-2 border-b border-gray-300">
-                  {{car.car_distance}}
+                  {{convertdistance(car.car_distance)}}
                 </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    {{car.car_price}}
-                  </p>
-                </div>
+                
               </div>
+              <div class="flex justify-between py-4 px-6">
+                  <p class="text-orange-500 font-bold text-xl float-right">
+                    {{convertprice(car.car_price)}}
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <input type="checkbox">
+                    <p>เปรียบเทียบ</p>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -824,6 +862,7 @@ export default {
       brandactive: false,
       yearactive: false,
       typeactive: false,
+      compareactive: false,
       minyear: 0,
       maxyear: 0,
       minmile: 0,

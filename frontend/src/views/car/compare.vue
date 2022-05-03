@@ -3,23 +3,9 @@
     <Navbar />
     <div class="mx-auto max-w-7xl text-center pt-10">
         <p class="text-5xl font-semibold">เปรียบเทียบรถรุ่นต่างๆ</p>
-        <div class="flex">
-            <div class="w-64 mt-16 pt-80 space-y-6 text-lg font-semibold text-left">
-                <p class="border-b-2 border-gray-200 p-2">ราคา</p>
-                <p class="border-b-2 border-gray-200 p-2">ประเภทรถ</p>
-                <p class="border-b-2 border-gray-200 p-2">แบรนด์</p>
-                <p class="border-b-2 border-gray-200 p-2">รุ่น</p>
-                <p class="border-b-2 border-gray-200 p-2">ปีที่ออก</p>
-                <p class="border-b-2 border-gray-200 p-2">ระบบเกียร์</p>
-                <p class="border-b-2 border-gray-200 p-2">จำนวนเกียร์</p>
-                <p class="border-b-2 border-gray-200 p-2">เครื่องยนต์</p>
-                <p class="border-b-2 border-gray-200 p-2">ระบบขับเคลื่อน</p>
-                <p class="border-b-2 border-gray-200 p-2">ระยะทางที่ขับ</p>
-                <p class="border-b-2 border-gray-200 p-2">พ.ร.บ.</p>
-            </div>
-            <div class="grid grid-cols-2 mt-10 gap-5">
+        <div class="flex justify-center mt-10">
                 <div>
-                    <div class="h-80  bg-gray-500" style="width: 500px">
+                    <div class="h-80" style="width: 550px">
                         <div class="carousel relative rounded relative overflow-hidden shadow-xl">
                             <div class="carousel-inner relative overflow-hidden w-full">
                                 <!--Slide 1-->
@@ -135,12 +121,25 @@
                         <p class="border-b-2 border-gray-200 p-2">4/2022</p>
                     </div>
                 </div>
+                <div class="w-32 mt-6 pt-80 space-y-6 text-lg font-semibold text-center">
+                    <p class="border-b-2 border-gray-200 p-2">ราคา</p>
+                    <p class="border-b-2 border-gray-200 p-2">ประเภทรถ</p>
+                    <p class="border-b-2 border-gray-200 p-2">แบรนด์</p>
+                    <p class="border-b-2 border-gray-200 p-2">รุ่น</p>
+                    <p class="border-b-2 border-gray-200 p-2">ปีที่ออก</p>
+                    <p class="border-b-2 border-gray-200 p-2">ระบบเกียร์</p>
+                    <p class="border-b-2 border-gray-200 p-2">จำนวนเกียร์</p>
+                    <p class="border-b-2 border-gray-200 p-2">เครื่องยนต์</p>
+                    <p class="border-b-2 border-gray-200 p-2">ระบบขับเคลื่อน</p>
+                    <p class="border-b-2 border-gray-200 p-2">ระยะทางที่ขับ</p>
+                    <p class="border-b-2 border-gray-200 p-2">พ.ร.บ.</p>
+                </div>
                 <div>
-                    <div class="h-80" style="width: 500px">
+                    <div class="h-80" style="width: 550px">
                         <div class="carousel relative rounded relative overflow-hidden shadow-xl">
                             <div class="carousel-inner relative overflow-hidden w-full">
                                 <!--Slide 7-->
-                                <input class="carousel-open-1" type="radio" id="carousel-7" name="carousel" aria-hidden="true" hidden=""
+                                <input class="carousel-open-1" type="radio" id="carousel-7" name="carousel-1" aria-hidden="true" hidden=""
                                     checked="checked">
                                 <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/052.jpg)">
                                     <p>7</p>
@@ -153,7 +152,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
 
                                 <!--Slide 8-->
-                                <input class="carousel-open-1" type="radio" id="carousel-8" name="carousel" aria-hidden="true" hidden="">
+                                <input class="carousel-open-1" type="radio" id="carousel-8" name="carousel-1" aria-hidden="true" hidden="">
                                 <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/043.jpg)">
                                 </div>
                                 <label for="carousel-7"
@@ -164,7 +163,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
 
                                 <!--Slide 9-->
-                                <input class="carousel-open-1" type="radio" id="carousel-9" name="carousel" aria-hidden="true" hidden="">
+                                <input class="carousel-open-1" type="radio" id="carousel-9" name="carousel-1" aria-hidden="true" hidden="">
                                 <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/054.jpg)">
                                 </div>
                                 <label for="carousel-8"
@@ -175,7 +174,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
                                 
                                 <!--Slide 10-->
-                                <input class="carousel-open-1" type="radio" id="carousel-10" name="carousel" aria-hidden="true" hidden="">
+                                <input class="carousel-open-1" type="radio" id="carousel-10" name="carousel-1" aria-hidden="true" hidden="">
                                 <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
                                 </div>
                                 <label for="carousel-9"
@@ -186,7 +185,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
 
                                     <!--Slide 11-->
-                                <input class="carousel-open-1" type="radio" id="carousel-11" name="carousel" aria-hidden="true" hidden="">
+                                <input class="carousel-open-1" type="radio" id="carousel-11" name="carousel-1" aria-hidden="true" hidden="">
                                 <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
                                 </div>
                                 <label for="carousel-10"
@@ -197,7 +196,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
 
                                     <!--Slide 12-->
-                                <input class="carousel-open-1" type="radio" id="carousel-12" name="carousel" aria-hidden="true" hidden="">
+                                <input class="carousel-open-1" type="radio" id="carousel-12" name="carousel-1" aria-hidden="true" hidden="">
                                 <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
                                 </div>
                                 <label for="carousel-11"
@@ -251,7 +250,6 @@
                         <p class="border-b-2 border-gray-200 p-2">45,476 กม.</p>
                         <p class="border-b-2 border-gray-200 p-2">4/2022</p>
                     </div>
-                </div>
             </div>
         </div>
     </div>
@@ -319,12 +317,12 @@
         /*Set to match the Tailwind colour you want the active one to be */
     }
 
-    #carousel-7:checked~.control-7~.carousel-indicators li:nth-child(7) .carousel-bullet,
-    #carousel-8:checked~.control-8~.carousel-indicators li:nth-child(8) .carousel-bullet,
-    #carousel-9:checked~.control-9~.carousel-indicators li:nth-child(9) .carousel-bullet,
-    #carousel-10:checked~.control-10~.carousel-indicators li:nth-child(10) .carousel-bullet,
-    #carousel-11:checked~.control-11~.carousel-indicators li:nth-child(11) .carousel-bullet,
-    #carousel-12:checked~.control-12~.carousel-indicators li:nth-child(12) .carousel-bullet{
+    #carousel-7:checked~.control-7~.carousel-indicators li:nth-child(1) .carousel-bullet,
+    #carousel-8:checked~.control-8~.carousel-indicators li:nth-child(2) .carousel-bullet,
+    #carousel-9:checked~.control-9~.carousel-indicators li:nth-child(3) .carousel-bullet,
+    #carousel-10:checked~.control-10~.carousel-indicators li:nth-child(4) .carousel-bullet,
+    #carousel-11:checked~.control-11~.carousel-indicators li:nth-child(5) .carousel-bullet,
+    #carousel-12:checked~.control-12~.carousel-indicators li:nth-child(6) .carousel-bullet{
         color: #2b6cb0;
         /*Set to match the Tailwind colour you want the active one to be */
     }
