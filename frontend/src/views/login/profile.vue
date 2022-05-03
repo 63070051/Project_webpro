@@ -167,7 +167,7 @@
               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               @click="editactive = !editactive"
             >
-              ย้อนกลับ
+              ยกเลิก
             </button>
             <button
               class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
