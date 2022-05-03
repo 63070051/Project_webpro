@@ -2,21 +2,21 @@
   <div id="app">
     <Navbar />
     <div
-      class="flex justify-center items-center py-16"
-      style="background-image:url(https://cdn.discordapp.com/attachments/958256273592307722/962404483189596220/bg-tai.jpeg); background-position: 80% 80%; background-size: 100% auto"
+      class="flex justify-center items-center py-16 bg-gray-100 min-h-screen"
     >
-      <div class="w-full max-w-xl space-y-6 bg-gray-300  px-4 py-4 rounded-2xl">
-        <div>
+      <div class="w-full max-w-2xl bg-white rounded-xl overflow-hidden shadow-lg">
+        <div class="bg-sky-600 p-9 rounded-t-xl">
           <img
             class="mx-auto mb-2"
             width="100px"
-            src="https://cdn.discordapp.com/attachments/958256273592307722/962336592092069908/user_1.png"
+            src="https://cdn.discordapp.com/attachments/958256273592307722/968926310451798036/user.png"
             alt=""
           />
-          <p class="text-3xl font-bold text-center">Edit Profile</p>
-          <div class="w-28 h-1 bg-blue-600 mt-1 rounded-lg mx-auto"></div>
+          <p v-if="!editactive" class="text-center text-3xl font-bold text-white">{{firstname + ' ' + lastname}}</p>
+          <p v-if="editactive" class="text-3xl font-bold text-center text-white">Edit Profile</p>
+          <div v-if="editactive" class="w-28 h-1 bg-orange-500 mt-1 rounded-lg mx-auto"></div>
         </div>
-        <div class="bg-white shadow-md  rounded px-8 pt-6 pb-8 mb-4 space-y-2">
+        <div class="bg-white rounded px-8 mb-4 mt-8">
           <!-- <div>
             <label class="block text-gray-700 text-lg font-bold mb-2">
               ยืนยันรหัสผ่าน
@@ -30,30 +30,58 @@
               v-model="password2"
             />
           </div> -->
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2">
-              ชื่อจริง
-            </label>
+          <div v-if="!editactive">
+            <div class="space-y-5 px-5">
+              <div class="flex items-center gap-2">
+                <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+                <p class="text-lg font-semibold">Phone :</p>
+                <p class="text-lg">{{tel}}</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="flex items-center gap-2">
+                  <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+                  <p class="text-lg font-semibold ">Address :</p>
+                </div>
+                <p class="text-lg w-80">{{address}}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+                <p class="text-lg font-semibold">Email :</p>
+                <p class="text-lg">{{email}}</p>
+              </div>
+            </div>
+          </div>
+          <div v-if="editactive">
+            <div class="flex items-center mb-2 gap-2">
+              <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+              <label class="block text-gray-700 text-lg font-bold">
+                Firstname
+              </label>
+            </div>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
               id="firstname"
               name="firstname"
               type="text"
               placeholder="Address"
-              v-model="firstname"
+              v-model="firstname1"
             />
           </div>
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2">
-              นามสกุล
-            </label>
+          <div v-if="editactive">
+            <div class="flex items-center mb-2 gap-2">
+              <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+              <label class="block text-gray-700 text-lg font-bold">
+                Lastname
+              </label>
+            </div>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
               id="lastname"
               name="lastname"
               type="text"
               placeholder="Address"
-              v-model="lastname"
+              v-model="lastname1"
+              
             />
           </div>
           <!-- <div>
@@ -82,54 +110,67 @@
                 v-model="idcard"
                 />
             </div> -->
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2">
-              เบอร์โทรศัพท์
-            </label>
+          <div v-if="editactive">
+            <div class="flex items-center mb-2 gap-2">
+              <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+              <label class="block text-gray-700 text-lg font-bold">
+                Tel.
+              </label>
+            </div>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
               id="tel"
               name="tel"
               type="tel"
               placeholder="Tel."
-              v-model="tel"
+              v-model="tel1"
+              
             />
           </div>
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2">
-              ที่อยู่
-            </label>
+          <div v-if="editactive">
+            <div class="flex items-center mb-2 gap-2">
+              <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+              <label class="block text-gray-700 text-lg font-bold">
+                Address
+              </label>
+            </div>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
               id="address"
               name="address"
               type="text"
               placeholder="Address"
-              v-model="address"
+              v-model="address1"
             />
           </div>
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2">
-              อีเมล
-            </label>
+          <div v-if="editactive">
+            <div class="flex items-center mb-2 gap-2">
+              <div class="h-5 w-5 rounded-full bg-orange-500"></div>
+              <label class="block text-gray-700 text-lg font-bold">
+                Email
+              </label>
+            </div>
             <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-4 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               name="email"
               type="text"
               placeholder="Email"
-              v-model="email"
+              v-model="email1"
             />
           </div>
-          <div class="flex items-center justify-between">
+          <div v-if="!editactive" class="flex justify-center py-5 cursor-pointer" @click="editactive = !editactive; edit()">
+            <img width="60px" src="https://cdn.discordapp.com/attachments/958256273592307722/971016464389771294/edit.png" alt="">
+          </div>
+          <div class="flex items-center justify-between mt-10 pb-5" v-if="editactive">
             <button
               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
-              @click="back()"
+              @click="editactive = !editactive"
             >
-              ย้อนกลับ
+              ยกเลิก
             </button>
             <button
-              class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
+              class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline duration-300"
               @click="commit()"
             >
               ยืนยัน
@@ -155,7 +196,13 @@ export default {
       lastname: "",
       tel: "",
       email: "",
-      address: ""
+      address: "",
+      editactive: false,
+      firstname1: "",
+      lastname1: "",
+      tel1: "",
+      email1: "",
+      address1: "",
     };
   },
   components: {
@@ -182,11 +229,11 @@ export default {
         .post(
           `http://localhost:3000/update/account/${this.loginuser.user_id}`,
           {
-            firstname: this.firstname,
-            lastname: this.lastname,
-            tel: this.tel,
-            email: this.email,
-            address: this.address
+            firstname: this.firstname1,
+            lastname: this.lastname1,
+            tel: this.tel1,
+            email: this.email1,
+            address: this.address1
           }
         )
         .then(response => {
@@ -202,6 +249,14 @@ export default {
         });
       }
       
+    },
+    edit(){
+      console.log(1);
+      this.firstname1 = this.firstname;
+      this.lastname1 = this.lastname;
+      this.tel1 = this.tel;
+      this.address1 = this.address;
+      this.email1 = this.email;
     }
   }
 };

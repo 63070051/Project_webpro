@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="fixed bottom-0 right-56">
+    <div v-if="comparecar.length != 0" class="fixed bottom-0 right-56">
       <button class="h-10 py-2 w-72 rounded-t-lg text-white bg-orange-500 cursor-pointer text-lg" @click="compareactive = !compareactive">
         <p>เปรียบเทียบรถยนต์</p>
       </button>
@@ -9,7 +9,7 @@
         <div class="w-72 bg-gray-100" v-for="carcom, index in comparecar" :key="carcom.car_id">
           <div class="grid grid-cols-2 py-3 pl-3 pr-5">
             <img width="100px" :src=selectimgcar(carcom.car_img) alt="">
-            <img @click="deletecompare(carcom, index)" width="12px" class="absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
+            <img @click="deletecompare(carcom, index)" width="12px" class="cursor-pointer absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
             <div>
               <p class="text-xs font-bold text-start">{{carcom.car_model}}</p>
               <p class="text-xs">{{carcom.car_engine + ' ' + carcom.car_type}}</p>
@@ -64,7 +64,8 @@
                 (distanceactive = false),
                 (brandactive = false),
                 (coloractive = false),
-                (typeactive = false)
+                (typeactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -176,7 +177,8 @@
                 (priceactive = false),
                 (coloractive = false),
                 (distanceactive = false),
-                (typeactive = false)
+                (typeactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -284,7 +286,8 @@
                 (distanceactive = false),
                 (coloractive = false),
                 (brandactive = false),
-                (typeactive = false)
+                (typeactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -376,7 +379,8 @@
                 (yearactive = false),
                 (priceactive = false),
                 (coloractive = false),
-                (typeactive = false)
+                (typeactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -468,7 +472,8 @@
                 (distanceactive = false),
                 (brandactive = false),
                 (yearactive = false),
-                (typeactive = false)
+                (typeactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -664,7 +669,8 @@
                 (yearactive = false),
                 (priceactive = false),
                 (coloractive = false),
-                (distanceactive = false)
+                (distanceactive = false),
+                (sortactive = false)
             "
             class="inline-flex items-center gap-3 text-gray-600 w-full py-2 px-4 rounded font-semibold shadow-sm border-2 border-gray-200 justify-between z-0"
           >
@@ -685,9 +691,9 @@
           >
             <div
               style="width: 470px; height: 400px"
-              class="bg-white rounded-lg z-50 flex flex-col justify-between"
+              class="bg-white rounded-lg z-50 flex flex-col justify-between z-50"
             >
-              <div class=" px-6 py-5">
+              <div class=" px-6 py-5 z-50">
                 <p class="">ประเภทรถ</p>
                 <div class="grid grid-cols-3 gap-4 mt-5">
                   <div
@@ -780,6 +786,35 @@
           </div>
         </div>
       </div>
+      <div class="flex justify-end">
+        <div class="inline-block relative">
+          <div class="mt-4 cursor-pointer z-10" @click="sortactive = !sortactive">
+            <p class="border-b-2 border-sky-700 text-sky-700 font-bold">เรียง</p>
+          </div>
+          <div class="absolute w-40 bg-gray-100 shadow-lg rounded-lg mt-2 hidden" :class="[sortactive? 'dropdown-active' : '']">
+            <div class="flex p-2 gap-1 text-center hover:bg-gray-300 cursor-pointer rounded-t-lg" @click="sorted('lthprice'); sortactive = !sortactive">
+              <img src="https://www.cars24.co.th/th/static/js/6e5889e7af6c6b8913ad5a8251efb411.svg" alt="">
+              <p>ราคา ต่ำ ไป สูง</p>
+            </div>
+            <div class="flex p-2 gap-1 text-center hover:bg-gray-300 cursor-pointer" @click="sorted('htlprice'); sortactive = !sortactive">
+              <img src="https://www.cars24.co.th/th/static/js/42843d270dddc34383477d983c39ff8d.svg" alt="">
+              <p>ราคา สูง ไป ต่ำ</p>
+            </div>
+            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer items-center" @click="sorted('atz'); sortactive = !sortactive">
+              <div class="h-5 w-4">
+                <img src="https://cdn.discordapp.com/attachments/958256273592307722/971073925402488892/a-z.png" alt="">
+              </div>
+              <p>A - Z</p>
+            </div>
+            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer rounded-b-lg items-center" @click="sorted('zta'); sortactive = !sortactive">
+              <div class="h-5 w-4">
+                <img src="https://cdn.discordapp.com/attachments/958256273592307722/971073925616373851/z-a.png" alt="">
+              </div>
+              <p>Z - A</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div @click="closemodal()">
       <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
@@ -852,6 +887,7 @@ export default {
       yearactive: false,
       typeactive: false,
       compareactive: false,
+      sortactive: false,
       minyear: 0,
       maxyear: 0,
       minmile: 0,
@@ -863,7 +899,8 @@ export default {
       sevenseat: false,
       mpv: false,
       comparecar : [],
-      indexcarcompare : []
+      indexcarcompare : [],
+      sortt: ''
     };
   },
   components: {
@@ -933,6 +970,57 @@ export default {
         this.comparecar.forEach((e) => {
           indexcompare.push(car_copy.indexOf(e))
         });
+      }
+      if(this.sortt != ''){
+        if(this.sortt == 'lthprice'){
+          car_copy.sort((a, b) => {
+            if (a.car_price < b.car_price){
+                return -1;
+              }else if(a.car_price > b.car_price){
+                return 1
+              }else{
+                return 0
+              }
+          })
+        }
+        if(this.sortt == 'htlprice'){
+          car_copy.sort((a, b) => {
+            if (a.car_price < b.car_price){
+                return 1;
+              }else if(a.car_price > b.car_price){
+                return -1
+              }else{
+                return 0
+              }
+          })
+        }
+        if(this.sortt == 'atz'){
+          car_copy.sort((a, b) => {
+            if (a.car_model < b.car_model){
+                return -1;
+              }else if(a.car_model > b.car_model){
+                return 1
+              }else{
+                return 0
+              }
+          })
+        }
+        if(this.sortt == 'zta'){
+          car_copy.sort((a, b) => {
+            if (a.car_model < b.car_model){
+                return 1;
+              }else if(a.car_model > b.car_model){
+                return -1
+              }else{
+                return 0
+              }
+          })
+        }
+        if(this.sortt == 'cancel'){
+          console.log(1);
+          return car_copy
+        }
+        
       }
       this.checkedcompare(indexcompare)
       return car_copy;
@@ -1062,6 +1150,12 @@ export default {
     compare($event, car){
       if($event.target.checked){
         this.comparecar.push(car)
+        if(this.comparecar.length == 3){
+          alert('เปรียบเทียบได้มากสุด 2 คัน');
+          let index = this.comparecar.indexOf(car);
+          this.comparecar.splice(index, 1);
+          $event.target.checked = false;
+        }
       }
       else{
         let index = this.comparecar.indexOf(car);
@@ -1099,6 +1193,13 @@ export default {
       }
       else{
         alert('Please Select Car')
+      }
+    },
+    sorted(type){
+      if (this.sortt == type){
+        this.sortt = 'cancel'
+      }else{
+        this.sortt = type
       }
     }
   }

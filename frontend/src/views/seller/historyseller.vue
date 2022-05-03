@@ -4,7 +4,7 @@
     <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
       <p class="text-4xl mt-8">History Seller</p>
       <div class="w-24 h-1 bg-blue-600 mt-2 rounded-lg"></div>
-      <div class="grid grid-cols-3 gap-8">
+      <div class="grid grid-cols-3 gap-8 my-10">
         <div
           class="rounded-lg shadow-lg bg-white max-w-sm cursor-pointer"
           v-for="car in sellercar"
@@ -35,7 +35,7 @@
                 {{ convertprice(car.car_price) }}
               </p>
               <button
-                class="bg-sky-800 w-24 rounded rounded-lg  text-white"
+                class="bg-sky-800 w-20 rounded rounded-md text-white"
                 @click="linkupdate(car.car_id)"
               >
                 edit
