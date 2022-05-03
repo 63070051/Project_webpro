@@ -10,7 +10,7 @@
           <div class="carousel-item absolute opacity-0 h-96  "  style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);">
               <div class="flex justify-center h-full ">
                 <div class='flex w-10/12 h-full '>
-                  <div class="w-1/2 ">
+                  <div class="w-1/2 flex flex-col justify-center">
                       <p class="text-5xl py-4 text-white">
                           มั่นใจรถมือสองสภาพดี
                       </p>
@@ -18,7 +18,7 @@
                         การันตีคุณภาพดี และ มีมาตรฐาน 
                       </p>
                   </div>
-                  <div class="w-1/2">
+                  <div class="w-1/2 flex flex-col justify-center">
                     <img src="https://www.cars24.co.th/th/static/js/0fabb80f8cb2698a8aa7ff732e2369ab.svg" alt="">
                   </div>
                 </div>
@@ -36,7 +36,7 @@
           <div class="carousel-item absolute opacity-0 h-96  "  style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);">
               <div class="flex justify-center h-full ">
                 <div class='flex w-10/12 h-full '>
-                  <div class="w-1/2 ">
+                  <div class="w-1/2 flex flex-col  justify-center">
                       <p class="text-5xl py-4 text-white">
                           มั่นใจรถมือสองสภาพดี
                       </p>
@@ -44,7 +44,7 @@
                         การันตีคุณภาพดี และ มีมาตรฐาน 
                       </p>
                   </div>
-                  <div class="w-1/2">
+                  <div class="w-1/2 ">
                     <img src="https://www.cars24.co.th/th/static/js/353270319117b058f2429715d142accf.svg" alt="">
                   </div>
                 </div>
@@ -62,7 +62,7 @@
          <div class="carousel-item absolute opacity-0 h-96  "  style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);">
               <div class="flex justify-center h-full ">
                 <div class='flex w-10/12 h-full '>
-                  <div class="w-1/2 ">
+                  <div class="w-1/2  flex flex-col justify-center">
                       <p class="text-5xl py-4 text-white">
                           มั่นใจรถมือสองสภาพดี
                       </p>
@@ -70,7 +70,7 @@
                         การันตีคุณภาพดี และ มีมาตรฐาน 
                       </p>
                   </div>
-                  <div class="w-1/2">
+                  <div class="w-1/2 flex flex-col justify-center">
                     <img src="https://www.cars24.co.th/th/static/js/a6562487d7465cfb6bac3777fd306485.svg" alt="">
                   </div>
                 </div>
@@ -102,8 +102,8 @@
         </div>
       </div>
     <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
-      <p class="text-2xl mt-8">Recommended</p>
-      <div class="w-32 h-1 bg-blue-600 mt-2 rounded-lg"></div>
+      <p class="text-4xl mt-8">Recommended</p>
+      <div class="w-48 h-1 bg-blue-600 mt-2 rounded-lg"></div>
       <div class="grid grid-cols-3 gap-8">
         <div class="rounded-lg shadow-lg bg-white max-w-sm">
               <div data-mdb-ripple="true" data-mdb-ripple-color="light">

@@ -29,45 +29,7 @@
         <div class="inline-block relative">
           <button @click="navbrand = navbrand ? false : true" class="inline-flex items-center gap-1">
             <router-link class="text-sky-700 font-bold" to="/searchcar">ค้นหารถ</router-link>
-            <svg
-                    class="fill-current h-4 w-4 text-sky-700"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                    />
-                  </svg>
           </button>
-          <div class="absolute hidden text-gray-700 pt-1 drop-shadow-md	z-10" :class="[navbrand ? 'dropdown-active' : '']">
-            <div style="width: 600px; height: 300px" class="bg-white rounded-lg z-50 grid grid-cols-3 p-5">
-              <div class="space-y-4">
-                <p class="font-bold">แบรนด์</p>
-                <p>Toyota</p>
-                <p>Mercedes-Benz</p>
-                <p>BMW</p>
-                <p>Honda</p>
-                <p>Nissan</p>
-                <p>others</p>
-              </div>
-              <div class="space-y-4">
-                <p class="font-bold">ประเภทรถ</p>
-                <p>รถเก๋ง 4 ประตู</p>
-                <p>รถกระบะ</p>
-                <p>รถเก๋ง 5 ประตู</p>
-                <p>SUV</p>
-                <p>7 Seater</p>
-                <p>MPV</p>
-              </div>
-              <div class="space-y-4">
-                <p class="font-bold">ช่วงราคา</p>
-                <p>ภายใต้ THB 400,000</p>
-                <p>THB 400k - 600k</p>
-                <p>THB 600k - 800k</p>
-                <p>สูงกว่า 800k</p>
-              </div>
-            </div>
-          </div>
         </div>
         <router-link class="text-sky-700 font-bold" to="/seller" v-show="loginuser.employee_type != 'employee'">ขายรถยนต์</router-link>
         <router-link class="text-sky-700 font-bold" to="/about">เกี่ยวกับ</router-link>
