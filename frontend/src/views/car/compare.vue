@@ -108,17 +108,17 @@
                         </div>
                     </div>
                     <div class="mt-6 space-y-6 text-lg font-semibold mb-10">
-                        <p class="border-b-2 border-gray-200 p-2">2,396,000 บาท</p>
-                        <p class="border-b-2 border-gray-200 p-2">SUV</p>
-                        <p class="border-b-2 border-gray-200 p-2">BMW</p>
-                        <p class="border-b-2 border-gray-200 p-2">X3</p>
-                        <p class="border-b-2 border-gray-200 p-2">2019</p>
-                        <p class="border-b-2 border-gray-200 p-2">Automatic</p>
-                        <p class="border-b-2 border-gray-200 p-2">7</p>
-                        <p class="border-b-2 border-gray-200 p-2">2.0 d</p>
-                        <p class="border-b-2 border-gray-200 p-2">fwd</p>
-                        <p class="border-b-2 border-gray-200 p-2">45,476 กม.</p>
-                        <p class="border-b-2 border-gray-200 p-2">4/2022</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertprice(firstcar.car_price)}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_type}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_brand}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_model}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_yearbought}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_gear}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_num_of_gear}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_engine}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{firstcar.car_drive_type}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertdistance(firstcar.car_distance)}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertact(firstcar.car_act)}}</p>
                     </div>
                 </div>
                 <div class="w-32 mt-6 pt-80 space-y-6 text-lg font-semibold text-center">
@@ -238,17 +238,17 @@
                         </div>
                     </div>
                     <div class="mt-6 space-y-6 text-lg font-semibold mb-10">
-                        <p class="border-b-2 border-gray-200 p-2">2,396,000 บาท</p>
-                        <p class="border-b-2 border-gray-200 p-2">SUV</p>
-                        <p class="border-b-2 border-gray-200 p-2">BMW</p>
-                        <p class="border-b-2 border-gray-200 p-2">X3</p>
-                        <p class="border-b-2 border-gray-200 p-2">2019</p>
-                        <p class="border-b-2 border-gray-200 p-2">Automatic</p>
-                        <p class="border-b-2 border-gray-200 p-2">7</p>
-                        <p class="border-b-2 border-gray-200 p-2">2.0 d</p>
-                        <p class="border-b-2 border-gray-200 p-2">fwd</p>
-                        <p class="border-b-2 border-gray-200 p-2">45,476 กม.</p>
-                        <p class="border-b-2 border-gray-200 p-2">4/2022</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertprice(secondcar.car_price)}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_type}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_brand}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_model}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_yearbought}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_gear}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_num_of_gear}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_engine}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{secondcar.car_drive_type}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertdistance(secondcar.car_distance)}}</p>
+                        <p class="border-b-2 border-gray-200 p-2">{{convertact(secondcar.car_act)}}</p>
                     </div>
             </div>
         </div>
@@ -337,6 +337,10 @@ export default {
   data() {
     return {
       loginuser: [],
+      firstcar: [],
+      secondcar: [],
+      imgcar1: [],
+      imgcar2: []
     };
   },
   components: {
@@ -345,13 +349,49 @@ export default {
   },
   mounted() {
     this.getdata();
-    this.getfirstcar();
-    this.getsescondcar();
+    this.getcar();
+    this.selectimgcar();
   },
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
     },
+    getcar(){
+        axios
+            .get(`http://localhost:3000/compare/${this.$route.params.firstcar}/${this.$route.params.secondcar}`)
+            .then(res => {
+                this.firstcar = res.data.firstcar;
+                this.secondcar = res.data.secondcar;
+            })
+            .catch(error => {
+            this.error = error.response.data.message;
+            });
+    },
+    selectimgcar(car_img) {
+      if (car_img) {
+        // console.log("http://localhost:3000/" + car_img);
+        return "http://localhost:3000/" + car_img;
+      } else {
+        return "https://bulma.io/images/placeholders/640x360.png";
+      }
+    },
+    convertprice(price) {
+      let price2 = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(price);
+      return price2.slice(4, price2.length - 3) + " บาท";
+    },
+    convertdistance(km) {
+      let dis = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(km);
+      return dis.slice(4, dis.length - 3) + " กม.";
+    },
+    convertact(act){
+        return act.slice(0, 7);
+    }
   },
 };
 </script>
