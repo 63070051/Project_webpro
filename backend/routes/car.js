@@ -115,23 +115,23 @@ router.post(
             let car_drive_type = req.body.car_drive_type;
             let car_act = req.body.car_act;
             let car_num_of_door = req.body.car_num_of_door;
-            console.log(
-                car_year,
-                car_color,
-                car_desc,
-                car_price,
-                car_regis,
-                car_distance,
-                car_engine,
-                car_gear,
-                car_yearbought,
-                car_owner,
-                car_num_of_gear,
-                car_brand,
-                car_drive_type,
-                car_act,
-                car_num_of_door
-            );
+            // console.log(
+            //     car_year,
+            //     car_color,
+            //     car_desc,
+            //     car_price,
+            //     car_regis,
+            //     car_distance,
+            //     car_engine,
+            //     car_gear,
+            //     car_yearbought,
+            //     car_owner,
+            //     car_num_of_gear,
+            //     car_brand,
+            //     car_drive_type,
+            //     car_act,
+            //     car_num_of_door
+            // );
             const [car, field1] = await conn.query(
                 "INSERT INTO Car(seller_id, car_model, car_modelyear, car_color, car_desc, car_price, car_regis, car_distance, car_engine, car_gear, car_yearbought, car_owner, car_num_of_gear, car_type, car_brand, car_drive_type, car_act, car_num_of_door) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 [

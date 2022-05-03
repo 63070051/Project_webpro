@@ -87,6 +87,12 @@ const routes = [
     meta: { login: true },
     component: () => import('../views/seller/update_car.vue')
   },
+  {
+    path: '/historyseller/:sellerid',
+    name: 'historyseller',
+    meta: { login: true },
+    component: () => import('../views/seller/historyseller.vue')
+  },
 ]
 //You don’t have the right to update
 
