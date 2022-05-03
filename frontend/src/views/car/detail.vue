@@ -15,14 +15,14 @@
         </div>
         <div class="flex">
           <div class="text-right mr-7 px-7 border-r-2 borer-gray-400">
-            <p class="font-bold text-xl text-amber-500">{{convertprice(detailcar.car_price)}}</p>
+            <p class="font-bold text-xl text-orange-500">{{convertprice(detailcar.car_price)}}</p>
             <p class="text-xs text-gray-400">{{convertvat(detailcar.car_price)}} (รวมภาษี 7% แล้ว)</p>
           </div>
           <div class="flex gap-4">
-            <div class="border-2 border-amber-500 w-12 h-12 rounded-xl flex justify-center items-center">
+            <div class="border-2 border-orange-500 w-12 h-12 rounded-xl flex justify-center items-center">
               <img width="26" src="https://www.cars24.co.th/th/static/js/2be457deb3cc0c5e4eccf46297b7004a.svg" alt="">
             </div>
-            <div class="w-28 bg-amber-500 flex justify-center items-center rounded-xl">
+            <div class="w-28 bg-orange-500 flex justify-center items-center rounded-xl">
               <p class="text-white font-bold">จองรถ</p>
             </div>
           </div>
@@ -39,7 +39,7 @@
         <div v-for="img in carimg" :key="img.image_no">
           <img
             @click="changefirstimg(img.car_img)"
-            class="rounded-lg h-32 w-full"
+            class="rounded-lg h-28 w-full"
             :src="selectimgcar(img.car_img)"
             alt=""
           />
