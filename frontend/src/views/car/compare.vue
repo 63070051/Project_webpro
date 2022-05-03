@@ -11,10 +11,10 @@
                                 <!--Slide 1-->
                                 <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
                                     checked="checked">
-                                <div class="carousel-item absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/052.jpg)">
+                                <div class="carousel-item absolute opacity-0 bg-center h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[0].car_img) + ')' }">
 
                                 </div>
-                                <label for="carousel-3"
+                                <label for="carousel-6"
                                     class="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"><i
                                     class="fas fa-angle-left mt-3"></i></label>
                                 <label for="carousel-2"
@@ -23,7 +23,7 @@
 
                                 <!--Slide 2-->
                                 <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-                                <div class="carousel-item absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/043.jpg)">
+                                <div class="carousel-item absolute opacity-0 bg-center h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[1].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-1"
                                     class=" control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -34,7 +34,7 @@
 
                                 <!--Slide 3-->
                                 <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-                                <div class="carousel-item absolute opacity-0 h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/054.jpg)">
+                                <div class="carousel-item absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[2].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-2"
                                     class="control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -45,7 +45,7 @@
                                 
                                 <!--Slide 4-->
                                 <input class="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="">
-                                <div class="carousel-item absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[3].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-3"
                                     class="control-4 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -56,7 +56,7 @@
 
                                     <!--Slide 5-->
                                 <input class="carousel-open" type="radio" id="carousel-5" name="carousel" aria-hidden="true" hidden="">
-                                <div class="carousel-item absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[4].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-4"
                                     class="control-5 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -67,7 +67,7 @@
 
                                     <!--Slide 6-->
                                 <input class="carousel-open" type="radio" id="carousel-6" name="carousel" aria-hidden="true" hidden="">
-                                <div class="carousel-item absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar1[5].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-5"
                                     class="control-6 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -78,32 +78,6 @@
 
 
                                 <!-- Add additional indicators for each slide-->
-                                <ol class="carousel-indicators">
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-1"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-2"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-3"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-4"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-5"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-6"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                </ol>
                             </div>
                         </div>
                     </div>
@@ -141,8 +115,7 @@
                                 <!--Slide 7-->
                                 <input class="carousel-open-1" type="radio" id="carousel-7" name="carousel-1" aria-hidden="true" hidden=""
                                     checked="checked">
-                                <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/052.jpg)">
-                                    <p>7</p>
+                                <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[0].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-12"
                                     class="control-7 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"><i
@@ -153,7 +126,7 @@
 
                                 <!--Slide 8-->
                                 <input class="carousel-open-1" type="radio" id="carousel-8" name="carousel-1" aria-hidden="true" hidden="">
-                                <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/043.jpg)">
+                                <div class="carousel-item-1 absolute opacity-0 bg-center h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[1].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-7"
                                     class=" control-8 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -164,7 +137,7 @@
 
                                 <!--Slide 9-->
                                 <input class="carousel-open-1" type="radio" id="carousel-9" name="carousel-1" aria-hidden="true" hidden="">
-                                <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://mdbootstrap.com/img/new/slides/054.jpg)">
+                                <div class="carousel-item-1 absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[2].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-8"
                                     class="control-9 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -175,7 +148,7 @@
                                 
                                 <!--Slide 10-->
                                 <input class="carousel-open-1" type="radio" id="carousel-10" name="carousel-1" aria-hidden="true" hidden="">
-                                <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item-1 absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[3].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-9"
                                     class="control-10 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -186,7 +159,7 @@
 
                                     <!--Slide 11-->
                                 <input class="carousel-open-1" type="radio" id="carousel-11" name="carousel-1" aria-hidden="true" hidden="">
-                                <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item-1 absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[4].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-10"
                                     class="control-11 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -197,7 +170,7 @@
 
                                     <!--Slide 12-->
                                 <input class="carousel-open-1" type="radio" id="carousel-12" name="carousel-1" aria-hidden="true" hidden="">
-                                <div class="carousel-item-1 absolute opacity-0 h-80" style=" background-image: url(https://cdn.discordapp.com/attachments/958256273592307722/965612274184245298/unknown.png)">
+                                <div class="carousel-item-1 absolute opacity-0 h-80" style="background-size : cover" :style="{ backgroundImage: 'url(' + selectimgcar(imgcar2[5].car_img) + ')' }">
                                 </div>
                                 <label for="carousel-11"
                                     class="control-12 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
@@ -207,33 +180,7 @@
                                     class="fas fa-angle-right mt-3"></i></label>
 
 
-                                <!-- Add additional indicators for each slide-->
-                                <ol class="carousel-indicators">
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-7"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-8"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-9"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-10"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-11"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                    <li class="inline-block mr-3">
-                                    <label for="carousel-12"
-                                        class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                                    </li>
-                                </ol>
+                               
                             </div>
                         </div>
                     </div>
@@ -306,26 +253,6 @@
         text-align: center;
         z-index: 10;
     }
-
-    #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
-    #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
-    #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet,
-    #carousel-4:checked~.control-4~.carousel-indicators li:nth-child(4) .carousel-bullet,
-    #carousel-5:checked~.control-5~.carousel-indicators li:nth-child(5) .carousel-bullet,
-    #carousel-6:checked~.control-6~.carousel-indicators li:nth-child(6) .carousel-bullet{
-        color: #2b6cb0;
-        /*Set to match the Tailwind colour you want the active one to be */
-    }
-
-    #carousel-7:checked~.control-7~.carousel-indicators li:nth-child(1) .carousel-bullet,
-    #carousel-8:checked~.control-8~.carousel-indicators li:nth-child(2) .carousel-bullet,
-    #carousel-9:checked~.control-9~.carousel-indicators li:nth-child(3) .carousel-bullet,
-    #carousel-10:checked~.control-10~.carousel-indicators li:nth-child(4) .carousel-bullet,
-    #carousel-11:checked~.control-11~.carousel-indicators li:nth-child(5) .carousel-bullet,
-    #carousel-12:checked~.control-12~.carousel-indicators li:nth-child(6) .carousel-bullet{
-        color: #2b6cb0;
-        /*Set to match the Tailwind colour you want the active one to be */
-    }
 </style>
 <script>
 import axios from "axios";
@@ -362,6 +289,18 @@ export default {
             .then(res => {
                 this.firstcar = res.data.firstcar;
                 this.secondcar = res.data.secondcar;
+                this.imgcar1 = res.data.imgcar1
+                if(this.imgcar1.length < 6){
+                    for(let i = 0 ; i < 6 - this.imgcar1.length ; i++){
+                        this.imgcar1.push({car_img : "https://theherotoys.com/wp-content/uploads/2020/11/no-image-available_1.png"})
+                    }
+                }
+                this.imgcar2 = res.data.imgcar2
+                if(this.imgcar2.length < 6){
+                    for(let i = 0 ; i < 6 - this.imgcar2.length ; i++){
+                        this.imgcar2.push({car_img : "https://theherotoys.com/wp-content/uploads/2020/11/no-image-available_1.png"})
+                    }
+                }
             })
             .catch(error => {
             this.error = error.response.data.message;
@@ -390,7 +329,8 @@ export default {
       return dis.slice(4, dis.length - 3) + " กม.";
     },
     convertact(act){
-        return act.slice(0, 7);
+        let actedit = act.slice(0, 7)
+        return actedit;
     }
   },
 };
