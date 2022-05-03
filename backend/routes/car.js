@@ -351,6 +351,19 @@ router.get('/compare/:car1/:car2', async function (req, res, next) {
         res.json(error)
     }
 })
+router.get('/randomcar', async function (req, res, next) {
+    try {
+        let random = []
+        const [randomcar, field] = await pool.query(
+            'SELECT * FROM Car JOIN Car_images USING(car_id) WHERE main = 1')
+        for(let i = 0 ; i < 6 ; i++){
+            random.push(randomcar[Math.floor(Math.random()*randomcar.length)])
+        }
+        return res.json(random)
+    } catch (error) {
+        res.json(error)
+    }
+})
 
 
 

@@ -711,10 +711,8 @@ export default {
           this.color = this.detailcar.car_color;
           this.owner = this.detailcar.car_owner;
           this.car_desc = this.detailcar.car_desc;
-          console.log(this.detailcar);
           if (
-            this.detailcar.seller_id != this.loginuser.user_id &&
-            this.loginuser.employee_type != "employee"
+            this.detailcar.seller_id != this.loginuser.user_id && this.loginuser.role != 'admin'
           ) {
             alert("You don’t have the right to update");
             this.$router.push({ name: "home" });
@@ -764,7 +762,7 @@ export default {
       });
       if (
         this.detailcar.seller_id == this.loginuser.user_id ||
-        this.loginuser.employee_type == "employee"
+        this.loginuser.role == "admin"
       ) {
         if(this.images.length != 0){
             axios

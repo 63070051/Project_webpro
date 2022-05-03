@@ -101,168 +101,36 @@
 
         </div>
       </div>
-    <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
+    <div class="max-w-6xl mx-auto my-8" style="min-height: 500px;">
       <p class="text-4xl mt-8">Recommended</p>
       <div class="w-48 h-1 bg-blue-600 mt-2 rounded-lg"></div>
-      <div class="grid grid-cols-3 gap-8">
-        <div class="rounded-lg shadow-lg bg-white max-w-sm">
+      <div class="grid grid-cols-3 gap-8 mt-8">
+        <div class="rounded-lg shadow-lg bg-white max-w-sm" v-for="car in cars" :key="car.model" @click="linktodetail(car.car_id)">
               <div data-mdb-ripple="true" data-mdb-ripple-color="light">
                 <img
                   class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
+                  :src=selectimgcar(car.car_img)
                   alt=""
                 />
               </div>
 
               <div class="p-6 space-y-3">
                 <h5 class="text-gray-900 text-xl font-bold">
-                  222
+                  {{car.car_model}}
                 </h5>
                 <p class="text-gray-700 text-base">
-                  222
+                  {{car.car_engine + ' / ' + car.car_gear}}
                 </p>
                 <p class="pb-2 border-b border-gray-300">
-                  1111
+                  {{convertdistance(car.car_distance)}}
                 </p>
                 <div class="flex justify-between">
                   <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
+                    {{convertprice(car.car_price)}}
                   </p>
                 </div>
               </div>
             </div>
-        <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-bold">
-                  222
-                </h5>
-                <p class="text-gray-700 text-base">
-                  222
-                </p>
-                <p class="pb-2 border-b border-gray-300">
-                  1111
-                </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
-                  </p>
-                </div>
-              </div>
-            </div>
-        
-         <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-bold">
-                  222
-                </h5>
-                <p class="text-gray-700 text-base">
-                  222
-                </p>
-                <p class="pb-2 border-b border-gray-300">
-                  1111
-                </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
-                  </p>
-                </div>
-              </div>
-            </div>
-           <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-bold">
-                  222
-                </h5>
-                <p class="text-gray-700 text-base">
-                  222
-                </p>
-                <p class="pb-2 border-b border-gray-300">
-                  1111
-                </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
-                  </p>
-                </div>
-              </div>
-            </div>
-             <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-bold">
-                  222
-                </h5>
-                <p class="text-gray-700 text-base">
-                  222
-                </p>
-                <p class="pb-2 border-b border-gray-300">
-                  1111
-                </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
-                  </p>
-                </div>
-              </div>
-            </div>
-             <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="https://cdn.discordapp.com/attachments/958256273592307722/964466396505473034/unknown.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="p-6 space-y-3">
-                <h5 class="text-gray-900 text-xl font-bold">
-                  222
-                </h5>
-                <p class="text-gray-700 text-base">
-                  222
-                </p>
-                <p class="pb-2 border-b border-gray-300">
-                  1111
-                </p>
-                <div class="flex justify-between">
-                  <p class="text-orange-500 font-bold text-xl float-right">
-                    2222
-                  </p>
-                </div>
-              </div>
-            </div>  
-        
       </div>
     </div>
     <Footer />
@@ -297,7 +165,7 @@ export default {
     },
     getcar() {
       axios
-        .post(`http://localhost:3000/getcar`)
+        .get(`http://localhost:3000/randomcar`)
         .then(response => {
           this.cars = response.data;
         })
@@ -312,6 +180,23 @@ export default {
       } else {
         return "https://bulma.io/images/placeholders/640x360.png";
       }
+    },
+    convertprice(price) {
+      let price2 = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(price);
+      return price2.slice(4, price2.length - 3) + " บาท";
+    },
+    convertdistance(km) {
+      let dis = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "THB"
+      }).format(km);
+      return dis.slice(4, dis.length - 3) + " กม.";
+    },
+    linktodetail(carid){
+      this.$router.push(`/detail/${carid}`)
     }
   }
 };

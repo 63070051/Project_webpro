@@ -31,10 +31,10 @@
             <router-link class="text-sky-700 font-bold" to="/searchcar">ค้นหารถ</router-link>
           </button>
         </div>
-        <router-link class="text-sky-700 font-bold" to="/seller" v-show="loginuser.employee_type != 'employee'">ขายรถยนต์</router-link>
+        <router-link class="text-sky-700 font-bold" to="/seller" v-show="loginuser.role != 'admin'">ขายรถยนต์</router-link>
         <router-link class="text-sky-700 font-bold" to="/about">เกี่ยวกับ</router-link>
         <router-link class="text-sky-700 font-bold" to="/question">คำถามพบบ่อย</router-link>
-        <router-link class="text-sky-700 font-bold" to="/manageseller" v-show="loginuser.employee_type == 'employee'">Manage Seller</router-link>
+        <router-link class="text-sky-700 font-bold" to="/manageseller" v-show="loginuser.role == 'admin'">Manage Seller</router-link>
       </div>
       <div class="lg:flex items-center space-x-6 hidden">
         <div class="flex items-center space-x-2">
@@ -55,7 +55,7 @@
                   </router-link>
                   
                 </li>
-                <li class="" @click="tohistory()">
+                <li class="" @click="tohistory()" v-if="this.loginuser.seller_type == 1">
                     <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
                     History Seller
                     </p>
