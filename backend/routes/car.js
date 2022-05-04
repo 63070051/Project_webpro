@@ -51,7 +51,7 @@ router.post('/detail/:carid', async function (req, res, next) {
 router.post('/getcar', async function (req, res, next) {
     try {
         const [cars, field] = await pool.query(
-            'SELECT * FROM Car Join Car_images USING(car_id) WHERE main = 1'
+            "SELECT * FROM Car Join Car_images USING(car_id) LEFT OUTER JOIN Sales_data USING(car_id) WHERE main = 1"
         )
         // cars.forEach(car => {
         //     var thai = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'THB' }).format(car.car_price);

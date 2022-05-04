@@ -8,14 +8,22 @@ const nodemailer = require("nodemailer");
 const router = express.Router();
 let alert = require("alert");
 
+const passwordValidator = (value, helpers) => {
+    if (value.length < 8) {
+        return res.json('Password must contain at least 8 characters');
+    }
+    if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
+        return res.json('Password must be harder');
+    }
+    return value
+}
 const usernameValidator = async (value, helpers) => {
     const [rows, _] = await pool.query(
         "SELECT login_username FROM Login WHERE login_username = ?",
         [value]
     );
     if (rows.length > 0) {
-        const message = "This username is already taken";
-        alert(message);
+        return res.json("This username is already taken");
     } else {
         return value;
     }
@@ -26,8 +34,7 @@ const emailValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        const message = "This email is already taken";
-        alert(message);
+        return res.json("This email is already taken");
     } else {
         return value;
     }
@@ -38,8 +45,7 @@ const idcardValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        const message = "This ID card is already taken";
-        alert(message);
+        return res.json("This ID card is already taken");
     } else {
         return value;
     }
@@ -50,8 +56,7 @@ const phoneValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        const message = "This phone is already taken";
-        alert(message);
+        return res.json("This phone is already taken");
     } else {
         return value;
     }
@@ -77,8 +82,8 @@ const signupSchema = Joi.object({
     address: Joi.string().required(),
     birth: Joi.string().required(),
     gender: Joi.string().required(),
-    password1: Joi.string().required(),
-    password2: Joi.string().required(),
+    password1: Joi.string().required().custom(passwordValidator),
+    password2: Joi.string().required().valid(Joi.ref('password')),
 });
 
 router.post("/register/account", async function (req, res, next) {

@@ -6,7 +6,6 @@ const { json } = require("express");
 const fs = require("fs");
 const router = express.Router();
 
-
 router.post("/seller/:id", async function (req, res, next) {
   try {
     const [row, field] = await pool.query(
@@ -51,21 +50,33 @@ router.get("/getcarseller/:id", async function (req, res, next) {
     return next(err);
   }
 });
-router.post("/confirmcus/:sellerid", async function (req, res, next) {
+router.put("/cancelcus/:carid/", async function (req, res, next) {
   try {
-    const [addseller, field] = await pool.query(
-      "UPDATE Sales_data SET seller_id = ? WHERE",
-      [req.params.sellerid]
+    const [upcar, field] = await pool.query(
+      "UPDATE Sales_data SET sal_status = 'cancel' WHERE car_id = ?",
+      [req.params.carid]
     );
-    return res.json(carseller);
+    return res.json(upcar);
+  } catch (err) {
+    return next(err);
+  }
+});
+router.put("/confirmcus/:carid/:price", async function (req, res, next) {
+  try {
+    const [upcar, field] = await pool.query(
+      "UPDATE Sales_data SET sal_price = ?, sal_status = 'waiting admin' WHERE car_id = ?",
+      [req.params.price, req.params.carid]
+    );
+    return res.json(upcar);
   } catch (err) {
     return next(err);
   }
 });
 router.get("/getcarreqcus/:sellerid", async function (req, res, next) {
+  // console.log(req.params.sellerid);
   try {
     const [seller, field] = await pool.query(
-      "SELECT * FROM Car JOIN Sales_data USING(car_id) WHERE seller_id = ?",
+      "SELECT * FROM Car AS c JOIN Sales_data AS sd ON(c.car_id = sd.car_id) JOIN Car_images AS ci ON(ci.car_id = c.car_id) JOIN Users AS u ON(u.user_id = sd.cus_id) WHERE sd.seller_id = ? AND main = 1",
       [req.params.sellerid]
     );
     return res.json(seller);
@@ -73,6 +84,5 @@ router.get("/getcarreqcus/:sellerid", async function (req, res, next) {
     return next(err);
   }
 });
-
 
 module.exports = router;

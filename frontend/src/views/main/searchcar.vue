@@ -823,9 +823,10 @@
             class="flex justify-center cursor-pointer"
             v-for="car in showcars"
             :key="car.car_id"
+            v-show="!(car.sal_status == 'confirmed')"
           >
             <div class="rounded-lg shadow-lg bg-white max-w-sm">
-              <div data-mdb-ripple="true" data-mdb-ripple-color="light" @click="detailcar(car.car_id)">
+              <div data-mdb-ripple="true" data-mdb-ripple-color="light" @click="detailcar(car.car_id)" onclick="backToTop()">
                 <img
                   class="rounded-t-lg"
                   :src="selectimgcar(car.car_img)"
@@ -833,7 +834,7 @@
                 />
               </div>
 
-              <div class="px-6 pt-6 space-y-3"  @click="detailcar(car.car_id)">
+              <div class="px-6 pt-6 space-y-3"  @click="detailcar(car.car_id)" onclick="backToTop()">
                 <h5 class="text-gray-900 text-xl font-bold">
                   {{ car.car_model }}
                 </h5>

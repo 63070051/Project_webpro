@@ -37,11 +37,11 @@ router.post("/vertifiedseller/:id", async function (req, res, next) {
       return res.status(500).json(err);
     }
   });
-  router.post("/finalsell/:saledataid", async function (req, res, next) {
+  router.put("/finalsell/:saledataid/:emid", async function (req, res, next) {
     try {
       const [saledata, field] = await pool.query(
-        "UPDATE Sales_data SET sal_status = ? WHERE sal_id = ?",
-        ["confirmed", req.params.saledataid]
+        "UPDATE Sales_data SET sal_status = 'confirmed', em_id = ? WHERE sal_id = ?",
+        [req.params.emid, req.params.saledataid]
       );
       return res.json("success");
     } catch (err) {
@@ -50,9 +50,10 @@ router.post("/vertifiedseller/:id", async function (req, res, next) {
   });
   router.get("/getcarsaledata", async function (req, res, next) {
     try {
-      const [saledata, field] = await pool.query(
-        "SELECT * FROM Sales_data WHERE sal_status = 'waiting admin'",
+      const [saledata] = await pool.query(
+        "SELECT *, cus.user_firstname AS cusfirstname, cus.user_lastname AS cuslastname, sell.user_firstname AS sellfirstname, sell.user_lastname AS selllastname FROM Car AS c JOIN Car_images AS ca ON(ca.car_id = c.car_id) JOIN Sales_data AS sd ON(c.car_id = sd.car_id) JOIN Users AS sell ON(sd.seller_id = sell.user_id) JOIN Users AS cus ON(cus.user_id = sd.cus_id) WHERE main = 1 and sd.sal_status IN ('waiting admin', 'confirmed')", 
       );
+      console.log(saledata)
       return res.json(saledata);
     } catch (err) {
       return res.status(500).json(err);

@@ -22,7 +22,7 @@
             <div class="border-2 border-orange-500 w-12 h-12 rounded-xl flex justify-center items-center">
               <img width="26" src="https://www.cars24.co.th/th/static/js/2be457deb3cc0c5e4eccf46297b7004a.svg" alt="">
             </div>
-            <div class="w-28 bg-orange-500 flex justify-center items-center rounded-xl">
+            <div class="cursor-pointer w-28 bg-orange-500 flex justify-center items-center rounded-xl" @click="requestcar(detailcar.car_id)">
               <p class="text-white font-bold">จองรถ</p>
             </div>
           </div>
@@ -251,6 +251,26 @@ export default {
        currency: "THB"
      }).format(vat);
      return vat.slice(4, vat.length - 3) + ' บาท'
+    },
+    requestcar(carid){
+      if(this.loginuser == null){
+        alert('Please login')
+        this.$router.push('/login')
+      }else{
+        axios
+        .post(`http://localhost:3000/cusreqseller/${this.loginuser.user_id}/${carid}`)
+        .then(response => {
+          if(response.data != 'success'){
+            alert(response.data)
+          }
+          else{
+            alert('Please contact Seller')
+          }
+        })
+        .catch(error => {
+          this.error = error.response.data.message;
+        });
+      }
     }
   }
 };
