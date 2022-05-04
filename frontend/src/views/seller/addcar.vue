@@ -719,7 +719,7 @@ export default {
       formData.append("car_act", this.car_act + '-01');
       formData.append("car_num_of_door", this.number_door);
       this.images.forEach(image => {
-        console.log(image[0]);
+        // console.log(image[0]);
         formData.append("carImage", image[0]);
       });
       if(this.images.length != 0){

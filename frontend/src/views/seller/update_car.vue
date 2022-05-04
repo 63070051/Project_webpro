@@ -733,7 +733,7 @@ export default {
         alert("Max-Limit images is 6");
       } else {
         this.images.push(event.target.files);
-        console.log(this.images);
+        // console.log(this.images);
       }
     },
     showSelectImage(image) {

@@ -39,36 +39,6 @@ router.post("/getseller", async function (req, res, next) {
     next(err);
   }
 });
-router.post("/vertifiedseller/:id", async function (req, res, next) {
-  try {
-    const [row, field] = await pool.query(
-      "UPDATE Seller SET `s_vertified` = ? WHERE user_id = ?",
-      ["Vertified", req.params.id]
-    );
-    const [users, field1] = await pool.query(
-      "UPDATE Users SET `seller_type` = 1 WHERE user_id = ?",
-      [req.params.id]
-    );
-    return res.json("success");
-  } catch (err) {
-    next(err);
-  }
-});
-router.post("/cancelseller/:id", async function (req, res, next) {
-  try {
-    const [row, field] = await pool.query(
-      "UPDATE Seller SET `s_vertified` = ? WHERE user_id = ?",
-      ["Not-Vertified", req.params.id]
-    );
-    const [users, field1] = await pool.query(
-      "UPDATE Users SET `seller_type` = 0 WHERE user_id = ?",
-      [req.params.id]
-    );
-    return res.json("success");
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-});
 
 router.get("/getcarseller/:id", async function (req, res, next) {
   try {
@@ -77,6 +47,28 @@ router.get("/getcarseller/:id", async function (req, res, next) {
       [req.params.id]
     );
     return res.json(carseller);
+  } catch (err) {
+    return next(err);
+  }
+});
+router.post("/confirmcus/:sellerid", async function (req, res, next) {
+  try {
+    const [addseller, field] = await pool.query(
+      "UPDATE Sales_data SET seller_id = ? WHERE",
+      [req.params.sellerid]
+    );
+    return res.json(carseller);
+  } catch (err) {
+    return next(err);
+  }
+});
+router.get("/getcarreqcus/:sellerid", async function (req, res, next) {
+  try {
+    const [seller, field] = await pool.query(
+      "SELECT * FROM Car JOIN Sales_data USING(car_id) WHERE seller_id = ?",
+      [req.params.sellerid]
+    );
+    return res.json(seller);
   } catch (err) {
     return next(err);
   }

@@ -55,7 +55,7 @@
           ตั้งค่าใหม่
         </p>
       </div>
-      <div class="grid grid-cols-6 gap-4">
+      <div class="grid grid-cols-6 gap-4 z-50">
         <div class="inline-block relative">
           <button
             @click="
@@ -787,10 +787,10 @@
         </div>
       </div>
       <div class="flex justify-end">
-        <div class="inline-block relative">
-          <div class="mt-4 cursor-pointer z-10" @click="sortactive = !sortactive">
+          <div class="mt-4 cursor-pointer" @click="sortactive = !sortactive">
             <p class="border-b-2 border-sky-700 text-sky-700 font-bold">เรียง</p>
           </div>
+        <div class="inline-block relative">
           <div class="absolute w-40 bg-gray-100 shadow-lg rounded-lg mt-2 hidden" :class="[sortactive? 'dropdown-active' : '']">
             <div class="flex p-2 gap-1 text-center hover:bg-gray-300 cursor-pointer rounded-t-lg" @click="sorted('lthprice'); sortactive = !sortactive">
               <img src="https://www.cars24.co.th/th/static/js/6e5889e7af6c6b8913ad5a8251efb411.svg" alt="">
@@ -913,7 +913,7 @@ export default {
   },
   computed: {
     showcars() {
-      let car_copy = this.cars;
+      let car_copy = [...this.cars];
       let indexcompare = [];
       if (this.brand.length != 0) {
         car_copy = car_copy.filter(car =>
@@ -1016,11 +1016,6 @@ export default {
               }
           })
         }
-        if(this.sortt == 'cancel'){
-          console.log(1);
-          return car_copy
-        }
-        
       }
       this.checkedcompare(indexcompare)
       return car_copy;

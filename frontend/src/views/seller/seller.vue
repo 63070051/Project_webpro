@@ -37,7 +37,7 @@ export default {
         .post(`http://localhost:3000/seller/${this.loginuser.user_id}`)
         .then((response) => {
           this.users = response.data[0];
-          console.log(this.users)
+          // console.log(this.users)
           if(!this.users.seller_type){
               this.$router.push('/vertified_seller')
           }
