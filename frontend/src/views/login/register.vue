@@ -18,12 +18,18 @@
             </label>
             <input 
               class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.username.$error}"
               id="username"
               name="name"
               type="text"
               placeholder="Username"
-              v-model="username"
+              v-model="$v.username.$model"
             />
+            <div v-if="$v.username.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.username.required">This field is required</p>
+              <p v-if="!$v.username.minLength">Username must be at least 5 letters</p>
+              <p v-if="!$v.username.maxLength">Username must not more than 20 letters</p>
+            </div>
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -31,15 +37,19 @@
             </label>
             <input
              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+             :class="{'border-red-500': $v.password1.$error}"
               id="password"
               name="password1"
               type="password"
               placeholder="******************"
-              v-model="password1"
-              @keyup="check_password"
+              v-model="$v.password1.$model"
             />
             <p v-show="checkpassword" class="text-red-500">password min length 8!</p>
-
+            <div v-if="$v.password1.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.password1.required">This field is required</p>
+              <p v-if="!$v.password1.minLength">Password must be at least 8 letters</p>
+              <p v-if="!$v.password1.complex">Password is too easy</p>
+            </div>
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -47,14 +57,16 @@
             </label>
             <input
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.password2.$error}"
               id="password2"
               name="password2"
               type="password"
               placeholder="******************"
-              @keyup="confirm_password"
-              v-model="password2"
+              v-model="$v.password2.$model"
             />
-            <p v-show="checkpassword2" class="text-red-500">Password Does Not Match</p>
+            <div v-if="$v.password2.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.password2.sameAs">Password is not match</p>
+            </div>
           </div>
           <div class="grid grid-cols-4 gap-4">
             <div class="col-span-2">
@@ -64,12 +76,17 @@
             <input
               
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.firstname.$error}"
               id="firstname"
               name="firstname"
               type="text"
               placeholder="Firstname"
-              v-model="firstname"
+              v-model="$v.firstname.$model"
             />
+            <div v-if="$v.firstname.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.firstname.required">This field is required</p>
+              <p v-if="!$v.firstname.maxLength">Firstname must not more than 150 letters</p>
+            </div>
           </div>
           <div class="col-span-2">
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -77,41 +94,56 @@
             </label>
             <input
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.lastname.$error}"
               id="lastname"
               name="lastname"
               type="text"
               placeholder="Lastname"
-              v-model="lastname"
+              v-model="$v.lastname.$model"
             />
+            <div v-if="$v.lastname.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.lastname.required">This field is required</p>
+              <p v-if="!$v.lastname.maxLength">Lastname must not more than 150 letters</p>
+            </div>
           </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div >
-            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
-              ID Card
-            </label>
-            <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-              id="idcard"
-              name="idcard"
-              type="text"
-              placeholder="Address"
-              v-model="idcard"
-            />
-          </div>
-          <div>
-            <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
-              Tel
-            </label>
-            <input
-              class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-              id="tel"
-              name="tel"
-              type="tel"
-              placeholder="Tel."
-              v-model="tel"
-            />
-          </div>
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
+                ID Card
+              </label>
+              <input
+                class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                :class="{'border-red-500': $v.idcard.$error}"
+                id="idcard"
+                name="idcard"
+                type="text"
+                placeholder="Address"
+                v-model="$v.idcard.$model"
+              />
+              <div v-if="$v.idcard.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.idcard.required">This field is required</p>
+              <p v-if="!$v.idcard.checkid">Idcard must be 13 letters</p>
+            </div>
+            </div>
+            <div>
+              <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
+                Tel
+              </label>
+              <input
+                class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                :class="{'border-red-500': $v.tel.$error}"
+                id="tel"
+                name="tel"
+                type="text"
+                placeholder="Tel."
+                v-model="$v.tel.$model"
+              />
+            <div v-if="$v.tel.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.tel.required">This field is required</p>
+              <p v-if="!$v.tel.mobile">The mobile number format is incorrect</p>
+            </div>
+            </div>
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -119,12 +151,17 @@
             </label>
             <input
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.address.$error}"
               id="address"
               name="address"
               type="text"
               placeholder="Address"
-              v-model="address"
+              v-model="$v.address.$model"
             />
+            <div v-if="$v.address.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.address.required">This field is required</p>
+              <p v-if="!$v.address.maxLength">Address must not more than 150 letters</p>
+            </div>
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -132,12 +169,17 @@
             </label>
             <input
               class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.email.$error}"
               id="email"
               name="email"
               type="text"
               placeholder="Email"
-              v-model="email"
+              v-model="$v.email.$model"
             />
+            <div v-if="$v.email.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.email.required">This field is required</p>
+              <p v-if="!$v.email.email">This email format is incorrect</p>
+            </div>
           </div>
           <div class="flex grid grid-cols-3 gap-4">
             <div class="mb-6 col-span-2">
@@ -146,11 +188,15 @@
               </label>
               <input
                 class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                :class="{'border-red-500': $v.birth.$error}"
                 id="date"
                 name="date"
                 type="date"
-                v-model="birth"
+                v-model="$v.birth.$model"
               />
+              <div v-if="$v.birth.$error" class="text-red-500 mt-1">
+                <p v-if="!$v.birth.required">This field is required</p>
+              </div>
             </div>
             <div>
               <label class="block text-gray-700 text-lg font-bold mb-2 text-lg">
@@ -162,12 +208,16 @@
                     
                     name="gender"
                    class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                    v-model="gender"
+                   :class="{'border-red-500' : $v.gender.$error}"
+                    v-model="$v.gender.$model"
                   >
-                    <option selected>Selected</option>
+                    <option selected value>Selected</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                   </select>
+                  <div v-if="$v.gender.$error" class="text-red-500 mt-1">
+                    <p v-if="!$v.gender.required">This field is required</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -196,8 +246,33 @@
 </template>
 
 <script>
+import { required, email, minLength, sameAs, maxLength} from 'vuelidate/lib/validators'
 import axios from "axios";
-// @ is an alias to /src
+function mobile (value) {
+  if(!value){
+    return true
+  }else{
+    return !!value.match(/0[0-9]{9}/)
+  }
+}
+function complexPassword (value) {
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
+      return false
+    }
+  }
+  return true
+}
+function checkid (value){
+  if(!value){
+    return true
+  }else{
+    return value.length == 13
+  }
+}
+  // @ is an alias to /src
 export default {
   name: "Register",
   data() {
@@ -209,67 +284,91 @@ export default {
       lastname: "",
       idcard: "",
       tel: "",
-      email: "",
+      email: '',
       address: "",
-      birth: Date,
-      gender: "Selected",
+      birth: "",
+      gender: "",
       checkpassword: false,
-      checkpassword2: false  ,
+      checkpassword2: false
     };
+  },
+  validations: {
+    email: {
+      required: required,
+      email: email
+    },
+    tel:{
+      required: required ,
+      mobile: mobile
+    },
+    password1:{
+      required: required,
+      minLength: minLength(8),
+      complex: complexPassword
+    },
+    password2:{
+      sameAs: sameAs('password1')
+    },
+    username:{
+      minLength: minLength(5),
+      maxLength: maxLength(20),
+      required
+    },
+    firstname:{
+      maxLength: maxLength(150),
+      required
+    },
+    lastname:{
+      maxLength: maxLength(150),
+      required
+    },
+    idcard:{
+      required,
+      checkid
+    },
+    address:{
+      required,
+      maxLength: maxLength(150)
+    },
+    birth:{
+      required
+    },
+    gender:{
+      required
+    }
   },
   methods: {
     register() {
-        if (this.password1 != this.password2){
-            alert('Password does not match')
-        }
-        else if (this.username == "" || this.lastname == "" || this.firstname == "" || this.idcard == "" || this.tel == "" || this.email == "" || this.address == "" || this.address == "") {
-          alert('Please Enter Your Information')
-        }
-        else{
-          axios
-          .post(`http://localhost:3000/register/account`, {
-            username: this.username,
-            password1: this.password1,
-            password2: this.password2,
-            tel: this.tel,
-            email: this.email,
-            birth: this.birth,
-            address: this.address,
-            gender: this.gender,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            idcard: this.idcard,
-          })
-          .then(response => {
-            console.log(response.data)
-            if(response.data != 'success'){
-              alert(response.data)
-            }else{
-              this.$router.push("/login");
-            }
-          })
-          .catch(error => {
-            this.error = error.response.data.message;
-          });
-        }
-    },
-    check_password() {
-      console.log(1)
-      if(this.password1.length < 8) {
-        this.checkpassword = true;
-      }
-      else {
-        this.checkpassword = false;
+      if(this.$v.$invalid){
+        this.$v.$touch()
+      }else{
+        axios
+        .post(`http://localhost:3000/register/account`, {
+          username: this.username,
+          password1: this.password1,
+          password2: this.password2,
+          tel: this.tel,
+          email: this.email,
+          birth: this.birth,
+          address: this.address,
+          gender: this.gender,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          idcard: this.idcard,
+        })
+        .then(response => {
+          console.log(response.data)
+          if(response.data != 'success'){
+            alert(response.data)
+          }else{
+            this.$router.push("/login");
+          }
+        })
+        .catch(error => {
+          this.error = error.response.data.message;
+        });
       }
     },
-    confirm_password() {
-      if(this.password1 != this.password2) {
-        this.checkpassword2 = true;
-      }
-      else {
-        this.checkpassword2 = false;
-      }
-    }
-  }
+  },
 };
 </script>

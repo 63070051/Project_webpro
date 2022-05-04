@@ -7,19 +7,33 @@
           <!--Slide 1-->
           <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
             checked="checked">
-          <div class="carousel-item absolute opacity-0 h-96  "  style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);">
-              <div class="flex justify-center h-full ">
-                <div class='flex w-10/12 h-full '>
-                  <div class="w-1/2 flex flex-col justify-center">
-                      <p class="text-5xl py-4 text-white">
-                          มั่นใจรถมือสองสภาพดี
-                      </p>
-                      <p class="text-white">
-                        การันตีคุณภาพดี และ มีมาตรฐาน 
-                      </p>
+          <div class="carousel-item absolute opacity-0 h-96  w-full"  style="background: radial-gradient(circle, rgba(0,112,186,1) 0%, rgba(0,0,53,1) 100%);">
+              <div class="flex justify-center h-full">
+                <div class='flex mx-auto max-w-7xl h-full grid grid-cols-2'>
+                  <div class=" flex flex-col justify-center">
+                    <p class="text-4xl text-white font-bold">
+                        มั่นใจรถมือสองสภาพดี
+                    </p>
+                    <div class="h-1 bg-orange-500 rounded-lg mt-2" style="width: 21.3rem"></div>
+                    <p class="text-white mt-3 font-semibold text-xl">
+                      การันตีคุณภาพดี และ มีมาตรฐาน 
+                    </p>
+                    <div class="my-7">
+                      <img src="https://www.cars24.co.th/th/static/js/ac18609d881cc4b2f451e50e66620fcb.svg" alt="">
+                    </div>
+                    <div class="text-white font-bold space-y-5">
+                      <div class="flex items-center gap-4">
+                        <img src="https://www.cars24.co.th/th/static/js/dfaaed2b8b60aff38666233d542e8c54.svg" alt="">
+                        <p>ก่อตั้งปี 2022 ประสบความาสำเร็จแล้วใน 3 ประเทศ</p>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <img src="https://www.cars24.co.th/th/static/js/dfaaed2b8b60aff38666233d542e8c54.svg" alt="">
+                        <p>การซื้อขายของลูกค้ากว่า +500,000 ราย</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="w-1/2 flex flex-col justify-center">
-                    <img src="https://www.cars24.co.th/th/static/js/0fabb80f8cb2698a8aa7ff732e2369ab.svg" alt="">
+                  <div class="flex flex-col justify-center">
+                    <img width="550px" src="https://www.cars24.co.th/th/static/js/0fabb80f8cb2698a8aa7ff732e2369ab.svg" alt="">
                   </div>
                 </div>
               </div>
@@ -87,15 +101,15 @@
           <ol class="carousel-indicators">
             <li class="inline-block mr-3">
               <label for="carousel-1"
-                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-orange-700">•</label>
             </li>
             <li class="inline-block mr-3">
               <label for="carousel-2"
-                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-orange-700">•</label>
             </li>
             <li class="inline-block mr-3">
               <label for="carousel-3"
-                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-orange-700">•</label>
             </li>
           </ol>
 
@@ -105,7 +119,7 @@
       <p class="text-4xl mt-8">Recommended</p>
       <div class="w-48 h-1 bg-blue-600 mt-2 rounded-lg"></div>
       <div class="grid grid-cols-3 gap-8 mt-8">
-        <div class="rounded-lg shadow-lg bg-white max-w-sm" v-for="car in cars" :key="car.model" @click="linktodetail(car.car_id)">
+        <div class="rounded-lg shadow-lg bg-white max-w-sm cursor-pointer" v-for="car in cars" :key="car.model" @click="linktodetail(car.car_id)">
               <div data-mdb-ripple="true" data-mdb-ripple-color="light">
                 <img
                   class="rounded-t-lg"
@@ -234,7 +248,7 @@ export default {
         #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
         #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
         #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet {
-          color: #2b6cb0;
+          color: #f09927;
           /*Set to match the Tailwind colour you want the active one to be */
         }
       </style>

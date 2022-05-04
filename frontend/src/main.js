@@ -15,6 +15,7 @@ Vue.component('icon', FontAwesomeIcon)
 
 Vue.use(Vuelidate)
 
+
 Vue.config.productionTip = false
 
 new Vue({

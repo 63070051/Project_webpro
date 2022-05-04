@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div id="app">
     <div class="flex justify-center items-center h-screen ">
       <div class="h-full text-gray-800">
@@ -15,12 +15,14 @@
             />
           </div>
           <div class="mt-10 px-24 w-5/12">
-            <h2
-              class="text-center text-4xl    font-display font-semibold lg:text-left xl:text-5xl
-                        xl:text-bold"
-            >
-              Sign in
-            </h2>
+            <div class="flex gap-3">
+              <h2
+                class="text-center text-4xl    font-display font-semibold lg:text-left xl:text-5xl
+                          xl:text-bold"
+              >
+                Sign in
+              </h2>
+            </div>
             <div class="mt-12">
               <div>
                 <div>
@@ -28,11 +30,13 @@
                     Username
                   </div>
                   <input
-                    v-model="username"
+                    v-model="$v.username.$model"
                     class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                    :class="{'border-red-500' : $v.username.$error}"
                     type=""
                     placeholder="Enter your Username"
                   />
+                  <p v-if="$v.username.$error && !$v.username.required" class="text-red-500 mt-1">required</p>
                 </div>
                 <div class="mt-8">
                   <div class="flex justify-between items-center">
@@ -41,12 +45,14 @@
                     </div>
                   </div>
                   <input
-                    v-model="password"
+                    v-model="$v.password.$model"
                     class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                    :class="{'border-red-500' : $v.password.$error || error}"
                     type="password"
                     placeholder="Enter your password"
                   />
-                  <p v-show="error" class="text-red-500 pt-1">Username or Password Incorrect</p>
+                  <p v-if="$v.password.$error && !$v.password.required" class="text-red-500 mt-1">required</p>
+                  <p v-show="error" class="text-red-500 pt-1 mt-1">Username or Password Incorrect</p>
                 </div>
                 <div class="float-right">
                   <router-link to="/forgetpassword" class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800 cursor-pointer">Forgot Password?</router-link>
@@ -61,7 +67,7 @@
                 </div>
               </div>
               <div
-                class="mt-12 text-sm font-display font-semibold text-gray-700 text-center"
+                class="mt-8 text-sm font-display font-semibold text-gray-700 text-center items-center flex flex-col"
               >
                 <router-link to="/register">
                   Don't have an account ?
@@ -69,6 +75,9 @@
                     class="cursor-pointer text-indigo-600 hover:text-indigo-800"
                     >Sign up</a
                   >
+                </router-link>
+                <router-link class="mt-5" to="/">
+                  <img width="50px" src="https://cdn.discordapp.com/attachments/958256273592307722/971440161411964978/home_new.png" alt="">
                 </router-link>
               </div>
             </div>
@@ -80,6 +89,7 @@
 </template>
 
 <script>
+import {required} from 'vuelidate/lib/validators'
 import axios from "axios";
 // @ is an alias to /src
 export default {
@@ -92,25 +102,37 @@ export default {
       error: false
     };
   },
+  validations:{
+    username:{
+      required
+    },
+    password:{
+      required
+    }
+  },
   methods: {
     login() {
-      axios
-        .post(`http://localhost:3000/connected/`, {
-          username: this.username,
-          password: this.password
-        })
-        .then(response => {
-          this.user = response.data;
-          if (this.user != "error") {
-            localStorage.setItem("user", JSON.stringify(this.user));
-            this.$router.push("/");
-          } else {
-            this.error = true;
-          }
-        })
-        .catch(error => {
-          this.error = error.response.data.message;
-        });
+      if(this.$v.$invalid){
+        this.$v.$touch()
+      }else{
+        axios
+          .post(`http://localhost:3000/connected/`, {
+            username: this.username,
+            password: this.password
+          })
+          .then(response => {
+            this.user = response.data;
+            if (this.user != "error") {
+              localStorage.setItem("user", JSON.stringify(this.user));
+              this.$router.push("/");
+            } else {
+              this.error = true;
+            }
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
+      }
     }
   }
 };
