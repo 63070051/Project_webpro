@@ -94,7 +94,7 @@ router.post(
         }
         const conn = await pool.getConnection();
         await conn.beginTransaction();
-        console.log(req.files);
+        // console.log(req.files);
         try {
             const file = req.files;
             let pathArray = [];
@@ -155,7 +155,7 @@ router.post(
                     car_num_of_door,
                 ]
             );
-            console.log(car.insertId);
+            // console.log(car.insertId);
             let checkmain = true;
             file.forEach((file, index) => {
                 let path = [file.path.substring(6), car.insertId, checkmain];
@@ -213,23 +213,23 @@ router.post(
             let car_drive_type = req.body.car_drive_type;
             let car_act = req.body.car_act;
             let car_num_of_door = req.body.car_num_of_door;
-            console.log(
-                car_year,
-                car_color,
-                car_desc,
-                car_price,
-                car_regis,
-                car_distance,
-                car_engine,
-                car_gear,
-                car_yearbought,
-                car_owner,
-                car_num_of_gear,
-                car_brand,
-                car_drive_type,
-                car_act,
-                car_num_of_door
-            );
+            // console.log(
+            //     car_year,
+            //     car_color,
+            //     car_desc,
+            //     car_price,
+            //     car_regis,
+            //     car_distance,
+            //     car_engine,
+            //     car_gear,
+            //     car_yearbought,
+            //     car_owner,
+            //     car_num_of_gear,
+            //     car_brand,
+            //     car_drive_type,
+            //     car_act,
+            //     car_num_of_door
+            // );
 
             try {
                 await add_updateSchema.validateAsync(req.body, { abortEarly: false });
@@ -282,7 +282,7 @@ router.post(
             //   console.log(deleteimg)
             //   // // Delete File from path
             const appDir = path.dirname(require.main.filename); // Get app root directory
-            console.log(appDir)
+            // console.log(appDir)
             images.forEach(img => {
                 const p = path.join(appDir, 'static', img.car_img);
                 fs.unlinkSync(p);
@@ -304,7 +304,7 @@ router.post(
                     checkmain = false
                 }
             });
-            console.log(pathArray)
+            // console.log(pathArray)
             const [img, field2] = await conn.query(
                 'INSERT INTO Car_images(car_img, car_id, main) VALUES ?;', [
                 pathArray

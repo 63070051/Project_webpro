@@ -2,8 +2,9 @@
   <div id="app">
     <Navbar />
     <div
-      class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200 bg-gra-01"
+      class="flex justify-center flex-col items-center py-16 space-y-5 bg-gray-200"
     >
+    <p class="font-bold text-5xl">Edit your car</p>
       <div class="w-full max-w-3xl space-y-6">
         <div
           class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 space-y-2"
@@ -213,7 +214,7 @@
               <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
                 Gear Transmission
               </label>
-              <input
+              <select
                 class="
                 form-control
                 block
@@ -239,7 +240,11 @@
                 type="text"
                 placeholder=""
                 v-model="gear"
-              />
+              >
+              <option value="Please Select" selected>Please Select</option>
+              <option value="Automatic">Automatic</option>
+              <option value="Manual">Manual</option>
+              </select>
             </div>
             <div>
               <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -323,7 +328,7 @@
               "
               id="car_act"
               name="car_act"
-              type="date"
+              type="month"
               placeholder=""
               v-model="car_act"
             />
@@ -661,7 +666,7 @@ export default {
       number_door: 0,
       driving_type: "Please Select",
       engine: "",
-      gear: "",
+      gear: "Please Select",
       num_gear: "",
       car_act: "",
       car_regis: "",
@@ -702,7 +707,7 @@ export default {
           this.engine = this.detailcar.car_engine;
           this.gear = this.detailcar.car_gear;
           this.num_gear = this.detailcar.car_num_of_gear;
-          this.car_act = this.detailcar.car_act;
+          this.car_act = this.detailcar.car_act.slice(0, 7);
           this.car_regis = this.detailcar.car_regis;
           this.car_type = this.detailcar.car_type;
           this.mileage = this.detailcar.car_distance;
@@ -711,10 +716,8 @@ export default {
           this.color = this.detailcar.car_color;
           this.owner = this.detailcar.car_owner;
           this.car_desc = this.detailcar.car_desc;
-          console.log(this.detailcar);
           if (
-            this.detailcar.seller_id != this.loginuser.user_id &&
-            this.loginuser.employee_type != "employee"
+            this.detailcar.seller_id != this.loginuser.user_id && this.loginuser.role != 'admin'
           ) {
             alert("You don’t have the right to update");
             this.$router.push({ name: "home" });
@@ -730,7 +733,7 @@ export default {
         alert("Max-Limit images is 6");
       } else {
         this.images.push(event.target.files);
-        console.log(this.images);
+        // console.log(this.images);
       }
     },
     showSelectImage(image) {
@@ -757,14 +760,14 @@ export default {
       formData.append("car_owner", this.owner);
       formData.append("car_num_of_gear", this.num_gear);
       formData.append("car_drive_type", this.driving_type);
-      formData.append("car_act", this.car_act);
+      formData.append("car_act", this.car_act+'-01');
       formData.append("car_num_of_door", this.number_door);
       this.images.forEach(image => {
         formData.append("carImage", image[0]);
       });
       if (
         this.detailcar.seller_id == this.loginuser.user_id ||
-        this.loginuser.employee_type == "employee"
+        this.loginuser.role == "admin"
       ) {
         if(this.images.length != 0){
             axios
