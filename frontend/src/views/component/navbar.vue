@@ -60,6 +60,21 @@
                     History Seller
                     </p>
                 </li>
+                <li class="" @click="tocussale()" v-if="this.loginuser.customer_type == 1 && this.loginuser.role != 'admin'">
+                    <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                    Customer Sales Data
+                    </p>
+                </li>
+                <li class="" @click="tosellsale()" v-if="this.loginuser.seller_type == 1">
+                    <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                    Seller Sales Data
+                    </p>
+                </li>
+                <li class="" @click="tomanagesale()" v-if="this.loginuser.role == 'admin'">
+                    <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                    Manage Sales Data
+                    </p>
+                </li>
                 <li class="">
                   <p
                     class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap rounded-b" @click="signout()"
@@ -100,6 +115,15 @@ export default {
     },
     tohistory(){
       this.$router.push(`/historyseller/${this.loginuser.user_id}`)
+    },
+    tocussale(){
+      this.$router.push(`/cussalesdata/${this.loginuser.user_id}`)
+    },
+    tosellsale(){
+      this.$router.push(`/sellersalesdata/${this.loginuser.user_id}`)
+    },
+    tomanagesale(){
+      this.$router.push(`/managesalesdata/${this.loginuser.user_id}`)
     }
   },
 };

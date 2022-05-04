@@ -211,9 +211,10 @@ router.post("/connected", async function (req, res, next) {
     } else {
         let fklogin = data[0].user_id;
         const [user, field1] = await pool.query(
-            "SELECT * FROM Users JOIN Seller USING(user_id) WHERE user_id = ?",
+            "SELECT * FROM Users LEFT OUTER JOIN Seller USING(user_id) WHERE user_id = ?",
             [fklogin]
         );
+        console.log(user[0])
         let dataname = "";
         let datapassword = "";
         if (data.length != 0) {

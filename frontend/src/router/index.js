@@ -93,6 +93,24 @@ const routes = [
     meta: { login: true },
     component: () => import('../views/seller/historyseller.vue')
   },
+  {
+    path: '/cussalesdata/:cusid',
+    name: 'cussalesdata',
+    meta: { login: true },
+    component: () => import('../views/customer/cus_salesdata.vue')
+  },
+  {
+    path: '/sellersalesdata/:sellerid',
+    name: 'sellersalesdata',
+    meta: { login: true },
+    component: () => import('../views/seller/seller_salesdata.vue')
+  },
+  {
+    path: '/managesalesdata/:adminid',
+    name: 'managesalesdata',
+    meta: { login: true },
+    component: () => import('../views/admin/manage_salesdata.vue')
+  },
 ]
 //You don’t have the right to update
 
