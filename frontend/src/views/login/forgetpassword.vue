@@ -18,12 +18,17 @@
               Email
             </label>
             <input
-              v-model="email"
+              v-model="$v.email.$model"
              class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+             :class="{'border-red-500': $v.email.$error}"
               id="Email"
               type="text"
               placeholder="Email"
             />
+            <div v-if="$v.email.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.email.required">This field is required</p>
+              <p v-if="!$v.email.email">This email format is incorrect</p>
+            </div>
           </div>
           <div class="mb-6 relative">
             <div>
@@ -34,12 +39,16 @@
               Passcode
             </label>
             <input
-              v-model="passcode"
+              v-model="$v.passcode.$model"
               class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+              :class="{'border-red-500': $v.passcode.$error}"
               id="Passcode"
               type="password"
               placeholder="*************"
             />
+            <div v-if="$v.passcode.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.passcode.required">This field is required</p>
+            </div>
             </div>
             <a
               @click="sendemail()"
@@ -56,14 +65,17 @@
               New Password
             </label>
             <input
-              v-model="newpassword"
-              @keyup="checklength()"
+              v-model="$v.newpassword.$model"
              class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
               id="New Password"
               type="password"
               placeholder="*************"
             />
-            <p v-show="redtext" class="text-red-500">password min length 8!</p>
+            <div v-if="$v.newpassword.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.newpassword.required">This field is required</p>
+              <p v-if="!$v.newpassword.minLength">Password must be at least 8 letters</p>
+              <p v-if="!$v.newpassword.complexPassword">Password is too easy</p>
+            </div>
           </div>
           <div class="flex items-center justify-between">
             <router-link to='/login'>
@@ -99,6 +111,17 @@
 
 <script>
 import axios from "axios";
+import { required, email, minLength, sameAs, maxLength} from 'vuelidate/lib/validators'
+function complexPassword (value) {
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
+      return false
+    }
+  }
+  return true
+}
 // @ is an alias to /src
 export default {
   name: "forgot",
@@ -111,6 +134,20 @@ export default {
       newpassword: "",
       redtext : false
     };
+  },
+  validations:{
+    email:{
+      required,
+      email
+    },
+    passcode:{
+      required
+    },
+    newpassword:{
+      required,
+      complexPassword,
+      minLength: minLength(8)
+    }
   },
   mounted() {
     this.getdata();
@@ -159,16 +196,7 @@ export default {
       else{
           alert('Incorrect Passcode')
       }
-      
     },
-    checklength(){
-        if(this.newpassword.length < 8){
-            this.redtext = true
-        }
-        else{
-            this.redtext = false
-        }
-    }
   }
 };
 </script>
