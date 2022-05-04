@@ -74,7 +74,7 @@
             <div v-if="$v.newpassword.$error" class="text-red-500 mt-1">
               <p v-if="!$v.newpassword.required">This field is required</p>
               <p v-if="!$v.newpassword.minLength">Password must be at least 8 letters</p>
-              <p v-if="!$v.newpassword.complexPassword">Password is too easy</p>
+              <p v-if="!$v.newpassword.complexPassword">Password must have Uppercase, Lowercase, Number</p>
             </div>
           </div>
           <div class="flex items-center justify-between">

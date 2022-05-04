@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
     <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
-      <p class="text-4xl mt-8">History Seller</p>
+      <p class="text-4xl mt-8">My Cars</p>
       <div class="w-24 h-1 bg-blue-600 mt-2 rounded-lg"></div>
       <div class="grid grid-cols-3 gap-8 my-10">
         <div

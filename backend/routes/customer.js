@@ -39,7 +39,7 @@ router.post('/cusreqseller/:cusid/:carid', async function (req, res, next) {
     let cus_id = req.params.cusid
     try {
         const [cus, _] = await pool.query(
-            'SELECT * FROM Car AS c JOIN Sales_data AS sd ON(c.car_id = sd.car_id) JOIN Car_images AS ci ON(ci.car_id = c.car_id) WHERE cus_id = ? AND main = 1', [
+            'SELECT * FROM Car AS c JOIN Sales_data AS sd ON(c.car_id = sd.car_id) JOIN Car_images AS ci ON(ci.car_id = c.car_id) JOIN Users AS u ON(u.user_id = sd.seller_id) WHERE cus_id = ? AND main = 1', [
                 cus_id
             ]
         )

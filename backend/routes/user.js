@@ -22,6 +22,7 @@ router.post("/saledata/:id", async function (req, res, next) {
             "SELECT * FROM Users AS WHERE user_id = ?",
             [req.params.id]
         );
+        // console.log(row);
         return res.json(row);
     } catch (err) {
         return res.status(500).json(err);

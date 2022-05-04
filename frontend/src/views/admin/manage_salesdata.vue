@@ -4,25 +4,25 @@
     <div class="max-w-6xl mx-auto py-4" style="min-height: 500px;">
       <div class="flex justify-between items-center">
         <div>
-          <p class="text-4xl mt-8">Admin Seller Data</p>
+          <p class="text-4xl mt-8">Approve Cars</p>
           <div class="w-24 h-1 bg-blue-600 mt-2 rounded-lg"></div>
         </div>
         <div class="space-x-4 flex items-center">
           <div class="flex items-center gap-2">
             <div class="rounded-full h-7 w-7 bg-sky-300"></div>
-            <p>pending</p>
+            <p>Pending</p>
           </div>
           <div class="flex items-center gap-2">
             <div class="rounded-full h-7 w-7 bg-red-600"></div>
-            <p>cancel</p>
+            <p>Cancel</p>
           </div>
           <div class="flex items-center gap-2">
             <div class="rounded-full h-7 w-7 bg-emerald-400"></div>
-            <p>confirm</p>
+            <p>Confirm</p>
           </div>
           <div class="flex items-center gap-2">
             <div class="rounded-full h-7 w-7 bg-amber-500"></div>
-            <p>waiting admin</p>
+            <p>Waiting admin</p>
           </div>
         </div>
       </div>

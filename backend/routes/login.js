@@ -10,10 +10,12 @@ let alert = require("alert");
 
 const passwordValidator = (value, helpers) => {
     if (value.length < 8) {
-        return res.json('Password must contain at least 8 characters');
+        alert('Password must contain at least 8 characters');
+        return res.status(400).send(err);
     }
     if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
-        return res.json('Password must be harder');
+        alert('Password must be harder');
+        return res.status(400).send(err);
     }
     return value
 }
@@ -23,7 +25,8 @@ const usernameValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        return res.json("This username is already taken");
+        alert("This username is already taken");
+        return res.status(400).send(err);
     } else {
         return value;
     }
@@ -34,7 +37,8 @@ const emailValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        return res.json("This email is already taken");
+        alert("This email is already taken");
+        return res.status(400).send(err);
     } else {
         return value;
     }
@@ -45,7 +49,8 @@ const idcardValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        return res.json("This ID card is already taken");
+        alert("This ID card is already taken");
+        return res.status(400).send(err);
     } else {
         return value;
     }
@@ -56,7 +61,8 @@ const phoneValidator = async (value, helpers) => {
         [value]
     );
     if (rows.length > 0) {
-        return res.json("This phone is already taken");
+        alert("This phone is already taken");
+        return res.status(400).send(err);
     } else {
         return value;
     }
@@ -75,15 +81,15 @@ const phoneValidator = async (value, helpers) => {
 const signupSchema = Joi.object({
     username: Joi.string().required().external(usernameValidator),
     idcard: Joi.string().required().external(idcardValidator),
-    tel: Joi.string().required().external(phoneValidator),
+    tel: Joi.string().required().external(phoneValidator).pattern(/0[0-9]{9}/),
     email: Joi.string().required().external(emailValidator),
     firstname: Joi.string().required(),
     lastname: Joi.string().required(),
     address: Joi.string().required(),
     birth: Joi.string().required(),
     gender: Joi.string().required(),
-    password1: Joi.string().required().custom(passwordValidator),
-    password2: Joi.string().required().valid(Joi.ref('password')),
+    password1: Joi.string().required(),
+    password2: Joi.string().required(),
 });
 
 router.post("/register/account", async function (req, res, next) {
@@ -235,7 +241,6 @@ router.post("/connected", async function (req, res, next) {
 });
 
 
-
 router.post("/forgot", async function (req, res, next) {
     let email = req.body.email;
     let chars =
@@ -297,6 +302,10 @@ router.post("/forgot", async function (req, res, next) {
     } catch (error) {
         return next(error)
     }
+});
+const forgotSchema = Joi.object({
+    email: Joi.string().required(),
+    password: Joi.string().required(),
 });
 router.post("/changepassword", async function (req, res, next) {
     let email = req.body.email;

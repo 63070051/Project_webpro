@@ -31,7 +31,7 @@ const upload = multer({ storage: storage });
 router.post('/detail/:carid', async function (req, res, next) {
     try {
         const [detailcar, field] = await pool.query(
-            'SELECT * FROM Car AS c JOIN Seller AS s ON(c.seller_id = s.user_id) WHERE car_id = ?', [
+            'SELECT * FROM Car AS c JOIN Seller AS s ON(c.seller_id = s.user_id) JOIN Users AS u ON(u.user_id = s.user_id) WHERE car_id = ?', [
             req.params.carid
         ]
         )

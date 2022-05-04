@@ -57,22 +57,22 @@
                 </li>
                 <li class="" @click="tohistory()" v-if="this.loginuser.seller_type == 1">
                     <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
-                    History Seller
+                    My Cars
                     </p>
                 </li>
                 <li class="" @click="tocussale()" v-if="this.loginuser.customer_type == 1 && this.loginuser.role != 'admin'">
                     <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
-                    Customer Sales Data
+                    My Booking
                     </p>
                 </li>
                 <li class="" @click="tosellsale()" v-if="this.loginuser.seller_type == 1">
                     <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
-                    Seller Sales Data
+                    Approve Cars
                     </p>
                 </li>
                 <li class="" @click="tomanagesale()" v-if="this.loginuser.role == 'admin'">
                     <p class="bg-white hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
-                    Manage Sales Data
+                    Approve Cars
                     </p>
                 </li>
                 <li class="">

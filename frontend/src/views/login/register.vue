@@ -27,7 +27,7 @@
             />
             <div v-if="$v.username.$error" class="text-red-500 mt-1">
               <p v-if="!$v.username.required">This field is required</p>
-              <p v-if="!$v.username.minLength">Username must be at least 5 letters</p>
+              <p v-if="!$v.username.minLength">Username must be at least 4 letters</p>
               <p v-if="!$v.username.maxLength">Username must not more than 20 letters</p>
             </div>
           </div>
@@ -48,7 +48,7 @@
             <div v-if="$v.password1.$error" class="text-red-500 mt-1">
               <p v-if="!$v.password1.required">This field is required</p>
               <p v-if="!$v.password1.minLength">Password must be at least 8 letters</p>
-              <p v-if="!$v.password1.complex">Password is too easy</p>
+              <p v-if="!$v.password1.complex">Password must have Uppercase, Lowercase, Number</p>
             </div>
           </div>
           <div>
@@ -310,7 +310,7 @@ export default {
       sameAs: sameAs('password1')
     },
     username:{
-      minLength: minLength(5),
+      minLength: minLength(4),
       maxLength: maxLength(20),
       required
     },
