@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-8">
+      <div class="grid grid-cols-3 gap-8 py-12">
         <div
           class="rounded-lg shadow-lg bg-white max-w-sm"
           v-for="car in cars"
