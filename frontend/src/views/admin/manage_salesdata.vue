@@ -161,7 +161,8 @@ export default {
       }
     },
     confirmed(car){
-      axios
+      if(confirm('Confirm to approve')){
+          axios
         .put(`http://localhost:3000/finalsell/${car.sal_id}/${this.loginuser.user_id}`)
         .then(response => {
           if(response.data == 'success'){
@@ -172,6 +173,7 @@ export default {
         .catch(error => {
           this.error = error.response.data.message;
         });
+      }
     }
   }
 };

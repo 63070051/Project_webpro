@@ -180,7 +180,8 @@ export default {
       }
     },
     reqtoadmin(car) {
-      axios
+      if(confirm('Are you sure confirm')){
+        axios
         .put(`http://localhost:3000/confirmcus/${car.car_id}/${car.car_price}`)
         .then(response => {
           let index = this.cars.indexOf(car);
@@ -189,9 +190,11 @@ export default {
         .catch(error => {
           this.error = error.response.data.message;
         });
+      }
     },
     cancel(car) {
-      axios
+      if(confirm('Are you sure confirm')){
+        axios
         .put(
           `http://localhost:3000/cancelcus/${car.car_id}`
         )
@@ -202,6 +205,7 @@ export default {
         .catch(error => {
           this.error = error.response.data.message;
         });
+      }
     }
   }
 };
