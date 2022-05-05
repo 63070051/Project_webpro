@@ -97,6 +97,7 @@ export default {
         )
         .then(response => {
           this.sellercar = response.data;
+          this.sellercar = this.sellercar.filter(car => car.sal_status != 'confirmed')
           //   console.log(this.sellercar)
         })
         .catch(error => {
