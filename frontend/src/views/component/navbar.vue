@@ -114,7 +114,7 @@ export default {
           .post(`http://localhost:3000/getuser`, {token : token})
           .then(response => {
             this.loginuser = response.data;
-            console.log(this.loginuser)
+            // console.log(this.loginuser)
           })
           .catch(error => {
             this.error = error.response.data.message;

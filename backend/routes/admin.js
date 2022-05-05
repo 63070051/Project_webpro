@@ -48,7 +48,7 @@ router.post("/vertifiedseller/:id", async function (req, res, next) {
   router.put("/finalsell/:saledataid/:emid", async function (req, res, next) {
     try {
       const [saledata, field] = await pool.query(
-        "UPDATE Sales_data SET sal_status = 'confirmed', em_id = ? WHERE sal_id = ?",
+        "UPDATE Sales_data SET sal_date = CURRENT_TIMESTAMP, sal_status = 'confirmed', em_id = ? WHERE sal_id = ?",
         [req.params.emid, req.params.saledataid]
       );
       return res.json("success");

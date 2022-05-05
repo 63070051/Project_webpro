@@ -9,6 +9,18 @@ const Joi = require("joi");
 const router = express.Router()
 
 
+const regisValidator = async (value, helpers) => {
+    const [rows, _] = await pool.query(
+      "SELECT * FROM Car WHERE car_regis = ?",
+      [value]
+    );
+    if (rows.length > 0) {
+      alert("This car registration is already taken");
+      return res.status(400).send(err);
+    } else {
+      return value;
+    }
+  };
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -69,7 +81,7 @@ const add_updateSchema = Joi.object({
     car_color: Joi.string().required(),
     car_desc: Joi.string().required(),
     car_price: Joi.string().required(),
-    car_regis: Joi.string().required(),
+    car_regis: Joi.string().required().external(regisValidator),
     car_distance: Joi.number().integer().required(),
     car_engine: Joi.string().required(),
     car_gear: Joi.string().required(),
