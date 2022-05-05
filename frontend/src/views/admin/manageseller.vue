@@ -126,11 +126,22 @@ export default {
     Navbar: navbar
   },
   mounted() {
-    this.getseller();
+    this.getuser();
   },
   methods: {
+    getuser(){
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            this.getseller();
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+      });
+    },
     getseller() {
-      this.loginuser = JSON.parse(localStorage.getItem('user'))
       if(this.loginuser.role != 'admin'){
         alert("You've not permission")
         this.$router.push('/')

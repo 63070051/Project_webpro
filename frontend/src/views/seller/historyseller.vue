@@ -68,13 +68,21 @@ export default {
     Footer: footer
   },
   mounted() {
-    this.getdata();
-    this.checkvaliadate();
+    this.getuser();
     this.getsellercar();
   },
   methods: {
-    getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
+    getuser() {
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            this.checkvaliadate();
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
     },
     checkvaliadate() {
       if (this.loginuser.user_id != this.$route.params.sellerid) {

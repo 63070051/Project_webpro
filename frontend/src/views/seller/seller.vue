@@ -24,12 +24,23 @@ export default {
     Footer : footer
   },
   mounted() {
-    this.getdata();
+    this.getuser();
   },
   methods: {
+    getuser(){
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            this.getdata()
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
+    },
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
-      if(this.loginuser == null){
+      if(this.loginuser == 'error'){
           this.$router.push('/login')
       }
       else{

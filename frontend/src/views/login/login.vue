@@ -116,7 +116,7 @@ export default {
         this.$v.$touch()
       }else{
         axios
-          .post(`http://localhost:3000/connected/`, {
+          .post(`http://localhost:3000/connected`, {
             username: this.username,
             password: this.password
           })
@@ -124,7 +124,7 @@ export default {
             this.user = response.data;
             if (this.user != "error") {
               localStorage.setItem("user", JSON.stringify(this.user));
-              this.$router.push("/");
+              this.toindex();
             } else {
               this.error = true;
             }
@@ -133,6 +133,9 @@ export default {
             this.error = error.response.data.message;
           });
       }
+    },
+    toindex(){
+      this.$router.push("/");
     }
   }
 };
