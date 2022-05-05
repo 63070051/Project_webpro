@@ -115,6 +115,10 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+      if(this.loginuser.customer_type != 1){
+        alert("You've not permission")
+        this.$router.push('/')
+      }
     },
     getcardata(cusid){
       axios

@@ -123,6 +123,11 @@ export default {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
     },
     getcardata() {
+      this.loginuser = JSON.parse(localStorage.getItem('user'))
+      if(this.loginuser.role != 'admin'){
+        alert("You've not permission")
+        this.$router.push('/')
+      }
       axios
         .get(`http://localhost:3000/getcarsaledata`)
         .then(response => {
