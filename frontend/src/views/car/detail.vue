@@ -4,7 +4,7 @@
     <div class="max-w-5xl mx-auto">
       <div class="flex justify-between py-4 h-28 items-center">
         <div>
-          <p class="text-2xl font-black">{{detailcar.car_model}}</p>
+          <p class="text-2xl font-black">{{detailcar.car_modelyear}} {{detailcar.car_brand}} {{detailcar.car_model}}</p>
           <div class="flex gap-2">
             <p>{{detailcar.car_engine}}</p>
             <p>|</p>
@@ -22,8 +22,8 @@
             <div class="border-2 border-orange-500 w-12 h-12 rounded-xl flex justify-center items-center">
               <img width="26" src="https://www.cars24.co.th/th/static/js/2be457deb3cc0c5e4eccf46297b7004a.svg" alt="">
             </div>
-            <div class="cursor-pointer w-28 bg-orange-500 flex justify-center items-center rounded-xl" @click="requestcar(detailcar.car_id)">
-              <p class="text-white font-bold">จองรถ</p>
+            <div class="text-white cursor-pointer w-28 bg-orange-500 flex justify-center items-center rounded-xl" @click="requestcar(detailcar.car_id)">
+              <p class="font-bold">จองรถ</p>
             </div>
           </div>
         </div>

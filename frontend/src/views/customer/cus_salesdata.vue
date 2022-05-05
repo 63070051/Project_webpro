@@ -40,7 +40,7 @@
           </div>
           <div class="p-6 space-y-3">
             <h5 class="text-gray-900 text-xl font-bold">
-              {{car.car_model}}
+              {{car.car_modelyear}} {{car.car_brand}} {{car.car_model}}
             </h5>
             <p class="text-gray-700 text-base">
               {{car.car_engine + ' / ' + car.car_gear}}
@@ -111,6 +111,7 @@ export default {
   mounted() {
     this.getdata();
     this.getcardata(this.$route.params.cusid);
+    this.checkvaliadate();
   },
   methods: {
     getdata() {
@@ -118,6 +119,12 @@ export default {
       if(this.loginuser.customer_type != 1){
         alert("You've not permission")
         this.$router.push('/')
+      }
+    },
+    checkvaliadate() {
+      if (this.loginuser.user_id != this.$route.params.cusid) {
+        alert("You not permission");
+        this.$router.push("/");
       }
     },
     getcardata(cusid){

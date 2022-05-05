@@ -74,7 +74,12 @@
             <div v-if="$v.newpassword.$error" class="text-red-500 mt-1">
               <p v-if="!$v.newpassword.required">This field is required</p>
               <p v-if="!$v.newpassword.minLength">Password must be at least 8 letters</p>
-              <p v-if="!$v.newpassword.complexPassword">Password must have Uppercase, Lowercase, Number</p>
+              <p v-if="!$v.newpassword.checkup || !$v.newpassword.checklow || !$v.newpassword.checknum || !$v.newpassword.checkspace">Password must have
+                <span v-if="!$v.newpassword.checkup"> Uppercase</span>
+                <span v-if="!$v.newpassword.checklow"> Lowercase</span>
+                <span v-if="!$v.newpassword.checknum"> Number</span>
+                <span v-if="!$v.newpassword.checkspace"> not whitespace</span>
+              </p>
             </div>
           </div>
           <div class="flex items-center justify-between">
@@ -112,11 +117,41 @@
 <script>
 import axios from "axios";
 import { required, email, minLength, sameAs, maxLength} from 'vuelidate/lib/validators'
-function complexPassword (value) {
+function checkspace (value) {
   if(!value){
     return true
   }else{
-    if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
+    if (!(!value.match(/(\s)/))) {
+      return false
+    }
+  }
+  return true
+}
+function checkup (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[A-Z]/))) {
+      return false
+    }
+  }
+  return true
+}
+function checklow (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[a-z]/))) {
+      return false
+    }
+  }
+  return true
+}
+function checknum (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[0-9]/))) {
       return false
     }
   }
@@ -145,7 +180,10 @@ export default {
     },
     newpassword:{
       required,
-      complexPassword,
+      checkup,
+      checklow,
+      checknum,
+      checkspace,
       minLength: minLength(8)
     }
   },

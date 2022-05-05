@@ -11,7 +11,7 @@
             <img width="100px" :src=selectimgcar(carcom.car_img) alt="">
             <img @click="deletecompare(carcom, index)" width="12px" class="cursor-pointer absolute right-1" src="https://cdn.discordapp.com/attachments/958256273592307722/963833361779015730/x_mark.png" alt="">
             <div>
-              <p class="text-xs font-bold text-start">{{carcom.car_model}}</p>
+              <p class="text-xs font-bold text-start">{{carcom.car_brand}} {{carcom.car_model}}</p>
               <p class="text-xs">{{carcom.car_engine + ' ' + carcom.car_type}}</p>
               <p class="text-sm text-orange-500">{{convertprice(carcom.car_price)}}</p>
             </div>
@@ -800,17 +800,17 @@
               <img src="https://www.cars24.co.th/th/static/js/42843d270dddc34383477d983c39ff8d.svg" alt="">
               <p>ราคา สูง ไป ต่ำ</p>
             </div>
-            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer items-center" @click="sorted('atz'); sortactive = !sortactive">
+            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer items-center" @click="sorted('yearnew'); sortactive = !sortactive">
               <div class="h-5 w-4">
-                <img src="https://cdn.discordapp.com/attachments/958256273592307722/971073925402488892/a-z.png" alt="">
+                <img src="https://www.cars24.co.th/th/static/js/8bc70946466281d8d943cff4ca92888b.svg" alt="">
               </div>
-              <p>A - Z</p>
+              <p>ปีใหม่</p>
             </div>
-            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer rounded-b-lg items-center" @click="sorted('zta'); sortactive = !sortactive">
+            <div class="flex py-2 pl-3 gap-2 text-center hover:bg-gray-300 cursor-pointer rounded-b-lg items-center" @click="sorted('yearold'); sortactive = !sortactive">
               <div class="h-5 w-4">
-                <img src="https://cdn.discordapp.com/attachments/958256273592307722/971073925616373851/z-a.png" alt="">
+                <img src="https://www.cars24.co.th/th/static/js/8bc70946466281d8d943cff4ca92888b.svg" alt="">
               </div>
-              <p>Z - A</p>
+              <p>ปีเก่า</p>
             </div>
           </div>
         </div>
@@ -836,7 +836,7 @@
 
               <div class="px-6 pt-6 space-y-3"  @click="detailcar(car.car_id)" onclick="backToTop()">
                 <h5 class="text-gray-900 text-xl font-bold">
-                  {{ car.car_model }}
+                  {{car.car_modelyear}} {{car.car_brand}} {{car.car_model}}
                 </h5>
                 <p class="text-gray-700 text-base">
                   {{ car.car_engine + " / " + car.car_gear }}
@@ -995,23 +995,23 @@ export default {
               }
           })
         }
-        if(this.sortt == 'atz'){
+        if(this.sortt == 'yearnew'){
           car_copy.sort((a, b) => {
-            if (a.car_model < b.car_model){
-                return -1;
-              }else if(a.car_model > b.car_model){
-                return 1
+            if (a.car_modelyear < b.car_modelyear){
+                return 1;
+              }else if(a.car_modelyear > b.car_modelyear){
+                return -1
               }else{
                 return 0
               }
           })
         }
-        if(this.sortt == 'zta'){
+        if(this.sortt == 'yearold'){
           car_copy.sort((a, b) => {
-            if (a.car_model < b.car_model){
-                return 1;
-              }else if(a.car_model > b.car_model){
-                return -1
+            if (a.car_modelyear < b.car_modelyear){
+                return -1;
+              }else if(a.car_modelyear > b.car_modelyear){
+                return 1
               }else{
                 return 0
               }

@@ -21,7 +21,7 @@
           <div class="p-6 space-y-3">
             <div class="space-y-3" @click="linktodetail(car.car_id)">
               <h5 class="text-gray-900 text-xl font-bold">
-                {{ car.car_model }}
+                {{car.car_modelyear}} {{car.car_brand}} {{car.car_model}}
               </h5>
               <p class="text-gray-700 text-base">
                 {{ car.car_engine + " / " + car.car_gear }}
