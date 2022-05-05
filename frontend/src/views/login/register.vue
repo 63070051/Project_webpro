@@ -342,7 +342,8 @@ export default {
       if(this.$v.$invalid){
         this.$v.$touch()
       }else{
-        axios
+        if(confirm('Are you sure confirm?')){
+          axios
         .post(`http://localhost:3000/register/account`, {
           username: this.username,
           password1: this.password1,
@@ -367,6 +368,7 @@ export default {
         .catch(error => {
           this.error = error.response.data.message;
         });
+        }
       }
     },
   },

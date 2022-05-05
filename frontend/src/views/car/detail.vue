@@ -257,7 +257,8 @@ export default {
         alert('Please login')
         this.$router.push('/login')
       }else{
-        axios
+        if(confirm('Are you sure reserve')){
+          axios
         .post(`http://localhost:3000/cusreqseller/${this.loginuser.user_id}/${carid}`)
         .then(response => {
           if(response.data != 'success'){
@@ -270,6 +271,7 @@ export default {
         .catch(error => {
           this.error = error.response.data.message;
         });
+        }
       }
     }
   }
