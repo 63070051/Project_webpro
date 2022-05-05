@@ -131,7 +131,7 @@
               :class="{'border-red-500': $v.tel1.$error}"
               id="tel"
               name="tel"
-              type="tel"
+              type="number"
               placeholder="Tel."
               v-model="$v.tel1.$model"
             />

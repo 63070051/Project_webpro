@@ -836,7 +836,7 @@
 
               <div class="px-6 pt-6 space-y-3"  @click="detailcar(car.car_id)" onclick="backToTop()">
                 <h5 class="text-gray-900 text-xl font-bold">
-                  {{ car.car_model }}
+                  {{car.car_modelyear}} {{car.car_brand}} {{car.car_model}}
                 </h5>
                 <p class="text-gray-700 text-base">
                   {{ car.car_engine + " / " + car.car_gear }}

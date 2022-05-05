@@ -48,7 +48,12 @@
             <div v-if="$v.password1.$error" class="text-red-500 mt-1">
               <p v-if="!$v.password1.required">This field is required</p>
               <p v-if="!$v.password1.minLength">Password must be at least 8 letters</p>
-              <p v-if="!$v.password1.complex">Password must have Uppercase, Lowercase, Number</p>
+              <p v-if="!$v.password1.checkup || !$v.password1.checklow || !$v.password1.checknum || !$v.password1.checkspace">Password must have
+                <span v-if="!$v.password1.checkup"> Uppercase</span>
+                <span v-if="!$v.password1.checklow"> Lowercase</span>
+                <span v-if="!$v.password1.checknum"> Number</span>
+                <span v-if="!$v.password1.checkspace"> not whitespace</span>
+              </p>
             </div>
           </div>
           <div>
@@ -65,6 +70,7 @@
               v-model="$v.password2.$model"
             />
             <div v-if="$v.password2.$error" class="text-red-500 mt-1">
+              <p v-if="!$v.password2.required">This field is required</p>
               <p v-if="!$v.password2.sameAs">Password is not match</p>
             </div>
           </div>
@@ -117,7 +123,7 @@
                 :class="{'border-red-500': $v.idcard.$error}"
                 id="idcard"
                 name="idcard"
-                type="text"
+                type="number"
                 placeholder="Address"
                 v-model="$v.idcard.$model"
               />
@@ -135,7 +141,7 @@
                 :class="{'border-red-500': $v.tel.$error}"
                 id="tel"
                 name="tel"
-                type="text"
+                type="number"
                 placeholder="Tel."
                 v-model="$v.tel.$model"
               />
@@ -255,11 +261,41 @@ function mobile (value) {
     return !!value.match(/0[0-9]{9}/)
   }
 }
-function complexPassword (value) {
+function checkspace (value) {
   if(!value){
     return true
   }else{
-    if (!(value.match(/[a-z]/) && value.match(/[A-Z]/) && value.match(/[0-9]/))) {
+    if (!(!value.match(/(\s)/))) {
+      return false
+    }
+  }
+  return true
+}
+function checkup (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[A-Z]/))) {
+      return false
+    }
+  }
+  return true
+}
+function checklow (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[a-z]/))) {
+      return false
+    }
+  }
+  return true
+}
+function checknum (value){
+  if(!value){
+    return true
+  }else{
+    if (!(value.match(/[0-9]/))) {
       return false
     }
   }
@@ -304,10 +340,14 @@ export default {
     password1:{
       required: required,
       minLength: minLength(8),
-      complex: complexPassword
+      checkup,
+      checklow,
+      checknum,
+      checkspace
     },
     password2:{
-      sameAs: sameAs('password1')
+      sameAs: sameAs('password1'),
+      required
     },
     username:{
       minLength: minLength(4),
