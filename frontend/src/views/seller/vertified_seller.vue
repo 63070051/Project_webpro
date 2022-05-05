@@ -67,7 +67,8 @@ export default {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
     },
     requestseller() {
-      if(this.check && this.loginuser.user_age >= 20){
+      if(confirm('Confirm to verified')){
+        if(this.check && this.loginuser.user_age >= 20){
         axios
         .post(`http://localhost:3000/requestseller/${this.loginuser.user_id}`)
         .then(response => {
@@ -77,6 +78,7 @@ export default {
       }
       else{
           alert('อายุไม่ถึงเกณฑ์')
+      }
       }
     }
   },

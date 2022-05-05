@@ -24,7 +24,7 @@
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-              :class="{'border-red-500' : $v.brand.$error}"
+              :class="{ 'border-red-500': $v.brand.$error }"
             >
               <option value selected>Please Select</option>
               <option value="Mercedes Benz">Mercedes Benz</option>
@@ -34,7 +34,12 @@
               <option value="Toyota">Toyota</option>
               <option value="Mazda">Mazda</option>
             </select>
-            <p v-if="!$v.brand.required && $v.brand.$error" class="text-red-500 mt-1">This field is required</p>
+            <p
+              v-if="!$v.brand.required && $v.brand.$error"
+              class="text-red-500 mt-1"
+            >
+              This field is required
+            </p>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -61,7 +66,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.model.$error}"
+              :class="{ 'border-red-500': $v.model.$error }"
               id="model"
               name="model"
               type="text"
@@ -70,7 +75,9 @@
             />
             <div v-if="$v.model.$error" class="text-red-500 mt-1">
               <p v-if="!$v.model.required">This field is required</p>
-              <p v-if="!$v.model.maxLength">Model must not more than 100 letters</p>
+              <p v-if="!$v.model.maxLength">
+                Model must not more than 100 letters
+              </p>
             </div>
           </div>
           <div class="mb-4">
@@ -98,7 +105,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.modelyear.$error}"
+              :class="{ 'border-red-500': $v.modelyear.$error }"
               id="modelyear"
               name="modelyear"
               type="number"
@@ -107,7 +114,9 @@
             />
             <div v-if="$v.modelyear.$error" class="text-red-500 mt-1">
               <p v-if="!$v.modelyear.required">This field is required</p>
-              <p v-if="!$v.modelyear.checkyear">Modelyear format is incorrect</p>
+              <p v-if="!$v.modelyear.checkyear">
+                Modelyear format is incorrect
+              </p>
             </div>
           </div>
           <div class="mb-4">
@@ -135,7 +144,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.number_door.$error}"
+              :class="{ 'border-red-500': $v.number_door.$error }"
               id="number_of_door"
               name="number_door"
               type="number"
@@ -159,7 +168,7 @@
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-                :class="{'border-red-500' : $v.driving_type.$error}"
+              :class="{ 'border-red-500': $v.driving_type.$error }"
             >
               <option value selected>Please Select</option>
               <option value="4wd">4WD</option>
@@ -197,7 +206,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.engine.$error}"
+                :class="{ 'border-red-500': $v.engine.$error }"
                 id="car_engine"
                 name="engine"
                 type="text"
@@ -205,36 +214,38 @@
                 v-model="$v.engine.$model"
               />
               <div v-if="$v.engine.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.engine.required">This field is required</p>
-              <p v-if="!$v.engine.maxLength">This field must not more than 25 letters</p>
-            </div>
+                <p v-if="!$v.engine.required">This field is required</p>
+                <p v-if="!$v.engine.maxLength">
+                  This field must not more than 25 letters
+                </p>
+              </div>
             </div>
             <div class="mb-4">
               <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
                 Car Type
               </label>
               <select
-              name="car_type"
-              id="car_type"
-              v-model="$v.car_type.$model"
-              class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
+                name="car_type"
+                id="car_type"
+                v-model="$v.car_type.$model"
+                class="text-xl bg-white bg-clip-padding font-normal text-gray-700 form-control block w-full border border-solid border-gray-300 rounded px-4 focus:text-gray-700
                 focus:bg-white
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-                :class="{'border-red-500' : $v.car_type.$error}"
-            >
-              <option value selected>Please Select</option>
-              <option value="Sedan">Sedan</option>
-              <option value="Pickup">Pickup</option>
-              <option value="Hatchback">Hatchback</option>
-              <option value="SUV">SUV</option>
-              <option value="7 seater">7 seater</option>
-              <option value="MPV">MPV</option>
-            </select>
-            <div v-if="$v.car_type.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.car_type.required">This field is required</p>
-            </div>
+                :class="{ 'border-red-500': $v.car_type.$error }"
+              >
+                <option value selected>Please Select</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="SUV">SUV</option>
+                <option value="7 seater">7 seater</option>
+                <option value="MPV">MPV</option>
+              </select>
+              <div v-if="$v.car_type.$error" class="text-red-500 mt-1">
+                <p v-if="!$v.car_type.required">This field is required</p>
+              </div>
             </div>
           </div>
           <div class="mb-4 grid grid-cols-3 gap-4">
@@ -263,19 +274,19 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.gear.$error}"
+                :class="{ 'border-red-500': $v.gear.$error }"
                 id="gear_transmission"
                 name="gear"
                 type="text"
                 placeholder=""
                 v-model="$v.gear.$model"
               >
-              <option value selected>Please Select</option>
-              <option value="Automatic">Automatic</option>
-              <option value="Manual">Manual</option>
+                <option value selected>Please Select</option>
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
               </select>
               <div v-if="$v.gear.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.gear.required">This field is required</p>
+                <p v-if="!$v.gear.required">This field is required</p>
               </div>
             </div>
             <div>
@@ -303,7 +314,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.num_gear.$error}"
+                :class="{ 'border-red-500': $v.num_gear.$error }"
                 id="number_of_gear"
                 name="num_gear"
                 type="number"
@@ -311,7 +322,7 @@
                 v-model="$v.num_gear.$model"
               />
               <div v-if="$v.num_gear.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.num_gear.required">This field is required</p>
+                <p v-if="!$v.num_gear.required">This field is required</p>
               </div>
             </div>
             <div>
@@ -327,7 +338,7 @@
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-                :class="{'border-red-500' : $v.owner.$error}"
+                :class="{ 'border-red-500': $v.owner.$error }"
               >
                 <option value selected>Please Select</option>
                 <option value="1st">1st</option>
@@ -337,7 +348,7 @@
                 <option value="5th">5th</option>
               </select>
               <div v-if="$v.owner.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.owner.required">This field is required</p>
+                <p v-if="!$v.owner.required">This field is required</p>
               </div>
             </div>
           </div>
@@ -366,7 +377,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.car_act.$error}"
+              :class="{ 'border-red-500': $v.car_act.$error }"
               id="car_act"
               name="car_act"
               type="month"
@@ -375,7 +386,7 @@
             />
             <div v-if="$v.car_act.$error" class="text-red-500 mt-1">
               <p v-if="!$v.car_act.required">This field is required</p>
-              </div>
+            </div>
           </div>
           <div class="mb-4">
             <label class="block text-gray-500 text-sm font-bold mb-2 text-lg">
@@ -402,7 +413,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.car_regis.$error}"
+              :class="{ 'border-red-500': $v.car_regis.$error }"
               id="car_register"
               name="car_regis"
               type="text"
@@ -438,7 +449,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.mileage.$error}"
+              :class="{ 'border-red-500': $v.mileage.$error }"
               id="mileage"
               name="mileage"
               type="number"
@@ -474,7 +485,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.registration_year.$error}"
+              :class="{ 'border-red-500': $v.registration_year.$error }"
               id="registration_year"
               name="registration_year"
               type="number"
@@ -482,7 +493,9 @@
               v-model="$v.registration_year.$model"
             />
             <div v-if="$v.registration_year.$error" class="text-red-500 mt-1">
-              <p v-if="!$v.registration_year.required">This field is required</p>
+              <p v-if="!$v.registration_year.required">
+                This field is required
+              </p>
             </div>
           </div>
           <div class="mb-4">
@@ -498,7 +511,7 @@
                 focus:border-blue-600
                 focus:outline-none
                 py-2"
-                :class="{'border-red-500' : $v.color.$error}"
+              :class="{ 'border-red-500': $v.color.$error }"
             >
               <option value selected>Please Select</option>
               <option value="White">White</option>
@@ -543,7 +556,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.selling_price.$error}"
+              :class="{ 'border-red-500': $v.selling_price.$error }"
               id="selling_price"
               name="selling_price"
               type="number"
@@ -612,7 +625,7 @@
                 focus:border-blue-600
                 focus:outline-none
               "
-              :class="{'border-red-500' : $v.car_desc.$error}"
+              :class="{ 'border-red-500': $v.car_desc.$error }"
               id="car_desc"
               name="car_desc"
               rows="5"
@@ -622,7 +635,9 @@
             />
             <div v-if="$v.car_desc.$error" class="text-red-500 mt-1">
               <p v-if="!$v.car_desc.required">This field is required</p>
-              <p v-if="!$v.car_desc.maxLength">Description must not more than 100 letters</p>
+              <p v-if="!$v.car_desc.maxLength">
+                Description must not more than 100 letters
+              </p>
             </div>
           </div>
         </div>
@@ -717,12 +732,12 @@
 import axios from "axios";
 import navbar from "../component/navbar.vue";
 import footer from "../component/footer.vue";
-import { required, maxLength} from 'vuelidate/lib/validators'
-function checkyear(value){
-  if(!value){
-    return true
-  }else{
-    return value <= 2022
+import { required, maxLength } from "vuelidate/lib/validators";
+function checkyear(value) {
+  if (!value) {
+    return true;
+  } else {
+    return value <= 2022;
   }
 }
 // @ is an alias to /src
@@ -741,7 +756,7 @@ export default {
       num_gear: "",
       car_act: "",
       car_regis: "",
-      car_type : "",
+      car_type: "",
       mileage: "",
       registration_year: "",
       color: "",
@@ -752,62 +767,62 @@ export default {
       check: null
     };
   },
-  validations:{
-    brand:{
+  validations: {
+    brand: {
       required
     },
-    model:{
+    model: {
       required,
       maxLength: maxLength(100)
     },
-    modelyear:{
+    modelyear: {
       required,
       checkyear
     },
-    number_door:{
+    number_door: {
       required
     },
-    driving_type:{
+    driving_type: {
       required
     },
-    engine:{
+    engine: {
       required,
       maxLength: maxLength(25)
     },
-    car_type:{
+    car_type: {
       required
     },
-    gear:{
+    gear: {
       required
     },
-    num_gear:{
+    num_gear: {
       required
     },
-    owner:{
+    owner: {
       required
     },
-    car_act:{
+    car_act: {
       required
     },
-    car_regis:{
+    car_regis: {
       required
     },
-    mileage:{
+    mileage: {
       required
     },
-    registration_year:{
-      required,
-    },
-    color:{
+    registration_year: {
       required
     },
-    selling_price:{
+    color: {
       required
     },
-    car_desc:{
+    selling_price: {
+      required
+    },
+    car_desc: {
       required,
       maxLength: maxLength(100)
-    },
+    }
   },
   components: {
     Navbar: navbar,
@@ -840,9 +855,9 @@ export default {
       this.images.splice(index, 1);
     },
     submitcar() {
-      if(this.$v.$invalid){
-        this.$v.$touch()
-      }else{
+      if (this.$v.$invalid) {
+        this.$v.$touch();
+      } else {
         let formData = new FormData();
         formData.append("car_brand", this.brand);
         formData.append("car_model", this.model);
@@ -859,23 +874,24 @@ export default {
         formData.append("car_owner", this.owner);
         formData.append("car_num_of_gear", this.num_gear);
         formData.append("car_drive_type", this.driving_type);
-        formData.append("car_act", this.car_act + '-01');
+        formData.append("car_act", this.car_act + "-01");
         formData.append("car_num_of_door", this.number_door);
         this.images.forEach(image => {
           // console.log(image[0]);
           formData.append("carImage", image[0]);
         });
-        if(this.images.length != 0){
-          axios
-          .post(
-            `http://localhost:3000/addcar/${this.loginuser.user_id}`,
-            formData
-          )
-          .then(res => this.$router.push({ name: "home" }))
-          .catch(error => console.log(error.response.data));
-        }
-        else{
-          alert('Please add your image')
+        if (confirm("Confirm insert your car")) {
+          if (this.images.length != 0) {
+            axios
+              .post(
+                `http://localhost:3000/addcar/${this.loginuser.user_id}`,
+                formData
+              )
+              .then(res => this.$router.push({ name: "home" }))
+              .catch(error => console.log(error.response.data));
+          } else {
+            alert("Please add your image");
+          }
         }
       }
     }
