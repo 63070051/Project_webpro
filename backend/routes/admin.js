@@ -8,21 +8,27 @@ const router = express.Router();
 
 
 router.post("/vertifiedseller/:id", async function (req, res, next) {
+    const conn = await pool.getConnection();
+    await conn.beginTransaction();
     try {
-      const [row, field] = await pool.query(
+      const [row, field] = await conn.query(
         "UPDATE Seller SET `s_vertified` = ? WHERE user_id = ?",
         ["Vertified", req.params.id]
       );
-      const [users, field1] = await pool.query(
+      const [users, field1] = await conn.query(
         "UPDATE Users SET `seller_type` = 1 WHERE user_id = ?",
         [req.params.id]
       );
+      await conn.commit();
       return res.json("success");
     } catch (err) {
+      await conn.rollback();
       next(err);
     }
   });
   router.post("/cancelseller/:id", async function (req, res, next) {
+    const conn = await pool.getConnection();
+    await conn.beginTransaction();
     try {
       const [row, field] = await pool.query(
         "UPDATE Seller SET `s_vertified` = ? WHERE user_id = ?",
@@ -32,8 +38,10 @@ router.post("/vertifiedseller/:id", async function (req, res, next) {
         "UPDATE Users SET `seller_type` = 0 WHERE user_id = ?",
         [req.params.id]
       );
+      await conn.commit();
       return res.json("success");
     } catch (err) {
+      await conn.rollback();
       return res.status(500).json(err);
     }
   });
