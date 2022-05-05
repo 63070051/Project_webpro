@@ -310,7 +310,7 @@ export default {
       sameAs: sameAs('password1')
     },
     username:{
-      minLength: minLength(5),
+      minLength: minLength(4),
       maxLength: maxLength(20),
       required
     },
