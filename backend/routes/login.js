@@ -88,7 +88,7 @@ const signupSchema = Joi.object({
     address: Joi.string().required(),
     birth: Joi.string().required(),
     gender: Joi.string().required(),
-    password1: Joi.string().required(),
+    password1: Joi.string().required().custom(passwordValidator),
     password2: Joi.string().required(),
 });
 
