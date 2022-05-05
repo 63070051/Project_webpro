@@ -967,11 +967,6 @@ export default {
             car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1
         );
       }
-      if(this.comparecar.length != 0){
-        this.comparecar.forEach((e) => {
-          indexcompare.push(car_copy.indexOf(e))
-        });
-      }
       if(this.sortt != ''){
         if(this.sortt == 'lthprice'){
           car_copy.sort((a, b) => {
@@ -1017,6 +1012,11 @@ export default {
               }
           })
         }
+      }
+      if(this.comparecar.length != 0){
+        this.comparecar.forEach((e) => {
+          indexcompare.push(car_copy.indexOf(e))
+        });
       }
       this.checkedcompare(indexcompare)
       return car_copy;
@@ -1127,7 +1127,11 @@ export default {
       this.sevenseat = false;
       this.mpv = false;
     },
+    resetsort() {
+      this.sortt = ''
+    },
     resetall() {
+      this.resetsort();
       this.resetbrand();
       this.resetcolor();
       this.resetprice();
