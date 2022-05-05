@@ -900,7 +900,6 @@ export default {
       sevenseat: false,
       mpv: false,
       comparecar : [],
-      indexcarcompare : [],
       sortt: ''
     };
   },
@@ -1182,7 +1181,6 @@ export default {
       });
     },
     checkedcompare(indexcompare){
-      this.indexcarcompare = indexcompare
       if(this.comparecar.length != 0){
         setTimeout(() => {
         document.querySelectorAll(".compareclass").forEach((e, indexchecked) => {
