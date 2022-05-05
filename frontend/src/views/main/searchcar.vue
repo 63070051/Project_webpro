@@ -964,7 +964,7 @@ export default {
       if (this.instead != "") {
         car_copy = car_copy.filter(
           car =>
-            car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1
+            (car.car_modelyear + ' ' + car.car_brand + ' ' + car.car_model).toUpperCase().indexOf(this.instead.toUpperCase()) > -1
         );
       }
       if(this.sortt != ''){
