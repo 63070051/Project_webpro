@@ -7,9 +7,9 @@
       </div> -->
       <div class="max-w-7xl mx-auto  my-8 bg-white px-6 rounded-2xl space-y-8 ">
       <div class="flex flex-col rounded-2xl">
-        <div class="overflow-x-auto lg:-mx-6 lg:-mx-8 rounded-2xl">
-          <div class="py-8 inline-block min-w-full lg:px-6 lg:px-8  ">
-            <div class="overflow-hidden rounded-2xl">
+        <div class="overflow-x-auto lg:mx-6 lg:-mx-8 rounded-2xl">
+          <div class="py-8 inline-block min-w-full lg:px-6 lg:px-8 ">
+            <div class="overflow-hidden rounded-2xl shadow-xl">
               <table class="min-w-full text-center ">
                 <thead class="border-b bg-sky-800 ">
                   <tr>
@@ -52,7 +52,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="bg-white border-b border-black" v-for="seller, index in selleruser" :key="seller.user_id">
+                  <tr class="bg-white border-b border-gray-300" v-for="seller, index in selleruser" :key="seller.user_id">
                     <td
                       class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900"
                     >
@@ -118,7 +118,8 @@ export default {
   name: "Manageseller",
   data() {
     return {
-      selleruser: []
+      selleruser: [],
+      loginuser : []
     };
   },
   components: {
@@ -129,11 +130,16 @@ export default {
   },
   methods: {
     getseller() {
+      this.loginuser = JSON.parse(localStorage.getItem('user'))
+      if(this.loginuser.role != 'admin'){
+        alert("You've not permission")
+        this.$router.push('/')
+      }
       axios
         .post(`http://localhost:3000/getseller`)
         .then(response => {
           this.selleruser = response.data;
-          console.log(this.selleruser)
+          // console.log(this.selleruser)
         })
         .catch(error => {
           console.log("error");

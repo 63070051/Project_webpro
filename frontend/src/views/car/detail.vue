@@ -16,7 +16,7 @@
         <div class="flex">
           <div class="text-right mr-7 px-7 border-r-2 borer-gray-400">
             <p class="font-bold text-xl text-orange-500">{{convertprice(detailcar.car_price)}}</p>
-            <p class="text-xs text-gray-400">{{convertvat(detailcar.car_price)}} (รวมภาษี 7% แล้ว)</p>
+            <p class="text-sm text-gray-500">Sell by {{detailcar.user_firstname + ' ' + detailcar.user_lastname}}</p>
           </div>
           <div class="flex gap-4">
             <div class="border-2 border-orange-500 w-12 h-12 rounded-xl flex justify-center items-center">

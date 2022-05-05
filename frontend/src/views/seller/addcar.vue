@@ -819,6 +819,10 @@ export default {
   methods: {
     getdata() {
       this.loginuser = JSON.parse(localStorage.getItem("user"));
+      if(this.loginuser.seller_type != 1){
+        alert("You've not permission")
+        this.$router.push('/')
+      }
     },
     selectImages(event) {
       // console.log(event.target.files)

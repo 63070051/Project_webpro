@@ -141,8 +141,6 @@
           <div class="space-y-6 mt-9 text-gray-500 flex flex-col">
             <router-link to="/searchcar" class="cursor-pointer" onclick="backToTop()">ค้นหารถ</router-link>
             <router-link to="/about" class="cursor-pointer" onclick="backToTop()">เกี่ยวกับเรา</router-link>
-            <p>ติดต่อเรา</p>
-            <p>แผนผังเว็บไซต์</p>
           </div>
         </div>
       </div>
@@ -158,15 +156,8 @@
           items-center
         "
       >
-        <div>
-          <p>© AUTOSTYLE 2022</p>
-        </div>
-        <div class="flex space-x-3 text-gray-500">
-          <router-link to="/question" onclick="backToTop()">คำถามที่พบบ่อย</router-link>
-          <p>|</p>
-          <p>นโยบายความเป็นส่วนตัว</p>
-          <p>|</p>
-          <p>เงื่อนไขการใช้งาน</p>
+        <div class="w-full">
+          <p class="text-center">© AUTOSTYLE 2022</p>
         </div>
       </div>
     </div>

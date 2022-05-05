@@ -787,7 +787,7 @@
         </div>
       </div>
       <div class="flex justify-end">
-          <div class="mt-4 cursor-pointer" @click="sortactive = !sortactive">
+          <div class="mt-4 cursor-pointer" @click="sortactive = !sortactive, closemodal()">
             <p class="border-b-2 border-sky-700 text-sky-700 font-bold">เรียง</p>
           </div>
         <div class="inline-block relative">

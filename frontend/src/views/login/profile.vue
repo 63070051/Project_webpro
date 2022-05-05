@@ -260,7 +260,7 @@ export default {
       email: email
     },
   },
-  components1: {
+  components: {
     Navbar: navbar
   },
   mounted() {
