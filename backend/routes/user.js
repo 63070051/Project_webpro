@@ -65,4 +65,21 @@ router.post("/update/account/:id", async function (req, res, next) {
     }
 });
 
+
+router.post("/getuser", async function (req, res, next) {
+    try {
+        const [tokens, field] = await pool.query(
+            "SELECT * FROM tokens WHERE token_key = ?",
+            [req.body.token]
+        );
+        const [user, field1] = await pool.query(
+            "SELECT * FROM Users WHERE user_id = ?",
+            [tokens[0].user_id]
+        );
+        res.json(user[0]);
+    } catch (error) {
+        res.json('error');
+    }
+});
+
 module.exports = router;

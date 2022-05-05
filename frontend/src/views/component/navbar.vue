@@ -2,7 +2,7 @@
   <div id="app">
     <nav
       class="flex items-center px-12 py-4 justify-between shadow-lg"
-      v-if="loginuser == null"
+      v-if="tokens == null"
     >
       <div class="space-x-6 flex items-center font-bold">
         <router-link class="text-xl font-bold" to="/"><img width="110px" src="https://cdn.discordapp.com/attachments/958256273592307722/964954378614210680/logo3.png" alt=""></router-link>
@@ -100,14 +100,25 @@ export default {
     return {
       loginuser: [],
       navbrand : false,
+      tokens : JSON.parse(localStorage.getItem('user'))
     };
   },
   mounted() {
     this.getdata();
+    
   },
   methods: {
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            console.log(this.loginuser)
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
     },
     signout(){
         localStorage.removeItem("user");

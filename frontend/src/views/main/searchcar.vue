@@ -967,11 +967,6 @@ export default {
             car.car_model.toUpperCase().indexOf(this.instead.toUpperCase()) > -1
         );
       }
-      if(this.comparecar.length != 0){
-        this.comparecar.forEach((e) => {
-          indexcompare.push(car_copy.indexOf(e))
-        });
-      }
       if(this.sortt != ''){
         if(this.sortt == 'lthprice'){
           car_copy.sort((a, b) => {
@@ -1018,13 +1013,26 @@ export default {
           })
         }
       }
+      if(this.comparecar.length != 0){
+        this.comparecar.forEach((e) => {
+          indexcompare.push(car_copy.indexOf(e))
+        });
+      }
       this.checkedcompare(indexcompare)
       return car_copy;
     }
   },
   methods: {
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
     },
     getcar() {
       axios
@@ -1126,8 +1134,13 @@ export default {
       this.suv = false;
       this.sevenseat = false;
       this.mpv = false;
+      this.typeactive = false
+    },
+    resetsort() {
+      this.sortt = ''
     },
     resetall() {
+      this.resetsort();
       this.resetbrand();
       this.resetcolor();
       this.resetprice();

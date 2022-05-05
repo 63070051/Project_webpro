@@ -454,7 +454,15 @@ export default {
   },
   methods: {
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+          });
     },
   },
 };

@@ -109,13 +109,24 @@ export default {
     Footer: footer
   },
   mounted() {
-    this.getdata();
+    this.getuser();
     this.getcardata(this.$route.params.cusid);
-    this.checkvaliadate();
   },
   methods: {
+    getuser(){
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            this.getdata();
+            this.checkvaliadate();
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+      });
+    },
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
       if(this.loginuser.customer_type != 1){
         alert("You've not permission")
         this.$router.push('/')

@@ -264,11 +264,22 @@ export default {
     Navbar: navbar
   },
   mounted() {
-    this.getdata();
+    this.getuser();
   },
   methods: {
+    getuser(){
+      let token = JSON.parse(localStorage.getItem('user'))
+      axios
+          .post(`http://localhost:3000/getuser`, {token : token})
+          .then(response => {
+            this.loginuser = response.data;
+            this.getdata();
+          })
+          .catch(error => {
+            this.error = error.response.data.message;
+      });
+    },
     getdata() {
-      this.loginuser = JSON.parse(localStorage.getItem("user"));
       this.firstname = this.loginuser.user_firstname;
       this.lastname = this.loginuser.user_lastname;
       this.tel = this.loginuser.user_phone;
@@ -297,7 +308,6 @@ export default {
           .then(response => {
             console.log(response.data)
             if (response.data != "error") {
-              localStorage.setItem("user", JSON.stringify(response.data));
               this.$router.push("/");
             }
           })
