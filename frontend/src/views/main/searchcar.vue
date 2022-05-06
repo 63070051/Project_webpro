@@ -198,7 +198,7 @@
             :class="[brandactive ? 'dropdown-active' : '']"
           >
             <div
-              style="width: 500px; height: 550px"
+              style="width: 500px; height: 500px"
               class="bg-white rounded-lg z-50 flex flex-col justify-between pt-3"
             >
               <div class="px-3">
@@ -253,14 +253,6 @@
                       @change="FillterBrand($event, 'Mazda')"
                     />
                     <p class="ml-4">Mazda</p>
-                  </div>
-                  <div class="flex items-center border-b-2 py-2">
-                    <input
-                      class="brand"
-                      type="checkbox"
-                      @change="FillterBrand($event, 'Others')"
-                    />
-                    <p class="ml-4">Others</p>
                   </div>
                 </div>
               </div>
@@ -900,7 +892,6 @@ export default {
       sevenseat: false,
       mpv: false,
       comparecar : [],
-      indexcarcompare : [],
       sortt: ''
     };
   },
@@ -1182,7 +1173,6 @@ export default {
       });
     },
     checkedcompare(indexcompare){
-      this.indexcarcompare = indexcompare
       if(this.comparecar.length != 0){
         setTimeout(() => {
         document.querySelectorAll(".compareclass").forEach((e, indexchecked) => {
