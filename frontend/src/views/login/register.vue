@@ -147,7 +147,7 @@
               />
             <div v-if="$v.tel.$error" class="text-red-500 mt-1">
               <p v-if="!$v.tel.required">This field is required</p>
-              <p v-if="!$v.tel.mobile">The mobile number format is incorrect</p>
+              <p v-if="!$v.tel.mobile || !$v.tel.maxLength">The mobile number format is incorrect</p>
             </div>
             </div>
           </div>
@@ -335,7 +335,8 @@ export default {
     },
     tel:{
       required: required ,
-      mobile: mobile
+      mobile: mobile,
+      maxLength: maxLength(10)
     },
     password1:{
       required: required,

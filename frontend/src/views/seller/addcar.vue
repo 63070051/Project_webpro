@@ -496,6 +496,9 @@
               <p v-if="!$v.registration_year.required">
                 This field is required
               </p>
+              <p v-if="!$v.registration_year.checkyear">
+                Modelyear format is incorrect
+              </p>
             </div>
           </div>
           <div class="mb-4">
@@ -811,7 +814,8 @@ export default {
       required
     },
     registration_year: {
-      required
+      required,
+      checkyear
     },
     color: {
       required
@@ -856,6 +860,7 @@ export default {
         alert("Max-Limit images is 6");
       } else {
         this.images.push(event.target.files);
+        console.log(this.images);
       }
     },
     showSelectImage(image) {
