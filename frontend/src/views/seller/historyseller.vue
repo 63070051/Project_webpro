@@ -69,7 +69,6 @@ export default {
   },
   mounted() {
     this.getuser();
-    this.getsellercar();
   },
   methods: {
     getuser() {
@@ -79,6 +78,7 @@ export default {
           .then(response => {
             this.loginuser = response.data;
             this.checkvaliadate();
+            this.getsellercar();
           })
           .catch(error => {
             this.error = error.response.data.message;
@@ -97,7 +97,6 @@ export default {
         )
         .then(response => {
           this.sellercar = response.data;
-          this.sellercar = this.sellercar.filter(car => car.sal_status != 'confirmed')
           //   console.log(this.sellercar)
         })
         .catch(error => {
@@ -126,8 +125,8 @@ export default {
       }).format(km);
       return dis.slice(4, dis.length - 3) + " กม.";
     },
-    linkupdate(carid) {
-      this.$router.push(`/update_car/${carid}`);
+    linkupdate(car_id) {
+      this.$router.push(`/update_car/${car_id}`);
     },
     linktodetail(carid) {
       this.$router.push(`/detail/${carid}`);

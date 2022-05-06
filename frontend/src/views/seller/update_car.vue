@@ -839,7 +839,7 @@ export default {
   },
   mounted() {
     this.getdata();
-    this.getcar(this.$route.params.carid);
+    // this.getcar();
   },
   methods: {
     getdata() {
@@ -848,7 +848,7 @@ export default {
           .post(`http://localhost:3000/getuser`, {token : token})
           .then(response => {
             this.loginuser = response.data;
-            console.log(this.loginuser)
+            this.getcar(this.$route.params.carid);
           })
           .catch(error => {
             this.error = error.response.data.message;
